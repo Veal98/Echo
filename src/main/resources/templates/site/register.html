@@ -1,103 +1,65 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-	<link rel="stylesheet" href="../css/global.css" />
-	<link rel="stylesheet" href="../css/login.css" />
-	<title>牛客网-注册</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+	<title>Greate - 注册</title>
 </head>
 <body>
 	<div class="nk-container">
 		<!-- 头部 -->
-		<header class="bg-dark sticky-top">
-			<div class="container">
-				<!-- 导航 -->
-				<nav class="navbar navbar-expand-lg navbar-dark">
-					<!-- logo -->
-					<a class="navbar-brand" href="#"></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<!-- 功能 -->
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" href="../index.html">首页</a>
-							</li>
-							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link position-relative" href="letter.html">消息<span class="badge badge-danger">12</span></a>
-							</li>
-							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" href="register.html">注册</a>
-							</li>
-							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" href="login.html">登录</a>
-							</li>
-							<li class="nav-item ml-3 btn-group-vertical dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<img src="http://images.nowcoder.com/head/1t.png" class="rounded-circle" style="width:30px;"/>
-								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item text-center" href="profile.html">个人主页</a>
-									<a class="dropdown-item text-center" href="setting.html">账号设置</a>
-									<a class="dropdown-item text-center" href="login.html">退出登录</a>
-									<div class="dropdown-divider"></div>
-									<span class="dropdown-item text-center text-secondary">nowcoder</span>
-								</div>
-							</li>
-						</ul>
-						<!-- 搜索 -->
-						<form class="form-inline my-2 my-lg-0" action="search.html">
-							<input class="form-control mr-sm-2" type="search" aria-label="Search" />
-							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">搜索</button>
-						</form>
-					</div>
-				</nav>
-			</div>
-		</header>
+		<header class="bg-dark sticky-top" th:replace="index::header"></header>
 
 		<!-- 内容 -->
 		<div class="main">
 			<div class="container pl-5 pr-5 pt-3 pb-3 mt-3 mb-3">
 				<h3 class="text-center text-info border-bottom pb-3">注&nbsp;&nbsp;册</h3>
-				<form class="mt-5">
+				<form class="mt-5" method="post" th:action="@{/register}">
 					<div class="form-group row">
 						<label for="username" class="col-sm-2 col-form-label text-right">账号:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="username" placeholder="请输入您的账号!" required>
-							<div class="invalid-feedback">
-								该账号已存在!
-							</div>
+							<input type="text" id="username"
+								   th:class="|form-control ${usernameMsg!=null ? 'is-invalid' : ''}|"
+								   th:value="${user!=null ? user.username : ''}"
+								   name = "username" placeholder="请输入您的账号!" required>
+							<!--错误提示消息, 当 上面的 input class = is-invalid 时显示-->
+							<div class="invalid-feedback" th:text="${usernameMsg}"></div>
 						</div>
 					</div>
 					<div class="form-group row mt-4">
 						<label for="password" class="col-sm-2 col-form-label text-right">密码:</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="password" placeholder="请输入您的密码!" required>
-							<div class="invalid-feedback">
-								密码长度不能小于8位!
-							</div>							
+							<input type="password" id="password"
+								   th:class="|form-control ${passwordMsg!=null ? 'is-invalid' : ''}|"
+								   th:value="${user!=null ? user.password : ''}"
+								   name = "password" placeholder="请输入您的密码!" required>
+							<!--错误提示消息-->
+							<div class="invalid-feedback" th:text="${passwordMsg}"></div>
 						</div>
 					</div>
 					<div class="form-group row mt-4">
 						<label for="confirm-password" class="col-sm-2 col-form-label text-right">确认密码:</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="confirm-password" placeholder="请再次输入密码!" required>
+							<input type="password" class="form-control" id="confirm-password"
+								   th:value="${user!=null ? user.password : ''}"
+								   placeholder="请再次输入密码!" required>
 							<div class="invalid-feedback">
-								两次输入的密码不一致!
 							</div>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="email" class="col-sm-2 col-form-label text-right">邮箱:</label>
 						<div class="col-sm-10">
-							<input type="email" class="form-control" id="email" placeholder="请输入您的邮箱!" required>
-							<div class="invalid-feedback">
-								该邮箱已注册!
-							</div>
+							<input type="email" id="email"
+								   th:class="|form-control ${emailMsg!=null ? 'is-invalid' : ''}|"
+								   th:value="${user!=null ? user.email : ''}"
+								   name = "email" placeholder="请输入您的邮箱!" required>
+							<!--错误提示消息-->
+							<div class="invalid-feedback" th:text="${emailMsg}"></div>
 						</div>
 					</div>
 					<div class="form-group row mt-4">
@@ -173,10 +135,10 @@
 		</footer>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-	<script src="../js/global.js"></script>
-	<script src="../js/register.js"></script>
+	<script th:src="@{/js/jquery-3.1.0.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/global.js}"></script>
+	<script th:src="@{/js/register.js}"></script>
 </body>
 </html>
