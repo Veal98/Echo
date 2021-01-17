@@ -1,0 +1,145 @@
+html {
+	height: 100%;
+}
+
+body {
+	background: #eee;
+	font-family: arial, STHeiti, 'Microsoft YaHei', \5b8b\4f53;
+	font-size: 14px;
+	height: 100%;
+}
+
+.nk-container {
+	position: relative;
+	height: auto;
+	min-height: 100%;
+}
+
+.container {
+	width: 960px;
+	padding: 0;
+}
+
+header .navbar-brand {
+	background: url('http://static.nowcoder.com/images/res/logo/logo-v3.png') no-repeat;
+	background-size: 147px 42px;
+	width: 147px;
+	height: 42px;
+	margin: 5px 15px 5px 0;
+}
+
+header .navbar {
+	padding: 5px 0;
+	font-size: 16px;
+}
+
+header .badge {
+	position: absolute;
+	top: -3px;
+	left: 33px;
+}
+
+footer {
+	padding: 20px 0;
+	font-size: 12px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+footer .qrcode {
+	text-align: center;
+}
+
+footer .detail-info{
+	border-left: 1px solid #888;
+}
+
+footer .company-info li {
+	padding-left: 16px;
+	margin: 4px 0;
+}
+
+.main {
+	padding: 20px 0;
+	padding-bottom: 200px;
+}
+
+.main .container {
+	background: #fff;
+	padding: 20px;
+}
+
+i {
+	font-style: normal;
+}
+
+u {
+	text-decoration: none;
+}
+
+b {
+	font-weight: normal;
+}
+
+a {
+	color: #000;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.font-size-12 {
+	font-size: 12px;
+}
+.font-size-14 {
+	font-size: 14px;
+}
+.font-size-16 {
+	font-size: 16px;
+}
+.font-size-18 {
+	font-size: 18px;
+}
+.font-size-20 {
+	font-size: 20px;
+}
+.font-size-22 {
+	font-size: 20px;
+}
+.font-size-24 {
+	font-size: 20px;
+}
+
+.hidden {
+	display: none;
+}
+
+.rt-0 {
+	right: 0;
+	top: 0;
+}
+
+.square {
+	display: inline-block;
+	width: 7px;
+	height: 7px;
+	background: #ff6547;
+	margin-bottom: 2px;
+	margin-right: 3px;
+}
+
+.bg-gray {
+	background: #eff0f2;
+}
+
+.user-header {
+	width: 50px;
+	height: 50px;
+}
+
+em {
+	font-style: normal;
+	color: red;
+}

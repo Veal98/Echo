@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greate.community.dao.UserMapper">
+
+    <sql id = "insertFields">
+        username, password, salt, email, type, status, activation_code, header_url, create_time
+    </sql>
+
+    <sql id = "selectFields">
+        id, username, password, salt, email, type, status, activation_code, header_url, create_time
+    </sql>
+
+    <!--根据 Id 查询用户信息-->
+    <select id = "selectById" resultType = "User">
+        select <include refid="selectFields"></include>
+        from user
+        where id = #{id}
+    </select>
+
+    <!--根据 Username 查询用户信息-->
+    <select id="selectByName" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where username = #{username}
+    </select>
+
+    <!--根据 email 查询用户信息-->
+    <select id="selectByEmail" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where email = #{email}
+    </select>
+
+    <!--插入用户信息（注册）-->
+    <insert id="insertUser" parameterType="User" keyProperty="id">
+        insert into user (<include refid="insertFields"></include>)
+        values(#{username}, #{password}, #{salt}, #{email}, #{type}, #{status}, #{activationCode}, #{headerUrl}, #{createTime})
+    </insert>
+
+    <!--修改用户状态-->
+    <update id="updateStatus">
+        update user set status = #{status} where id = #{id}
+    </update>
+
+    <!--修改用户头像-->
+    <update id="updateHeader">
+        update user set header_url = #{headerUrl} where id = #{id}
+    </update>
+
+    <!--修改密码-->
+    <update id="updatePassword">
+        update user set password = #{password} where id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
+	<title>GreateCommunity-首页</title>
+</head>
+<body>	
+	<div class="nk-container">
+		<!-- 头部 -->
+		<header class="bg-dark sticky-top">
+			<div class="container">
+				<!-- 导航 -->
+				<nav class="navbar navbar-expand-lg navbar-dark">
+					<!-- logo -->
+					<a class="navbar-brand" href="#"></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<!-- 功能 -->
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item ml-3 btn-group-vertical">
+								<a class="nav-link" href="index.html">首页</a>
+							</li>
+							<li class="nav-item ml-3 btn-group-vertical">
+								<a class="nav-link position-relative" href="site/letter.html">消息<span class="badge badge-danger">12</span></a>
+							</li>
+							<li class="nav-item ml-3 btn-group-vertical">
+								<a class="nav-link" href="site/register.html">注册</a>
+							</li>
+							<li class="nav-item ml-3 btn-group-vertical">
+								<a class="nav-link" href="site/login.html">登录</a>
+							</li>
+							<li class="nav-item ml-3 btn-group-vertical dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<img src="http://images.nowcoder.com/head/1t.png" class="rounded-circle" style="width:30px;"/>
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item text-center" href="site/profile.html">个人主页</a>
+									<a class="dropdown-item text-center" href="site/setting.html">账号设置</a>
+									<a class="dropdown-item text-center" href="site/login.html">退出登录</a>
+									<div class="dropdown-divider"></div>
+									<span class="dropdown-item text-center text-secondary">nowcoder</span>
+								</div>
+							</li>
+						</ul>
+						<!-- 搜索 -->
+						<form class="form-inline my-2 my-lg-0" action="site/search.html">
+							<input class="form-control mr-sm-2" type="search" aria-label="Search" />
+							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">搜索</button>
+						</form>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+		<!-- 内容 -->
+		<div class="main">
+			<div class="container">
+				<div class="position-relative">
+					<!-- 筛选条件 -->
+					<ul class="nav nav-tabs mb-3">
+						<li class="nav-item">
+							<a class="nav-link active" href="#">最新</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">最热</a>
+						</li>
+					</ul>
+					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0" data-toggle="modal" data-target="#publishModal">我要发布</button>
+				</div>
+				<!-- 弹出框 -->
+				<div class="modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="publishModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="publishModalLabel">新帖发布</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">标题：</label>
+										<input type="text" class="form-control" id="recipient-name">
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="col-form-label">正文：</label>
+										<textarea class="form-control" id="message-text" rows="15"></textarea>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+								<button type="button" class="btn btn-primary" id="publishBtn">发布</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 提示框 -->
+				<div class="modal fade" id="hintModal" tabindex="-1" role="dialog" aria-labelledby="hintModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="hintModalLabel">提示</h5>
+							</div>
+							<div class="modal-body" id="hintBody">
+								发布完毕!
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 帖子列表 -->
+				<ul class="list-unstyled">
+					<li class="media pb-3 pt-3 mb-3 border-bottom" th:each="map:${discussPosts}">
+						<a href="site/profile.html">
+							<img th:src="${map.user.headerUrl}" class="mr-4 rounded-circle" alt="用户头像" style="width:50px;height:50px;">
+						</a>
+						<div class="media-body">
+							<h6 class="mt-0 mb-3">
+								<a href="#" th:utext="${map.post.title}">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+								<span class="badge badge-secondary bg-primary" th:if="${map.post.type==1}">置顶</span>
+								<span class="badge badge-secondary bg-danger" th:if="${map.post.status==1}">精华</span>
+							</h6>
+							<div class="text-muted font-size-12">
+								<u class="mr-3" th:utext="${map.user.username}">寒江雪</u> 发布于 <b th:text="${#dates.format(map.post.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-04-15 15:32:18</b>
+								<ul class="d-inline float-right">
+									<li class="d-inline ml-2">赞 11</li>
+									<li class="d-inline ml-2">|</li>
+									<li class="d-inline ml-2">回帖 7</li>
+								</ul>
+							</div>
+						</div>						
+					</li>
+				</ul>
+				<!--分页 -->
+				<nav class="mt-5" th:if = "${page.rows>0}">
+					<ul class="pagination justify-content-center">
+						<li class="page-item">
+							<a class="page-link" th:href="@{${page.path}(current=1)}">首页</a>
+						</li>
+						<li th:class="|page-item ${page.current==1?'disabled':''}|">
+							<a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">上一页</a>
+						</li>
+						<!--numbers.sequence 生成一个 page.from 到 page.to 的连续整数数组-->
+						<li th:each="i:${#numbers.sequence(page.from,page.to)}" th:class="|page-item ${i==page.current? 'active' : ''}|" >
+							<a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}"></a>
+						</li>
+						<li th:class="|page-item ${page.current==page.total ? 'disabled':''}|">
+							<a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">下一页</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" th:href="@{${page.path}(current=${page.total})}">末页</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+		<!-- 尾部 -->
+		<footer class="bg-dark">
+			<div class="container">
+				<div class="row">
+					<!-- 二维码 -->
+					<div class="col-4 qrcode">
+						<img src="https://uploadfiles.nowcoder.com/app/app_download.png" class="img-thumbnail" style="width:136px;" />
+					</div>
+					<!-- 公司信息 -->
+					<div class="col-8 detail-info">
+						<div class="row">
+							<div class="col">
+								<ul class="nav">
+									<li class="nav-item">
+										<a class="nav-link text-light" href="#">关于我们</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link text-light" href="#">加入我们</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link text-light" href="#">意见反馈</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link text-light" href="#">企业服务</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link text-light" href="#">联系我们</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link text-light" href="#">免责声明</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link text-light" href="#">友情链接</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<ul class="nav btn-group-vertical company-info">
+									<li class="nav-item text-white-50">
+										公司地址：北京市朝阳区大屯路东金泉时代3-2708北京牛客科技有限公司
+									</li>
+									<li class="nav-item text-white-50">
+										联系方式：010-60728802(电话)&nbsp;&nbsp;&nbsp;&nbsp;admin@nowcoder.com
+									</li>
+									<li class="nav-item text-white-50">
+										牛客科技©2018 All rights reserved
+									</li>
+									<li class="nav-item text-white-50">
+										京ICP备14055008号-4 &nbsp;&nbsp;&nbsp;&nbsp;
+										<img src="http://static.nowcoder.com/company/images/res/ghs.png" style="width:18px;" />
+										京公网安备 11010502036488号
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<script th:src="@{/js/jquery-3.1.0.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/global.js}"></script>
+	<script th:src="@{/js/index.js}"></script>
+</body>
+</html>
