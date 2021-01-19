@@ -15,6 +15,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 处理首页逻辑
+ */
 @Controller
 public class HomeController {
 

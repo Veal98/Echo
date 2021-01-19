@@ -53,7 +53,7 @@ public interface UserMapper {
     /**
      * 修改密码
      * @param id
-     * @param password
+     * @param password 新密码
      * @return
      */
     int updatePassword(int id, String password);

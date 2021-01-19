@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -38,7 +39,7 @@ public class UserService implements CommunityConstant {
     @Value("${community.path.domain}")
     private String domain;
 
-    // 项目名 http://localhost:8080/greatecommunity/......
+    // 项目名(访问路径)
     @Value("${server.servlet.context-path}")
     private String contextPath;
 
@@ -208,5 +209,26 @@ public class UserService implements CommunityConstant {
         return loginTicketMapper.selectByTicket(ticket);
     }
 
+    /**
+     * 修改用户头像
+     * @param userId
+     * @param headUrl
+     * @return
+     */
+    public int updateHeader(int userId, String headUrl) {
+         return userMapper.updateHeader(userId, headUrl);
+    }
+
+    /**
+     * 修改用户密码（对新密码加盐加密存入数据库）
+     * @param userId
+     * @param newPassword 新密码
+     * @return
+     */
+    public int updatePassword(int userId, String newPassword) {
+        User user = userMapper.selectById(userId);
+        newPassword = CommunityUtil.md5(newPassword + user.getSalt()); // 重新加盐加密
+        return userMapper.updatePassword(userId, newPassword);
+    }
 
 }

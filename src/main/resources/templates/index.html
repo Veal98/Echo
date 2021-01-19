@@ -41,10 +41,10 @@
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item text-center" href="site/profile.html">个人主页</a>
-									<a class="dropdown-item text-center" href="site/setting.html">账号设置</a>
+									<a class="dropdown-item text-center" th:href="@{/user/setting}">账号设置</a>
 									<a class="dropdown-item text-center" th:href="@{/logout}">退出登录</a>
 									<div class="dropdown-divider"></div>
-									<span class="dropdown-item text-center text-secondary" th:utext="${loginUser.username}">nowcoder</span>
+									<span class="dropdown-item text-center text-secondary" th:utext="${loginUser.username}"></span>
 								</div>
 							</li>
 						</ul>

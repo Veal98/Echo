@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * 登录注册
+ * 处理登录注册
  */
 @Controller
 public class LoginController implements CommunityConstant {
