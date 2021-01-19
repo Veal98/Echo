@@ -1,4 +1,4 @@
-# Greate Community
+# Echo 回音
 
 ---
 
@@ -115,6 +115,22 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_entity_id` (`entity_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+登录凭证 `login_ticket`：
+
+```sql
+DROP TABLE IF EXISTS `login_ticket`;
+SET character_set_client = utf8mb4 ;
+CREATE TABLE `login_ticket` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `ticket` varchar(45) NOT NULL COMMENT '凭证',
+  `status` int(11) DEFAULT '0' COMMENT '凭证状态：0-有效; 1-无效;',
+  `expired` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '凭证到期时间',
+  PRIMARY KEY (`id`),
+  KEY `index_ticket` (`ticket`(20))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 

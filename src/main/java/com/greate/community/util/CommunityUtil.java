@@ -5,9 +5,6 @@ import org.springframework.util.DigestUtils;
 
 import java.util.UUID;
 
-/**
- * 工具类
- */
 public class CommunityUtil {
 
     /**

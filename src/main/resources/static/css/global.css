@@ -9,24 +9,31 @@ body {
 	height: 100%;
 }
 
+.btn-primary {
+	color: #fff;
+	background-color: rgb(71, 192, 175) !important;
+	border-color: #fff;
+}
+
 .nk-container {
 	position: relative;
 	height: auto;
 	min-height: 100%;
 }
 
+
 .container {
 	width: 960px;
 	padding: 0;
+	border-radius: 20px;
 }
 
 header .navbar-brand {
-	background: url('https://gitee.com/veal98/images/raw/master/img/社区.png') no-repeat;
-	width: 100px;
+	background: url('https://gitee.com/veal98/images/raw/master/img/LogoMakr-060ARN.png') no-repeat;
+	background-size: 147px 42px;
+	width: 147px;
 	height: 42px;
-	background-size: 70px 60px;
-	margin-bottom: 10px;
-	margin-right: -15px;
+	margin: 5px 15px 5px 0;
 }
 
 header .navbar {
@@ -34,11 +41,46 @@ header .navbar {
 	font-size: 16px;
 }
 
+.nav-link {
+	color: rgb(113, 119, 145) !important;
+}
+
+.nav-link:hover{
+	color: rgb(119, 84, 223) !important;
+}
+
+.dropdown-item {
+	color: rgb(119, 84, 223);
+}
+.text-secondary {
+	color: #6c757d !important;
+}
+
+.serach-btn {
+	color: #fff;
+	background: rgb(119, 84, 223);
+}
+
+.page-link {
+	color: rgb(119, 84, 223);
+}
+
+.page-item.active .page-link {
+	background-color: rgb(119, 84, 223);
+}
+
 header .badge {
 	position: absolute;
 	top: -3px;
 	left: 33px;
 }
+
+.navbar-dark .navbar-toggler {
+	background: rgb(119, 84, 223);
+	opacity: 80%;
+}
+
+
 
 footer {
 	padding: 20px 0;
@@ -133,6 +175,9 @@ a:hover {
 
 .bg-gray {
 	background: #eff0f2;
+}
+.bg-light {
+	background: #fff !important;
 }
 
 .user-header {

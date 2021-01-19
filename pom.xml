@@ -76,7 +76,7 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.penggle/kaptcha -->
+        <!-- Kaptcha 生成随机字符、生成图片（生成用于验证码）-->
         <dependency>
             <groupId>com.github.penggle</groupId>
             <artifactId>kaptcha</artifactId>

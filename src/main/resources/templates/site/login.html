@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
-	<title>Greate - 登录</title>
+	<title>Echo - 登录</title>
 </head>
 <body>
 	<div class="nk-container">
@@ -19,43 +19,43 @@
 		<div class="main">
 			<div class="container pl-5 pr-5 pt-3 pb-3 mt-3 mb-3">
 				<h3 class="text-center text-info border-bottom pb-3">登&nbsp;&nbsp;录</h3>
-				<form class="mt-5">				
+				<form class="mt-5" method="post" th:action="@{/login}">
 					<div class="form-group row">
 						<label for="username" class="col-sm-2 col-form-label text-right">账号:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control is-invalid" id="username" placeholder="请输入您的账号!" required>
-							<div class="invalid-feedback">
-								该账号不存在!
-							</div>
+							<input type="text" th:class="|form-control ${usernameMsg != null ? 'is-invalid' : ''}|"
+								   th:value="${param.username}"
+								   id="username" name="username" placeholder="请输入您的账号!" required>
+							<div class="invalid-feedback" th:text="${usernameMsg}"></div>
 						</div>
 					</div>
 					<div class="form-group row mt-4">
 						<label for="password" class="col-sm-2 col-form-label text-right">密码:</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control is-invalid" id="password" placeholder="请输入您的密码!" required>
-							<div class="invalid-feedback">
-								密码长度不能小于8位!
-							</div>							
+							<input type="password" th:class="|form-control ${passwordMsg != null ? 'is-invalid' : ''}|"
+								   th:value="${param.password}"
+								   id="password" name="password" placeholder="请输入您的密码!" required>
+							<div class="invalid-feedback" th:text="${passwordMsg}"></div>
 						</div>
 					</div>
 					<div class="form-group row mt-4">
-						<label for="verifycode" class="col-sm-2 col-form-label text-right">验证码:</label>
+						<label for="code" class="col-sm-2 col-form-label text-right">验证码:</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control is-invalid" id="verifycode" placeholder="请输入验证码!">
-							<div class="invalid-feedback">
-								验证码不正确!
-							</div>
+							<input type="text" th:class="|form-control ${codeMsg != null ? 'is-invalid' : ''}|"
+								   id="code" name="code" placeholder="请输入验证码!">
+							<div class="invalid-feedback" th:text="${codeMsg}"></div>
 						</div>
 						<div class="col-sm-4">
-							<img th:src="@{/img/captcha.png}" style="width:100px;height:40px;" class="mr-2"/>
-							<a href="javascript:;" class="font-size-12 align-bottom">刷新验证码</a>
+							<img th:src="@{/kaptcha}" id = "kaptcha"  style="width:100px;height:40px;" class="mr-2"/>
+							<a href="javascript:refresh_kaptcha();" class="font-size-12 align-bottom">刷新验证码</a>
 						</div>
 					</div>				
 					<div class="form-group row mt-4">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-10">
-							<input type="checkbox" id="remember-me" checked="checked">
-							<label class="form-check-label" for="remember-me">记住我</label>
+							<input type="checkbox" id="rememberMe" name="rememberMe"
+								   th:checked="${rememberMe}">
+							<label class="form-check-label" for="rememberMe">记住我</label>
 							<a href="forget.html" class="text-danger float-right">忘记密码?</a>
 						</div>
 					</div>				
@@ -135,5 +135,11 @@
 	<script th:src="@{/js/popper.min.js}"></script>
 	<script th:src="@{/js/bootstrap.min.js}"></script>
 	<script th:src="@{/js/global.js}"></script>
+	<script>
+		function refresh_kaptcha() {
+			var path = CONTEXT_PATH + "/kaptcha?p=" + Math.random();
+			$("#kaptcha").attr("src", path);
+		}
+	</script>
 </body>
 </html>
