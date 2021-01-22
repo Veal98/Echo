@@ -41,4 +41,11 @@
         values(#{userId}, #{title}, #{content}, #{type}, #{status}, #{createTime}, #{commentCount}, #{score})
     </insert>
 
+    <!--根据 id 查询帖子-->
+    <select id = "selectDiscussPostById" resultType="DiscussPost">
+        select *
+        from discuss_post
+        where id = #{id}
+    </select>
+
 </mapper>
