@@ -1,0 +1,45 @@
+2021-01-20 19:51:53,323 INFO [restartedMain] c.g.c.CommunityApplication [StartupInfoLogger.java:55] Starting CommunityApplication using Java 1.8.0_172 on LAPTOP-5SJBI05C with PID 21932 (E:\GreateCommunity\target\classes started by 19124 in E:\GreateCommunity)
+2021-01-20 19:51:53,329 INFO [restartedMain] c.g.c.CommunityApplication [SpringApplication.java:660] No active profile set, falling back to default profiles: default
+2021-01-20 19:51:53,367 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:255] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-01-20 19:51:53,368 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:255] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-01-20 19:51:53,960 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:250] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-20 19:51:53,962 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:128] Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2021-01-20 19:51:53,974 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:188] Finished Spring Data repository scanning in 7 ms. Found 0 Elasticsearch repository interfaces.
+2021-01-20 19:51:53,977 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:250] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-20 19:51:53,978 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:128] Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2021-01-20 19:51:53,981 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:188] Finished Spring Data repository scanning in 2 ms. Found 0 Reactive Elasticsearch repository interfaces.
+2021-01-20 19:51:53,993 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:250] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-20 19:51:53,994 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:128] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-01-20 19:51:54,005 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:188] Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2021-01-20 19:51:54,194 INFO [restartedMain] c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor [EnableEncryptablePropertiesBeanFactoryPostProcessor.java:48] Post-processing PropertySource instances
+2021-01-20 19:51:54,243 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2021-01-20 19:51:54,244 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2021-01-20 19:51:54,244 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2021-01-20 19:51:54,245 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2021-01-20 19:51:54,245 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2021-01-20 19:51:54,245 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2021-01-20 19:51:54,246 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2021-01-20 19:51:54,246 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource devtools [org.springframework.core.env.MapPropertySource] to EncryptableMapPropertySourceWrapper
+2021-01-20 19:51:54,281 INFO [restartedMain] c.u.j.f.DefaultLazyPropertyFilter [DefaultLazyPropertyFilter.java:34] Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2021-01-20 19:51:54,403 INFO [restartedMain] c.u.j.r.DefaultLazyPropertyResolver [DefaultLazyPropertyResolver.java:35] Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2021-01-20 19:51:54,404 INFO [restartedMain] c.u.j.d.DefaultLazyPropertyDetector [DefaultLazyPropertyDetector.java:33] Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2021-01-20 19:51:54,621 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:108] Tomcat initialized with port(s): 8080 (http)
+2021-01-20 19:51:54,630 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-20 19:51:54,631 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2021-01-20 19:51:54,631 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-20 19:51:54,719 INFO [restartedMain] o.a.c.c.C.[.[.[/echo] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2021-01-20 19:51:54,719 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:289] Root WebApplicationContext: initialization completed in 1350 ms
+2021-01-20 19:51:55,180 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java:181] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-20 19:51:55,237 INFO [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping [WelcomePageHandlerMapping.java:57] Adding welcome page template: index
+2021-01-20 19:51:57,109 INFO [restartedMain] o.s.d.e.s.VersionInfo [VersionInfo.java:62] Version Spring Data Elasticsearch: 4.1.3
+2021-01-20 19:51:57,110 INFO [restartedMain] o.s.d.e.s.VersionInfo [VersionInfo.java:63] Version Elasticsearch Client in build: 7.9.3
+2021-01-20 19:51:57,110 INFO [restartedMain] o.s.d.e.s.VersionInfo [VersionInfo.java:64] Version Elasticsearch Client used: 7.9.3
+2021-01-20 19:51:57,293 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:58] LiveReload server is running on port 35729
+2021-01-20 19:51:57,309 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-20 19:51:57,320 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:220] Tomcat started on port(s): 8080 (http) with context path '/echo'
+2021-01-20 19:51:57,329 INFO [restartedMain] c.g.c.CommunityApplication [StartupInfoLogger.java:61] Started CommunityApplication in 4.412 seconds (JVM running for 5.359)
+2021-01-20 19:52:42,844 INFO [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/echo] [DirectJDKLog.java:173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-20 19:52:42,844 INFO [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet [FrameworkServlet.java:525] Initializing Servlet 'dispatcherServlet'
+2021-01-20 19:52:42,845 INFO [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet [FrameworkServlet.java:547] Completed initialization in 1 ms
+2021-01-20 19:52:55,497 INFO [http-nio-8080-exec-9] c.z.h.HikariDataSource [HikariDataSource.java:110] HikariPool-1 - Starting...
+2021-01-20 19:52:55,727 INFO [http-nio-8080-exec-9] c.z.h.HikariDataSource [HikariDataSource.java:123] HikariPool-1 - Start completed.

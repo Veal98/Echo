@@ -1,5 +1,6 @@
 package com.greate.community.controller;
 
+import com.greate.community.annotation.LoginRequired;
 import com.greate.community.entity.User;
 import com.greate.community.service.UserService;
 import com.greate.community.util.CommunityUtil;
@@ -56,6 +57,7 @@ public class UserController {
      * 跳转至账号设置界面
      * @return
      */
+    @LoginRequired
     @GetMapping("/setting")
     public String getSettingPage() {
         return "/site/setting";
@@ -67,6 +69,7 @@ public class UserController {
      * @param model
      * @return
      */
+    @LoginRequired
     @PostMapping("/upload")
     public String uploadHeader(MultipartFile headerImage, Model model) {
         if (headerImage == null) {
@@ -139,6 +142,7 @@ public class UserController {
      * @param model
      * @return
      */
+    @LoginRequired
     @PostMapping("/password")
     public String updatePassword(String oldPassword, String newPassword, Model model) {
         // 验证原密码是否正确

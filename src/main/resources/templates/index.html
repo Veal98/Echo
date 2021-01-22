@@ -71,7 +71,9 @@
 							<a class="nav-link" href="#">最热</a>
 						</li>
 					</ul>
-					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0" data-toggle="modal" data-target="#publishModal" >我要发布</button>
+					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0"
+							data-toggle="modal" data-target="#publishModal"
+							th:if="${loginUser != null}">我要发布</button>
 				</div>
 				<!-- 弹出框 -->
 				<div class="modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="publishModalLabel" aria-hidden="true">
@@ -109,9 +111,7 @@
 							<div class="modal-header">
 								<h5 class="modal-title" id="hintModalLabel">提示</h5>
 							</div>
-							<div class="modal-body" id="hintBody">
-								发布完毕!
-							</div>
+							<div class="modal-body" id="hintBody"></div>
 						</div>
 					</div>
 				</div>
