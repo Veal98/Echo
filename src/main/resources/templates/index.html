@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png" />
+	<link rel="icon" type="shortcut icon" th:href="@{/img/favicon.ico}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
 	<title>Echo - 首页</title>
@@ -27,7 +27,7 @@
 								<a class="nav-link" th:href="@{/index}">首页</a>
 							</li>
 							<li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser != null}">
-								<a class="nav-link position-relative" href="site/letter.html">消息<span class="badge badge-danger">12</span></a>
+								<a class="nav-link position-relative" th:href="@{/letter/list}">消息<span class="badge badge-danger" >12</span></a>
 							</li>
 							<li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser == null}">
 								<a class="nav-link" th:href="@{/register}">注册</a>
@@ -133,14 +133,14 @@
 								<ul class="d-inline float-right">
 									<li class="d-inline ml-2">赞 11</li>
 									<li class="d-inline ml-2">|</li>
-									<li class="d-inline ml-2">回帖 7</li>
+									<li class="d-inline ml-2">回帖 <span th:text="${map.post.commentCount}"></span></li>
 								</ul>
 							</div>
 						</div>						
 					</li>
 				</ul>
 				<!--分页 -->
-				<nav class="mt-5" th:if = "${page.rows>0}">
+				<nav class="mt-5" th:if = "${page.rows>0}" th:fragment="pagination">
 					<ul class="pagination justify-content-center">
 						<li class="page-item">
 							<a class="page-link" th:href="@{${page.path}(current=1)}">首页</a>

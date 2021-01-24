@@ -48,4 +48,11 @@
         where id = #{id}
     </select>
 
+    <!--修改帖子的评论数量-->
+    <update id="updateCommentCount">
+        update discuss_post
+        set comment_count = #{commentCount}
+        where id = #{id}
+    </update>
+
 </mapper>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
+	<link rel="icon" type="shortcut icon" th:href="@{/img/favicon.ico}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/discuss-detail.css}" />
@@ -42,7 +42,7 @@
 							<ul class="d-inline float-right">
 								<li class="d-inline ml-2"><a href="#" class="text-primary">赞 11</a></li>
 								<li class="d-inline ml-2">|</li>
-								<li class="d-inline ml-2"><a href="#replyform" class="text-primary">回帖 7</a></li>
+								<li class="d-inline ml-2"><a href="#replyform" class="text-primary">回帖 <i th:text="${post.commentCount}"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -55,7 +55,7 @@
 				<!-- 回帖数量 -->
 				<div class="row">
 					<div class="col-8">
-						<h6><b class="square"></b> <i>30</i>条回帖</h6>
+						<h6><b class="square"></b> <i th:text="${post.commentCount}"></i>条回帖</h6>
 					</div>
 					<div class="col-4 text-right">
 						<a href="#replyform" class="btn btn-primary btn-sm">&nbsp;&nbsp;回&nbsp;&nbsp;帖&nbsp;&nbsp;</a>
@@ -63,144 +63,93 @@
 				</div>
 				<!-- 回帖列表 -->
 				<ul class="list-unstyled mt-4">
-					<!-- 第1条回帖 -->
-					<li class="media pb-3 pt-3 mb-3 border-bottom">
+					<li class="media pb-3 pt-3 mb-3 border-bottom" th:each="cvo:${comments}">
 						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/2t.png" class="align-self-start mr-4 rounded-circle user-header" alt="用户头像" >
+							<img th:src="${cvo.user.headerUrl}" class="align-self-start mr-4 rounded-circle user-header" alt="用户头像" >
 						</a>
 						<div class="media-body">
 							<div class="mt-0">
-								<span class="font-size-12 text-success">掉脑袋切切</span>
-								<span class="badge badge-secondary float-right floor">1#</span>
+								<span class="font-size-12 text-success" th:utext="${cvo.user.username}"></span>
+								<span class="badge badge-secondary float-right floor">
+									<i th:text="${page.offset + cvoStat.count}"></i> 楼
+								</span>
 							</div>
-							<div class="mt-2">
-								这开课时间是不是有点晚啊。。。
-							</div>
+							<div class="mt-2" th:utext="${cvo.comment.content}"></div>
 							<div class="mt-4 text-muted font-size-12">
-								<span>发布于 <b>2019-04-15 15:32:18</b></span>
+								<span>发布于 <b th:utext="${#dates.format(cvo.comment.createTime, 'yyyy-MM-dd HH:mm:ss')}"></b></span>
 								<ul class="d-inline float-right">
 									<li class="d-inline ml-2"><a href="#" class="text-primary">赞(1)</a></li>
 									<li class="d-inline ml-2">|</li>
-									<li class="d-inline ml-2"><a href="#" class="text-primary">回复(2)</a></li>
+									<li class="d-inline ml-2"><a href="#" class="text-primary">回复(<i th:text="${cvo.replyCount}"></i>)</a></li>
 								</ul>
 							</div>
 							<!-- 回复列表 -->
 							<ul class="list-unstyled mt-4 bg-gray p-3 font-size-12 text-muted">
-								<!-- 第1条回复 -->
-								<li class="pb-3 pt-3 mb-3 border-bottom">
+								<li class="pb-3 pt-3 mb-3 border-bottom" th:each="rvo:${cvo.replys}">
 									<div>
-										<span><b class="text-info">寒江雪</b>:&nbsp;&nbsp;</span>
-										<span>这个是直播时间哈，觉得晚的话可以直接看之前的完整录播的~</span>
+										<span th:if="${rvo.target==null}">
+											<b class="text-info" th:utext="${rvo.user.username}"></b>:&nbsp;&nbsp;
+										</span>
+										<span th:if="${rvo.target!=null}">
+											<i class="text-info" th:text="${rvo.user.username}"></i> 回复
+											<b class="text-info" th:utext="${rvo.target.username}"></b>:&nbsp;&nbsp;
+										</span>
+										<span th:text="${rvo.reply.content}"></span>
 									</div>
 									<div class="mt-3">
-										<span>2019-04-15 15:32:18</span>
+										<span th:utext="${#dates.format(rvo.reply.createTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
 										<ul class="d-inline float-right">
 											<li class="d-inline ml-2"><a href="#" class="text-primary">赞(1)</a></li>
 											<li class="d-inline ml-2">|</li>
-											<li class="d-inline ml-2"><a href="#huifu01" data-toggle="collapse" class="text-primary">回复</a></li>
+											<li class="d-inline ml-2"><a th:href="|#huifu-${rvoStat.count}|" data-toggle="collapse" class="text-primary">回复</a></li>
 										</ul>
-										<div id="huifu01" class="mt-4 collapse">
-											<div>
-												<input type="text" class="input-size" placeholder="回复寒江雪"/>
-											</div>
-											<div class="text-right mt-2">
-												<button type="button" class="btn btn-primary btn-sm" onclick="#">&nbsp;&nbsp;回&nbsp;&nbsp;复&nbsp;&nbsp;</button>
-											</div>										
+										<div th:id="|huifu-${rvoStat.count}|" class="mt-4 collapse">
+											<form method="post" th:action="@{|/comment/add/${post.id}|}">
+												<div>
+													<input type="text" class="input-size" name="content" th:placeholder="|回复${rvo.user.username}|"/>
+													<input type="hidden" name="entityType" value="2">
+													<input type="hidden" name="entityId" th:value="${cvo.comment.id}">
+													<input type="hidden" name="targetId" th:value="${rvo.user.id}">
+												</div>
+												<div class="text-right mt-2">
+													<button type="submit" class="btn btn-primary btn-sm" >&nbsp;&nbsp;回&nbsp;&nbsp;复&nbsp;&nbsp;</button>
+												</div>
+											</form>
 										</div>
 									</div>								
 								</li>
-								<!-- 第2条回复 -->
-								<li class="pb-3 pt-3 mb-3 border-bottom">
-									<div>
-										<span><i class="text-info">Sissi</i> 回复 <b class="text-info">寒江雪</b>:&nbsp;&nbsp;</span>
-										<span>怎么买录播课程呢</span>
-									</div>
-									<div class="mt-3">
-										<span>2019-04-15 15:32:18</span>
-										<ul class="d-inline float-right">
-											<li class="d-inline ml-2"><a href="#" class="text-primary">赞(1)</a></li>
-											<li class="d-inline ml-2">|</li>
-											<li class="d-inline ml-2"><a href="#huifu02" data-toggle="collapse" class="text-primary">回复</a></li>
-										</ul>
-										<div id="huifu02" class="mt-4 collapse">
-											<div>
-												<input type="text" class="input-size" placeholder="回复Sissi" />
-											</div>
-											<div class="text-right mt-2">
-												<button type="button" class="btn btn-primary btn-sm" onclick="#">&nbsp;&nbsp;回&nbsp;&nbsp;复&nbsp;&nbsp;</button>
-											</div>										
-										</div>																	
-									</div>								
-								</li>
+
 								<!-- 回复输入框 -->
 								<li class="pb-3 pt-3">
-									<div>
-										<input type="text" class="input-size" placeholder="请输入你的观点"/>
-									</div>
-									<div class="text-right mt-2">
-										<button type="button" class="btn btn-primary btn-sm" onclick="#">&nbsp;&nbsp;回&nbsp;&nbsp;复&nbsp;&nbsp;</button>
-									</div>
+									<form method="post" th:action="@{|/comment/add/${post.id}|}">
+										<div>
+											<input type="text" class="input-size" name = "content" placeholder="请输入你的观点"/>
+											<input type="hidden" name="entityType" value="2">
+											<input type="hidden" name="entityId" th:value="${cvo.comment.id}">
+										</div>
+										<div class="text-right mt-2">
+											<button type="submit" class="btn btn-primary btn-sm">&nbsp;&nbsp;回&nbsp;&nbsp;复&nbsp;&nbsp;</button>
+										</div>
+									</form>
 								</li>
 							</ul>
 						</div>
 					</li>
-					<!-- 第2条回帖 -->
-					<li class="media pb-3 pt-3 mb-3 border-bottom">
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/3t.png" class="align-self-start mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<div class="mt-0">
-								<span class="font-size-12 text-success">Nikeless</span>
-								<span class="badge badge-secondary float-right floor">1#</span>
-							</div>
-							<div class="mt-2">
-								强烈支持!!!
-							</div>
-							<div class="mt-4 text-muted font-size-12">
-								<span>发布于 <b>2019-04-15 15:32:18</b></span>
-								<ul class="d-inline float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">赞(1)</a></li>
-									<li class="d-inline ml-2">|</li>
-									<li class="d-inline ml-2"><a href="#" class="text-primary">回复(2)</a></li>
-								</ul>
-							</div>
-							<!-- 回复列表 -->
-							<ul class="list-unstyled mt-4 bg-gray p-3 font-size-12 text-muted">
-								<!-- 回复输入框 -->
-								<li class="pb-3 pt-3">
-									<div>
-										<input type="text" class="input-size" placeholder="请输入你的观点"/>
-									</div>
-									<div class="text-right mt-2">
-										<button type="button" class="btn btn-primary btn-sm" onclick="#">&nbsp;&nbsp;回&nbsp;&nbsp;复&nbsp;&nbsp;</button>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</li>									
+
 				</ul>
+
 				<!-- 分页 -->
-				<nav class="mt-5">
-					<ul class="pagination justify-content-center">
-						<li class="page-item"><a class="page-link" href="#">首页</a></li>
-						<li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
-						<li class="page-item active"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item"><a class="page-link" href="#">下一页</a></li>
-						<li class="page-item"><a class="page-link" href="#">末页</a></li>
-					</ul>
-				</nav>			
+				<nav class="mt-5" th:replace="index::pagination"></nav>
+
 			</div>
 			<!-- 回帖输入 -->
 			<div class="container mt-3">
-				<form class="replyform">
+				<form class="replyform" method="post" th:action="@{|/comment/add/${post.id}|}">
 					<p class="mt-3">
 						<a name="replyform"></a>
-						<textarea placeholder="在这里畅所欲言你的看法吧!"></textarea>
+						<textarea placeholder="在这里畅所欲言你的看法吧!" name = "content"></textarea>
+						<input type="hidden" name="entityType" value="1">
+						<input type="hidden" name="entityId" th:value="${post.id}">
 					</p>
 					<p class="text-right">
 						<button type="submit" class="btn btn-primary btn-sm">&nbsp;&nbsp;回&nbsp;&nbsp;帖&nbsp;&nbsp;</button>

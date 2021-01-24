@@ -1,63 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-	<link rel="stylesheet" href="../css/global.css" />
-	<link rel="stylesheet" href="../css/letter.css" />
-	<title>牛客网-私信列表</title>
+	<link rel="icon" type="shortcut icon" th:href="@{/img/favicon.ico}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/letter.css}" />
+	<title>Echo - 私信列表</title>
 </head>
 <body>
 	<div class="nk-container">
 		<!-- 头部 -->
-		<header class="bg-dark sticky-top">
-			<div class="container">
-				<!-- 导航 -->
-				<nav class="navbar navbar-expand-lg navbar-dark">
-					<!-- logo -->
-					<a class="navbar-brand" href="#"></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<!-- 功能 -->
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" href="../index.html">首页</a>
-							</li>
-							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link position-relative" href="letter.html">消息<span class="badge badge-danger">12</span></a>
-							</li>
-							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" href="register.html">注册</a>
-							</li>
-							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" href="login.html">登录</a>
-							</li>
-							<li class="nav-item ml-3 btn-group-vertical dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<img src="http://images.nowcoder.com/head/1t.png" class="rounded-circle" style="width:30px;"/>
-								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item text-center" href="profile.html">个人主页</a>
-									<a class="dropdown-item text-center" href="setting.html">账号设置</a>
-									<a class="dropdown-item text-center" href="login.html">退出登录</a>
-									<div class="dropdown-divider"></div>
-									<span class="dropdown-item text-center text-secondary">nowcoder</span>
-								</div>
-							</li>
-						</ul>
-						<!-- 搜索 -->
-						<form class="form-inline my-2 my-lg-0" action="search.html">
-							<input class="form-control mr-sm-2" type="search" aria-label="Search" />
-							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">搜索</button>
-						</form>
-					</div>
-				</nav>
-			</div>
-		</header>
+		<header class="bg-dark sticky-top" th:replace="index::header"></header>
 
 		<!-- 内容 -->
 		<div class="main">
@@ -66,7 +21,9 @@
 					<!-- 选项 -->
 					<ul class="nav nav-tabs mb-3">
 						<li class="nav-item">
-							<a class="nav-link position-relative active" href="letter.html">朋友私信<span class="badge badge-danger">3</span></a>
+							<a class="nav-link position-relative active" th:href="@{/letter/list}">朋友私信
+								<span class="badge badge-danger" th:text="${letterUnreadCount}" th:if="${letterUnreadCount!=0}"></span>
+							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link position-relative" href="notice.html">系统通知<span class="badge badge-danger">27</span></a>
@@ -119,201 +76,32 @@
 				
 				<!-- 私信列表 -->
 				<ul class="list-unstyled">
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
+					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative" th:each="map:${conversations}">
+						<span class="badge badge-danger" th:text="${map.unreadCount}" th:if="${map.unreadCount!=0}"></span>
 						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
+							<img th:src="${map.target.headerUrl}" class="mr-4 rounded-circle user-header" alt="用户头像" >
 						</a>
 						<div class="media-body">
 							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
+								<span class="text-success" th:utext="${map.target.username}"></span>
+								<span class="float-right text-muted font-size-12"
+									  th:text="${#dates.format(map.conversation.createTime, 'yyyy-MM-dd HH:mm:ss')}">
+								</span>
 							</h6>
 							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
+								<a th:href="@{|/letter/detail/${map.conversation.conversationId}|}" th:utext="${map.conversation.content}"></a>
 								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
+									<li class="d-inline ml-2">
+										<a href="#" class="text-primary">共<i th:text="${map.letterCount}"></i>条会话</a>
+									</li>
 								</ul>
 							</div>
 						</div>
 					</li>
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
-							</h6>
-							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
-								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
-							</h6>
-							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
-								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
-							</h6>
-							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
-								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
-							</h6>
-							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
-								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
-							</h6>
-							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
-								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
-							</h6>
-							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
-								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
-							</h6>
-							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
-								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
-							</h6>
-							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
-								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li class="media pb-3 pt-3 mb-3 border-bottom position-relative">
-						<span class="badge badge-danger">3</span>
-						<a href="profile.html">
-							<img src="http://images.nowcoder.com/head/8t.png" class="mr-4 rounded-circle user-header" alt="用户头像" >
-						</a>
-						<div class="media-body">
-							<h6 class="mt-0 mb-3">
-								<span class="text-success">落基山脉下的闲人</span>
-								<span class="float-right text-muted font-size-12">2019-04-28 14:13:25</span>
-							</h6>
-							<div>
-								<a href="letter-detail.html">米粉车, 你来吧!</a>
-								<ul class="d-inline font-size-12 float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">共5条会话</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>																																								
 				</ul>
+
 				<!-- 分页 -->
-				<nav class="mt-5">
-					<ul class="pagination justify-content-center">
-						<li class="page-item"><a class="page-link" href="#">首页</a></li>
-						<li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
-						<li class="page-item active"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item"><a class="page-link" href="#">下一页</a></li>
-						<li class="page-item"><a class="page-link" href="#">末页</a></li>
-					</ul>
-				</nav>
+				<nav class="mt-5" th:replace="index::pagination"></nav>
 			</div>
 		</div>
 
@@ -380,10 +168,10 @@
 		</footer>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-	<script src="../js/global.js"></script>
-	<script src="../js/letter.js"></script>
+	<script th:src="@{/js/jquery-3.1.0.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/global.js}"></script>
+	<script th:src="@{/js/letter.js}"></script>
 </body>
 </html>

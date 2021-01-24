@@ -41,4 +41,7 @@ public interface DiscussPostMapper {
      * @return
      */
     DiscussPost selectDiscussPostById(int id);
+
+    // 修改评论数量
+    int updateCommentCount(int id, int commentCount);
 }

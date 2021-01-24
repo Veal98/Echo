@@ -1,16 +1,16 @@
-# Echo 回音
+# Echo — 开源社区系统
 
 ---
 
-## 🥝 从本项目你能学到什么
+## 🎁 从本项目你能学到什么
 
-- 👍 学会主流的 Java Web 开发技术和框架
-- 👍 积累一个真实的 Web 项目开发经验
-- 👍 掌握本项目中涉及的常见面试题的答题策略
+- 学会主流的 Java Web 开发技术和框架
+- 积累一个真实的 Web 项目开发经验
+- 掌握本项目中涉及的常见面试题的答题策略
 
-## 🍉 技术栈
+## 💻 核心技术栈
 
-💻 后端：
+ 后端：
 
 - Spring
 - Spring Boot 2.4
@@ -24,43 +24,47 @@
 - 监控：Spring Actuator
 - 日志：SLF4J（日志接口） + Logback（日志实现）
 
-🎨 前端：
+前端：
 
 - Thymeleaf
-- Bootstrap
+- Bootstrap 4.x
 - Jquery
 - Ajax
 
-## 🍋 开发环境
+## 🔨 开发环境
 
 - 构建工具：Apache Maven
 - 集成开发工具：Intellij IDEA
-- 数据库：MySQL、Redis
+- 数据库：MySQL 5.7、Redis
 - 应用服务器：Apache Tomcat
 - 版本控制工具：Git
 
-## 🍏 功能列表
+## 🔔 功能列表
 
-- [x] 分页显示
 - [x] 注册
   - 用户注册
   - 发送激活邮件
   - 激活用户
-- [x] 登录
-  - 生成验证码
-- [x] 登出
+- [x] 登录 | 登出
+  - 用户登录（生成验证码）
+  - 用户登出
 - [x] 账号设置
   - 修改头像
   - 修改密码
 - [x] 检查登录状态（禁止未登录用户访问需要登录权限的界面）
-- [x] 发布帖子
-  - 过滤敏感词
-- [ ] 查看帖子详情
-- [ ] 评论功能
-- [ ] 私信功能
-  - 发私信
-  - 私信列表（收到的私信）
-  - 发送列表（发出的私信）
+- [x] 帖子模块
+  - 发布帖子（过滤敏感词）
+  - 分页显示帖子
+  - 查看帖子详情
+- [x] 评论功能（过滤敏感词）
+  - 发布对帖子的评论（过滤敏感词）
+  - 分页显示评论
+  - 发布对评论的回复（过滤敏感词）
+- [x] 私信功能
+  - 发送私信（过滤敏感词）
+  - 发送列表（分页显示发出的私信）
+  - 私信列表（分页显示收到的私信）
+  - 私信详情
 - [ ] 点赞功能
   - 点赞
   - 我收到的赞
@@ -80,9 +84,9 @@
 - [ ] 文件上传
 - [ ] 优化网站性能
 
-## 🍑 界面展示
+## 🎨 界面展示
 
-## 🍓 数据库文件
+## 📜 数据库设计
 
 用户 `user`：
 
@@ -129,21 +133,19 @@ CREATE TABLE `discuss_post` (
 评论（回复）`comment`：
 
 ```sql
-DROP TABLE IF EXISTS `comment`;
-SET character_set_client = utf8mb4 ;
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
-  `entity_type` int(11) DEFAULT NULL,
-  `entity_id` int(11) DEFAULT NULL,
-  `target_id` int(11) DEFAULT NULL,
+  `entity_type` int(11) DEFAULT NULL COMMENT '评论目标的类别：1 帖子；2 评论 ',
+  `entity_id` int(11) DEFAULT NULL COMMENT '评论目标的 id',
+  `target_id` int(11) DEFAULT NULL COMMENT '指明对谁进行评论',
   `content` text,
-  `status` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL COMMENT '状态：0 正常；1 禁用',
   `create_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_entity_id` (`entity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=utf8;
 ```
 
 登录凭证 `login_ticket`：
@@ -161,4 +163,26 @@ CREATE TABLE `login_ticket` (
   KEY `index_ticket` (`ticket`(20))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+
+私信 `message`：
+
+```sql
+DROP TABLE IF EXISTS `message`;
+SET character_set_client = utf8mb4 ;
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_id` int(11) DEFAULT NULL,
+  `to_id` int(11) DEFAULT NULL,
+  `conversation_id` varchar(45) NOT NULL,
+  `content` text,
+  `status` int(11) DEFAULT NULL COMMENT '0-未读;1-已读;2-删除;',
+  `create_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_from_id` (`from_id`),
+  KEY `index_to_id` (`to_id`),
+  KEY `index_conversation_id` (`conversation_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+## 📖 常见面试题
 

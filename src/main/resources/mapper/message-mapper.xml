@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greate.community.dao.MessageMapper">
+
+    <sql id="selectFields">
+        id, from_id, to_id, conversation_id, content, status, create_time
+    </sql>
+
+    <sql id="insertFields">
+        from_id, to_id, conversation_id, content, status, create_time
+    </sql>
+
+    <!--查询当前用户的会话列表（针对每个会话只返回一条最新的私信）-->
+    <select id="selectConversations" resultType="Message">
+        select <include refid="selectFields"></include>
+        from message
+        where id in (
+            select max(id)
+            from message
+            where status != 2
+            and from_id != 1
+            and (from_id = #{userId} or to_id = #{userId})
+            group by conversation_id
+        )
+        order by id desc
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--查询当前用户的会话数量-->
+    <select id="selectConversationCount" resultType="int">
+        select count(m.maxid) from (
+            select max(id) as maxid
+            from message
+            where status != 2
+            and from_id != 1
+            and (from_id = #{userId} or to_id = #{toId})
+            group by conversation_id
+        ) as m
+    </select>
+
+    <!--查询某个会话所包含的私信列表-->
+    <select id="selectLetters" resultType="Message">
+        select <include refid="selectFields"></include>
+        from message
+        where status != 2
+        and from_id != 1
+        and conversation_id = #{conversationId}
+        order by id desc
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--查询某个会话所包含的私信数量-->
+    <select id="selectLetterCount" resultType="int">
+        select count(id)
+        from message
+        where status != 2
+        and from_id != 1
+        and conversation_id = #{conversationId}
+    </select>
+
+    <!--查询未读私信的数量-->
+    <select id="selectLetterUnreadCount" resultType="int">
+        select count(id)
+        from message
+        where status = 0
+        and from_id != 1
+        and to_id = #{userId}
+        <if test="conversationId != null">
+            and conversation_id = #{conversationId}
+        </if>
+    </select>
+
+    <!--修改消息的状态-->
+    <update id="updateStatus">
+        update message
+        set status = #{status}
+        where id in 
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <!--新增一条私信-->
+    <insert id="insertMessage" parameterType="Message" keyProperty="id">
+        insert into message(<include refid="insertFields"></include>)
+        values(#{fromId}, #{toId}, #{conversationId}, #{content}, #{status}, #{createTime})
+    </insert>
+
+</mapper>

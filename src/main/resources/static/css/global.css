@@ -29,7 +29,7 @@ body {
 }
 
 header .navbar-brand {
-	background: url('https://gitee.com/veal98/images/raw/master/img/LogoMakr-060ARN.png') no-repeat;
+	background: url('https://gitee.com/veal98/images/raw/master/img/greateCommunityLogo.png') no-repeat;
 	background-size: 147px 42px;
 	width: 147px;
 	height: 42px;
@@ -54,6 +54,12 @@ header .navbar {
 }
 .text-secondary {
 	color: #6c757d !important;
+}
+
+.pb-3, .py-3 {
+	border-radius: 10px;
+	border: 1px solid #dee2e6;
+	padding: 20px;
 }
 
 .serach-btn {

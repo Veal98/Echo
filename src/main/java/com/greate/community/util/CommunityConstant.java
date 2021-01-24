@@ -19,4 +19,11 @@ public interface CommunityConstant {
 
     // 记住我状态下的凭证超时时间 (100天)
     int REMEMBER_EXPIRED_SECONDS = 3600 * 24 * 100;
+
+    // 评论目标类型：帖子
+    int ENTITY_TYPE_POST = 1;
+
+    // 评论目标类型：评论
+    int ENTITY_TYPE_COMMENT = 2;
+
 }
