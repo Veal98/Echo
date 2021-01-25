@@ -6,6 +6,7 @@ import com.greate.community.entity.Page;
 import com.greate.community.entity.User;
 import com.greate.community.service.CommentService;
 import com.greate.community.service.DiscussPostSerivce;
+import com.greate.community.service.LikeService;
 import com.greate.community.service.UserService;
 import com.greate.community.util.CommunityConstant;
 import com.greate.community.util.CommunityUtil;
@@ -33,6 +34,9 @@ public class DiscussPostController implements CommunityConstant {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private LikeService likeService;
+
     /**
      * 添加帖子（发帖）
      * @param title
@@ -55,7 +59,6 @@ public class DiscussPostController implements CommunityConstant {
 
         discussPostSerivce.addDiscussPost(discussPost);
 
-        // 报错的情况将来会统一处理
         return CommunityUtil.getJSONString(0, "发布成功");
     }
 
@@ -73,6 +76,13 @@ public class DiscussPostController implements CommunityConstant {
         // 作者
         User user = userService.findUserById(discussPost.getUserId());
         model.addAttribute("user", user);
+        // 点赞数量
+        long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST, discussPostId);
+        model.addAttribute("likeCount", likeCount);
+        // 当前登录用户的点赞状态
+        int likeStatus = hostHolder.getUser() == null ? 0 :
+                likeService.findEntityLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_POST, discussPostId);
+        model.addAttribute("likeStatus", likeStatus);
 
         // 评论分页信息
         page.setLimit(5);
@@ -88,21 +98,32 @@ public class DiscussPostController implements CommunityConstant {
            for (Comment comment : commentList) {
                 // 对帖子的评论
                 Map<String, Object> commentVo = new HashMap<>();
-                commentVo.put("comment", comment);
-                commentVo.put("user", userService.findUserById(comment.getUserId()));
+                commentVo.put("comment", comment); // 评论
+                commentVo.put("user", userService.findUserById(comment.getUserId())); // 作者
+                likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, comment.getId()); // 点赞数量
+                commentVo.put("likeCount", likeCount);
+                likeStatus = hostHolder.getUser() == null ? 0 : likeService.findEntityLikeStatus(
+                        hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, comment.getId()); // 当前登录用户的点赞状态
+                commentVo.put("likeStatus", likeStatus);
+
 
                 // 存储评论的评论（不做分页）
                 List<Comment> replyList = commentService.findCommentByEntity(
                        ENTITY_TYPE_COMMENT, comment.getId(), 0, Integer.MAX_VALUE);
                 List<Map<String, Object>> replyVoList = new ArrayList<>(); // 封装对评论的评论和评论的作者信息
                 if (replyList != null) {
-                    // 对评论的评论
+                    // 对评论的评论（回复）
                     for (Comment reply : replyList) {
                         Map<String, Object> replyVo = new HashMap<>();
-                        replyVo.put("reply", reply);
-                        replyVo.put("user", userService.findUserById(reply.getUserId()));
-                        User target = reply.getTargetId() == 0 ? null : userService.findUserById(reply.getUserId());
+                        replyVo.put("reply", reply); // 回复
+                        replyVo.put("user", userService.findUserById(reply.getUserId())); // 作者
+                        User target = reply.getTargetId() == 0 ? null : userService.findUserById(reply.getUserId()); // 回复目标
                         replyVo.put("target", target);
+                        likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, reply.getId()); // 点赞数量
+                        replyVo.put("likeCount", likeCount);
+                        likeStatus = hostHolder.getUser() == null ? 0 : likeService.findEntityLikeStatus(
+                                hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, reply.getId()); // 当前登录用户的点赞状态
+                        replyVo.put("likeStatus", likeStatus);
 
                         replyVoList.add(replyVo);
                     }

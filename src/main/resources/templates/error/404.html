@@ -1,30 +1,23 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
+	<link rel="icon" type="shortcut icon" th:href="@{/img/favicon.ico}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-	<title>Echo - 操作结果</title>
+	<title>Echo - 404</title>
 </head>
-<body class="bg-white">
+<body>
 	<div class="nk-container">
 		<!-- 头部 -->
 		<header class="bg-dark sticky-top" th:replace="index::header"></header>
 
 		<!-- 内容 -->
 		<div class="main">
-			<div class="container mt-5">
-				<div class="jumbotron">
-					<p class="lead" th:text="${msg}"></p>
-					<hr class="my-4">
-					<p>
-						系统会在 <span id="seconds" class="text-danger">8</span> 秒后自动跳转,
-						您也可以点击 <a id="target" th:href="@{${target}}" class="text-primary">此链接</a>, 手动跳转!
-					</p>
-				</div>
+			<div class="container pl-5 pr-5 pt-3 pb-3 mt-3 mb-3">
+				<img th:src="@{/img/404.png}" >
 			</div>
 		</div>
 
@@ -90,20 +83,9 @@
 			</div>
 		</footer>
 	</div>
-
 	<script th:src="@{/js/jquery-3.1.0.min.js}"></script>
 	<script th:src="@{/js/popper.min.js}"></script>
 	<script th:src="@{/js/bootstrap.min.js}"></script>
-	<script>
-		$(function(){
-			setInterval(function(){
-				var seconds = $("#seconds").text();
-				$("#seconds").text(--seconds);
-				if(seconds == 0) {
-					location.href = $("#target").attr("href");
-				}
-			}, 1000);
-		});
-	</script>
+	<script th:src="@{/js/global.js}"></script>
 </body>
 </html>

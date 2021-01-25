@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/letter.css}" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 	<title>Echo - 私信详情</title>
 </head>
 <body>
@@ -19,11 +20,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-8">
-						<h6><b class="square"></b> 来自 <i class="text-success" th:utext="${target.username}"></i> 的私信</h6>
+						<h6><b class="square"></b> 来自 <a class="text-success" th:utext="${target.username}"
+														 th:href="@{|/user/profile/${target.id}|}"></a> 的私信</h6>
 					</div>
 					<div class="col-4 text-right">
 						<button type="button" class="btn btn-secondary btn-sm" onclick="back();">返回</button>
-						<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sendModal">给TA私信</button>
+						<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sendModal">
+							<i class="bi bi-chat-left-text"></i> 给TA私信
+						</button>
 					</div>
 				</div>
 				<!-- 弹出框 -->
@@ -72,7 +76,7 @@
 				<!-- 私信列表 -->
 				<ul class="list-unstyled mt-4">
 					<li class="media pb-3 pt-3 mb-2" th:each="map:${letters}">
-						<a href="profile.html">
+						<a th:href="@{|/user/profile/${map.fromUser.id}|}">
 							<img th:src="${map.fromUser.headerUrl}" class="mr-4 rounded-circle user-header" alt="用户头像" >
 						</a>
 						<div class="toast show d-lg-block" role="alert" aria-live="assertive" aria-atomic="true">

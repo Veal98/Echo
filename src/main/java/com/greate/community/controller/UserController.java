@@ -2,6 +2,7 @@ package com.greate.community.controller;
 
 import com.greate.community.annotation.LoginRequired;
 import com.greate.community.entity.User;
+import com.greate.community.service.LikeService;
 import com.greate.community.service.UserService;
 import com.greate.community.util.CommunityUtil;
 import com.greate.community.util.HostHolder;
@@ -40,6 +41,9 @@ public class UserController {
 
     @Autowired
     private HostHolder hostHolder;
+
+    @Autowired
+    private LikeService likeService;
 
     // 网站域名
     @Value("${community.path.domain}")
@@ -165,4 +169,27 @@ public class UserController {
 
         return "redirect:/index";
     }
+
+    /**
+     * 进入个人主页
+     * @param userId 可以进入任意用户的个人主页
+     * @param model
+     * @return
+     */
+    @GetMapping("/profile/{userId}")
+    public String getProfilePage(@PathVariable("userId") int userId, Model model) {
+        User user = userService.findUserById(userId);
+        if (user == null) {
+            throw new RuntimeException("该用户不存在");
+        }
+
+        // 用户
+        model.addAttribute("user", user);
+        // 获赞数量
+        int userLikeCount = likeService.findUserLikeCount(userId);
+        model.addAttribute("userLikeCount", userLikeCount);
+
+        return "/site/profile";
+    }
+
 }

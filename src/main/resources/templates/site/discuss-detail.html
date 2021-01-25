@@ -32,7 +32,7 @@
 				</h5>
 				<!-- 作者 -->
 				<div class="media pb-3 border-bottom">
-					<a href="profile.html">
+					<a th:href="@{|/user/profile/${user.id}|}">
 						<img th:src="${user.headerUrl}" class="align-self-start mr-4 rounded-circle user-header" alt="用户头像" >
 					</a>
 					<div class="media-body">
@@ -40,7 +40,11 @@
 						<div class="text-muted mt-3">
 							发布于 <b th:text="${#dates.format(post.createTime, 'yyyy-MM-dd HH:mm:ss')}"></b>
 							<ul class="d-inline float-right">
-								<li class="d-inline ml-2"><a href="#" class="text-primary">赞 11</a></li>
+								<li class="d-inline ml-2">
+									<a href="javascript:;" th:onclick="|like(this, 1, ${post.id}, ${post.userId});|" class="text-primary">
+										<b th:text="${likeStatus == 1 ? '已赞' : '赞'}"></b> <i th:text="${likeCount}"></i>
+									</a>
+								</li>
 								<li class="d-inline ml-2">|</li>
 								<li class="d-inline ml-2"><a href="#replyform" class="text-primary">回帖 <i th:text="${post.commentCount}"></i></a></li>
 							</ul>
@@ -64,8 +68,8 @@
 				<!-- 回帖列表 -->
 				<ul class="list-unstyled mt-4">
 					<li class="media pb-3 pt-3 mb-3 border-bottom" th:each="cvo:${comments}">
-						<a href="profile.html">
-							<img th:src="${cvo.user.headerUrl}" class="align-self-start mr-4 rounded-circle user-header" alt="用户头像" >
+						<a th:href="@{|/user/profile/${cvo.user.id}|}">
+						<img th:src="${cvo.user.headerUrl}" class="align-self-start mr-4 rounded-circle user-header" alt="用户头像" >
 						</a>
 						<div class="media-body">
 							<div class="mt-0">
@@ -78,7 +82,11 @@
 							<div class="mt-4 text-muted font-size-12">
 								<span>发布于 <b th:utext="${#dates.format(cvo.comment.createTime, 'yyyy-MM-dd HH:mm:ss')}"></b></span>
 								<ul class="d-inline float-right">
-									<li class="d-inline ml-2"><a href="#" class="text-primary">赞(1)</a></li>
+									<li class="d-inline ml-2">
+										<a href="javascript:;" th:onclick="|like(this, 2, ${cvo.comment.id}, ${cvo.comment.userId});|" class="text-primary">
+											<b th:text="${cvo.likeStatus == 1 ? '已赞' : '赞'}"></b>(<i th:text="${cvo.likeCount}"></i>)
+										</a>
+									</li>
 									<li class="d-inline ml-2">|</li>
 									<li class="d-inline ml-2"><a href="#" class="text-primary">回复(<i th:text="${cvo.replyCount}"></i>)</a></li>
 								</ul>
@@ -88,18 +96,23 @@
 								<li class="pb-3 pt-3 mb-3 border-bottom" th:each="rvo:${cvo.replys}">
 									<div>
 										<span th:if="${rvo.target==null}">
-											<b class="text-info" th:utext="${rvo.user.username}"></b>:&nbsp;&nbsp;
+											<a class="text-info" th:utext="${rvo.user.username}" th:href="@{|/user/profile/${rvo.user.id}|}"></a>:&nbsp;&nbsp;
 										</span>
 										<span th:if="${rvo.target!=null}">
-											<i class="text-info" th:text="${rvo.user.username}"></i> 回复
-											<b class="text-info" th:utext="${rvo.target.username}"></b>:&nbsp;&nbsp;
+											<a class="text-info" th:text="${rvo.user.username}" th:href="@{|/user/profile/${rvo.user.id}|}"></a> 回复
+											<a class="text-info" th:utext="${rvo.target.username}" th:href="@{|/user/profile/${rvo.target.id}|}"></a>:&nbsp;&nbsp;
 										</span>
 										<span th:text="${rvo.reply.content}"></span>
 									</div>
 									<div class="mt-3">
 										<span th:utext="${#dates.format(rvo.reply.createTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
 										<ul class="d-inline float-right">
-											<li class="d-inline ml-2"><a href="#" class="text-primary">赞(1)</a></li>
+											<li class="d-inline ml-2">
+												<a href="javascript:;" th:onclick="|like(this, 2, ${rvo.reply.id}, ${rvo.reply.userId});|" class="text-primary">
+													<b th:text="${rvo.likeStatus == 1 ? '已赞' : '赞'}"></b>(<i th:text="${rvo.likeCount}"></i>)
+
+												</a>
+											</li>
 											<li class="d-inline ml-2">|</li>
 											<li class="d-inline ml-2"><a th:href="|#huifu-${rvoStat.count}|" data-toggle="collapse" class="text-primary">回复</a></li>
 										</ul>
@@ -224,5 +237,6 @@
 	<script th:src="@{/js/popper.min.js}"></script>
 	<script th:src="@{/js/bootstrap.min.js}"></script>
 	<script th:src="@{/js/global.js}"></script>
+	<script th:src="@{/js/discuss.js}"></script>
 </body>
 </html>

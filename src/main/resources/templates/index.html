@@ -6,6 +6,7 @@
 	<link rel="icon" type="shortcut icon" th:href="@{/img/favicon.ico}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 	<title>Echo - 首页</title>
 </head>
 <body>	
@@ -24,10 +25,15 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" th:href="@{/index}">首页</a>
+								<a class="nav-link" th:href="@{/index}">
+									<i class="bi bi-house"></i> 首页
+								</a>
 							</li>
 							<li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser != null}">
-								<a class="nav-link position-relative" th:href="@{/letter/list}">消息<span class="badge badge-danger" >12</span></a>
+								<a class="nav-link position-relative" th:href="@{/letter/list}">
+									<i class="bi bi-envelope"></i> 消息
+									<span class="badge badge-danger" >12</span>
+								</a>
 							</li>
 							<li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser == null}">
 								<a class="nav-link" th:href="@{/register}">注册</a>
@@ -40,9 +46,9 @@
 									<img th:src="${loginUser.headerUrl}" class="rounded-circle" style="width:30px;"/>
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item text-center" href="site/profile.html">个人主页</a>
-									<a class="dropdown-item text-center" th:href="@{/user/setting}">账号设置</a>
-									<a class="dropdown-item text-center" th:href="@{/logout}">退出登录</a>
+									<a class="dropdown-item text-center" th:href="@{|/user/profile/${loginUser.id}|}"><i class="bi bi-person-fill"></i> 个人主页</a>
+									<a class="dropdown-item text-center" th:href="@{/user/setting}"><i class="bi bi-gear"></i> 账号设置</a>
+									<a class="dropdown-item text-center" th:href="@{/logout}"><i class="bi bi-box-arrow-right"></i> 退出登录</a>
 									<div class="dropdown-divider"></div>
 									<span class="dropdown-item text-center text-secondary" th:utext="${loginUser.username}"></span>
 								</div>
@@ -51,7 +57,7 @@
 						<!-- 搜索 -->
 						<form class="form-inline my-2 my-lg-0" action="site/search.html">
 							<input class="form-control mr-sm-2" type="search" aria-label="Search" />
-							<button class="btn btn-outline-light my-2 my-sm-0 serach-btn" type="submit">搜索</button>
+							<button class="btn btn-outline-light my-2 my-sm-0 serach-btn" type="submit"><i class="bi bi-search"></i> 搜索</button>
 						</form>
 					</div>
 				</nav>
@@ -65,15 +71,15 @@
 					<!-- 筛选条件 -->
 					<ul class="nav nav-tabs mb-3">
 						<li class="nav-item">
-							<a class="nav-link active" href="#">最新</a>
+							<a class="nav-link active" href="#"><i class="bi bi-lightning"></i> 最新</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">最热</a>
+							<a class="nav-link" href="#"><i class="bi bi-hand-thumbs-up"></i> 最热</a>
 						</li>
 					</ul>
 					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0"
 							data-toggle="modal" data-target="#publishModal"
-							th:if="${loginUser != null}">我要发布</button>
+							th:if="${loginUser != null}"><i class="bi bi-plus-square"></i> 我要发布</button>
 				</div>
 				<!-- 弹出框 -->
 				<div class="modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="publishModalLabel" aria-hidden="true">
@@ -119,7 +125,7 @@
 				<!-- 帖子列表 -->
 				<ul class="list-unstyled">
 					<li class="media pb-3 pt-3 mb-3 border-bottom" th:each="map:${discussPosts}">
-						<a href="site/profile.html">
+						<a th:href="@{|/user/profile/${map.user.id}|}">
 							<img th:src="${map.user.headerUrl}" class="mr-4 rounded-circle" alt="用户头像" style="width:50px;height:50px;">
 						</a>
 						<div class="media-body">
@@ -131,7 +137,7 @@
 							<div class="text-muted font-size-12">
 								<u class="mr-3" th:utext="${map.user.username}"></u> 发布于 <b th:text="${#dates.format(map.post.createTime,'yyyy-MM-dd HH:mm:ss')}"></b>
 								<ul class="d-inline float-right">
-									<li class="d-inline ml-2">赞 11</li>
+									<li class="d-inline ml-2">赞 <span th:text="${map.likeCount}"></span></li>
 									<li class="d-inline ml-2">|</li>
 									<li class="d-inline ml-2">回帖 <span th:text="${map.post.commentCount}"></span></li>
 								</ul>
