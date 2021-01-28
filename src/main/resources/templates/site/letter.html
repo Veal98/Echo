@@ -27,8 +27,8 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link position-relative" href="notice.html"><i class="bi bi-bell"></i> 系统通知
-								<span class="badge badge-danger">27</span>
+							<a class="nav-link position-relative" th:href="@{/notice/list}"><i class="bi bi-bell"></i> 系统通知
+								<span class="badge badge-danger" th:text="${noticeUnreadCount}" th:if="${noticeUnreadCount!=0}"></span>
 							</a>
 						</li>
 					</ul>
@@ -97,7 +97,7 @@
 								<a th:href="@{|/letter/detail/${map.conversation.conversationId}|}" th:utext="${map.conversation.content}"></a>
 								<ul class="d-inline font-size-12 float-right">
 									<li class="d-inline ml-2">
-										<a href="#" class="text-primary">共<i th:text="${map.letterCount}"></i>条会话</a>
+										<a th:href="@{|/letter/detail/${map.conversation.conversationId}|}" class="text-primary">共<i th:text="${map.letterCount}"></i>条会话</a>
 									</li>
 								</ul>
 							</div>

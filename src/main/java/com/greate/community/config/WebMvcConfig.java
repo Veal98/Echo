@@ -2,6 +2,7 @@ package com.greate.community.config;
 
 import com.greate.community.controller.interceptor.LoginRequiredInterceptor;
 import com.greate.community.controller.interceptor.LoginTicketInterceptor;
+import com.greate.community.controller.interceptor.MessageInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -19,6 +20,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Autowired
     private LoginRequiredInterceptor loginRequiredInterceptor;
 
+    @Autowired
+    private MessageInterceptor messageInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 对除静态资源外所有路径进行拦截
@@ -27,6 +31,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
         // 对除静态资源外所有路径进行拦截
         registry.addInterceptor(loginRequiredInterceptor)
+                .excludePathPatterns("/css/**", "/js/**", "/img/**");
+
+        registry.addInterceptor(messageInterceptor)
                 .excludePathPatterns("/css/**", "/js/**", "/img/**");
     }
 

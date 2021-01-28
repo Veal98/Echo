@@ -13,6 +13,9 @@ import org.springframework.web.util.HtmlUtils;
 
 import java.util.List;
 
+/**
+ * 评论相关
+ */
 @Service
 public class CommentService implements CommunityConstant {
 
@@ -24,6 +27,16 @@ public class CommentService implements CommunityConstant {
 
     @Autowired
     private DiscussPostSerivce discussPostSerivce;
+
+    /**
+     * 根据 id 查询评论
+     * @param id
+     * @return
+     */
+    public Comment findCommentById(int id) {
+        return commentMapper.selectCommentById(id);
+    }
+
 
     /**
      * 根据评论目标（类别、id）对评论进行分页查询

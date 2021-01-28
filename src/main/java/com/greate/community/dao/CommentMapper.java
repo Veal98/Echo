@@ -9,6 +9,13 @@ import java.util.List;
 public interface CommentMapper {
 
     /**
+     * 根据 id 查询评论
+     * @param id
+     * @return
+     */
+    Comment selectCommentById(int id);
+
+    /**
      * 根据评论目标（类别、id）对评论进行分页查询
      * @param entityType 评论目标的类别
      * @param entityId 评论目标的 id
@@ -32,5 +39,7 @@ public interface CommentMapper {
      * @return
      */
     int insertComment(Comment comment);
+
+
 
 }

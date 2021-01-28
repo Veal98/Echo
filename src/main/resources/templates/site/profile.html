@@ -37,15 +37,30 @@
 					<div class="media-body">
 						<h5 class="mt-0 text-warning">
 							<span th:utext="${user.username}"></span>
-							<button type="button" class="btn btn-info btn-sm float-right mr-5 follow-btn">关注TA</button>
+							<input type="hidden" id="entityId" th:value="${user.id}">
+							<button type="button" th:class="|btn ${hasFollowed ? 'btn-secondary' : 'btn-info'} btn-sm float-right mr-5 follow-btn|"
+									th:text="${hasFollowed ? '已关注' : '关注TA'}"
+									th:if="${loginUser!=null && loginUser.id!=user.id}"></button>
 						</h5>
 						<div class="text-muted mt-3">
 							<span>注册于 <i class="text-muted" th:text="${#dates.format(user.createTime, 'yyyy-MM-dd HH:mm:ss')}"></i></span>
 						</div>
 						<div class="text-muted mt-3 mb-5">
-							<span>关注了 <a class="text-primary" href="followee.html">5</a> 人</span>
-							<span class="ml-4">关注者 <a class="text-primary" href="follower.html">123</a> 人</span>
-							<span class="ml-4">获得了 <i class="text-danger" th:text="${userLikeCount}"></i> 个赞</span>
+							<a class="text-primary" th:href="@{|/followees/${user.id}|}" style="margin-right: 6px">
+								<button type="button" class="btn btn-secondary">
+									关注了 <span class="badge badge-info" th:text="${followeeCount}"></span>  人
+								</button>
+							</a>
+							<a class="text-primary" th:href="@{|/followers/${user.id}|}" style="margin-right: 6px">
+								<button type="button" class="btn btn-secondary">
+									关注者 <span class="badge badge-info" th:text="${followerCount}"></span>  人
+								</button>
+							</a>
+
+							<button type="button" class="btn btn-secondary">
+								获得了 <span class="badge badge-light" th:text="${userLikeCount}"></span>  个赞
+							</button>
+
 						</div>
 					</div>
 				</div>

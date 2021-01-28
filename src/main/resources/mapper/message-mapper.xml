@@ -88,4 +88,51 @@
         values(#{fromId}, #{toId}, #{conversationId}, #{content}, #{status}, #{createTime})
     </insert>
 
+    <!--查询某个主题下最新的系统通知-->
+    <select id="selectLatestNotice" resultType="Message">
+        select <include refid="selectFields"></include>
+        from message
+        where id in (
+            select max(id) from message
+            where status != 2
+            and from_id = 1
+            and to_id = #{userId}
+            and conversation_id = #{topic}
+        )
+    </select>
+
+    <!--查询某个主题下包含的系统通知数量-->
+    <select id="selectNoticeCount" resultType="int">
+        select count(id)
+        from message
+        where status != 2
+        and from_id = 1
+        and to_id = #{userId}
+        and conversation_id = #{topic}
+    </select>
+
+    <!--查询未读的系统通知数量-->
+    <select id="selectNoticeUnReadCount" resultType="int">
+        select count(id)
+        from message
+        where status = 0
+        and from_id = 1
+        and to_id = #{userId}
+        <if test = "topic != null">
+            and conversation_id = #{topic}
+        </if>
+    </select>
+
+    <!--查询某个主题所包含的通知列表-->
+    <select id="selectNotices" resultType="Message">
+        select <include refid="selectFields"></include>
+        from message
+        where status != 2
+        and from_id = 1
+        and to_id = #{userId}
+        and conversation_id = #{topic}
+        order by create_time desc
+        limit #{offset}, #{limit}
+    </select>
+
 </mapper>

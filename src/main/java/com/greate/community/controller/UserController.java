@@ -2,8 +2,10 @@ package com.greate.community.controller;
 
 import com.greate.community.annotation.LoginRequired;
 import com.greate.community.entity.User;
+import com.greate.community.service.FollowService;
 import com.greate.community.service.LikeService;
 import com.greate.community.service.UserService;
+import com.greate.community.util.CommunityConstant;
 import com.greate.community.util.CommunityUtil;
 import com.greate.community.util.HostHolder;
 import jdk.nashorn.internal.objects.annotations.Getter;
@@ -28,11 +30,11 @@ import java.util.List;
 
 
 /**
- * 处理用户信息的修改
+ * 用户
  */
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController implements CommunityConstant {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -44,6 +46,9 @@ public class UserController {
 
     @Autowired
     private LikeService likeService;
+
+    @Autowired
+    private FollowService followService;
 
     // 网站域名
     @Value("${community.path.domain}")
@@ -188,6 +193,18 @@ public class UserController {
         // 获赞数量
         int userLikeCount = likeService.findUserLikeCount(userId);
         model.addAttribute("userLikeCount", userLikeCount);
+        // 关注数量
+        long followeeCount = followService.findFolloweeCount(userId, ENTITY_TYPE_USER);
+        model.addAttribute("followeeCount", followeeCount);
+        // 粉丝数量
+        long followerCount = followService.findFollowerCount(ENTITY_TYPE_USER, userId);
+        model.addAttribute("followerCount", followerCount);
+        // 当前登录用户是否已关注该用户
+        boolean hasFollowed = false;
+        if (hostHolder.getUser() != null) {
+            hasFollowed = followService.hasFollowed(hostHolder.getUser().getId(), ENTITY_TYPE_USER, userId);
+        }
+        model.addAttribute("hasFollowed", hasFollowed);
 
         return "/site/profile";
     }

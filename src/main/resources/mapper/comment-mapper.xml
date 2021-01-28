@@ -12,6 +12,12 @@
         user_id, entity_type, entity_id, target_id, content, status, create_time
     </sql>
 
+    <select id = "selectCommentById" resultType="Comment">
+        select <include refid="selectFields"></include>
+        from comment
+        where id = #{id}
+    </select>
+
     <!--分页查询评论-->
     <!--不查询禁用的评论, 按照创建时间升序排序-->
     <select id = "selectCommentByEntity" resultType="Comment">

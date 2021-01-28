@@ -32,7 +32,7 @@
 							<li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser != null}">
 								<a class="nav-link position-relative" th:href="@{/letter/list}">
 									<i class="bi bi-envelope"></i> 消息
-									<span class="badge badge-danger" >12</span>
+									<span class="badge badge-danger" th:text="${allUnreadCount!=0 ? allUnreadCount : ''}"></span>
 								</a>
 							</li>
 							<li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser == null}">

@@ -9,6 +9,9 @@ import org.springframework.web.util.HtmlUtils;
 
 import java.util.List;
 
+/**
+ * 帖子相关
+ */
 @Service
 public class DiscussPostSerivce {
 
