@@ -1,9 +1,7 @@
 package com.greate.community.controller;
 
-import com.greate.community.entity.Comment;
-import com.greate.community.entity.DiscussPost;
-import com.greate.community.entity.Page;
-import com.greate.community.entity.User;
+import com.greate.community.entity.*;
+import com.greate.community.event.EventProducer;
 import com.greate.community.service.CommentService;
 import com.greate.community.service.DiscussPostSerivce;
 import com.greate.community.service.LikeService;
@@ -40,6 +38,9 @@ public class DiscussPostController implements CommunityConstant {
     @Autowired
     private LikeService likeService;
 
+    @Autowired
+    private EventProducer eventProducer;
+
     /**
      * 添加帖子（发帖）
      * @param title
@@ -61,6 +62,14 @@ public class DiscussPostController implements CommunityConstant {
         discussPost.setCreateTime(new Date());
 
         discussPostSerivce.addDiscussPost(discussPost);
+
+        // 触发发帖事件，通过消息队列将其存入 Elasticsearch 服务器
+        Event event = new Event()
+                .setTopic(TOPIC_PUBLISH)
+                .setUserId(user.getId())
+                .setEntityType(ENTITY_TYPE_POST)
+                .setEntityId(discussPost.getId());
+        eventProducer.fireEvent(event);
 
         return CommunityUtil.getJSONString(0, "发布成功");
     }

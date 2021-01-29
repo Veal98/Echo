@@ -13,13 +13,13 @@
  后端：
 
 - Spring
-- Spring Boot 2.4
+- Spring Boot 2.1.5 RELEASE
 - Spring MVC
 - ORM：MyBatis
 - 数据库：MySQL 5.7
 - 缓存：Redis
-- 消息队列：Kafka
-- 搜索引擎：Elasticsearch
+- 消息队列：Kafka 2.13-2.7.0
+- 搜索引擎：Elasticsearch 6.4.3
 - 安全：Spring Security
 - 监控：Spring Actuator
 - 日志：SLF4J（日志接口） + Logback（日志实现）
@@ -65,12 +65,12 @@
 - [x] 检查登录状态（禁止未登录用户访问需要登录权限的界面，后续会使用 Spring Security 接管）
 
 - [x] 帖子模块（MySQL）
-  - 发布帖子（过滤敏感词）
-  - 分页显示帖子
+  - 发布帖子（过滤敏感词），将其存入 MySQL
+  - 分页显示所有的帖子
   - 查看帖子详情
   
 - [x] 评论模块（MySQL）
-  - 发布对帖子的评论（过滤敏感词）
+  - 发布对帖子的评论（过滤敏感词），将其存入 MySQL
   - 分页显示评论
   - 发布对评论的回复（过滤敏感词）
   
@@ -116,7 +116,15 @@
   
     - 导航栏显示所有消息的未读数量（未读私信 + 未读系统通知）
   
-- [ ] 搜索模块
+- [x] 搜索模块（Elasticsearch + Kafka）
+
+  - 发布事件
+    - 发布帖子时，通过消息队列将帖子异步地提交到 Elasticsearch 服务器
+    - 为帖子增加评论时，通过消息队列将帖子异步地提交到 Elasticsearch 服务器
+  - 搜索服务
+    - 从 Elasticsearch 服务器搜索帖子
+    - 从 Elasticsearch 服务器删除帖子（当帖子从数据库中被删除时）
+  - 显示搜索结果
 
 - [ ] 权限控制
 

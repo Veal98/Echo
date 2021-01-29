@@ -55,8 +55,8 @@
 							</li>
 						</ul>
 						<!-- 搜索 -->
-						<form class="form-inline my-2 my-lg-0" action="site/search.html">
-							<input class="form-control mr-sm-2" type="search" aria-label="Search" />
+						<form class="form-inline my-2 my-lg-0" method="get" th:action="@{/search}">
+							<input class="form-control mr-sm-2" type="search" name="keyword" th:value="${keyword}" aria-label="Search" />
 							<button class="btn btn-outline-light my-2 my-sm-0 serach-btn" type="submit"><i class="bi bi-search"></i> 搜索</button>
 						</form>
 					</div>
