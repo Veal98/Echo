@@ -28,10 +28,11 @@ public class DiscussPostSerivce {
      *               当传入的 userId != 0 时，查找该指定用户的帖子
      * @param offset 每页的起始索引
      * @param limit  每页显示多少条数据
+     * @param orderMode  排行模式(若传入 1, 则按照热度来排序)
      * @return
      */
-    public List<DiscussPost> findDiscussPosts (int userId, int offset, int limit) {
-        return discussPostMapper.selectDiscussPosts(userId, offset, limit);
+    public List<DiscussPost> findDiscussPosts (int userId, int offset, int limit, int orderMode) {
+        return discussPostMapper.selectDiscussPosts(userId, offset, limit, orderMode);
     }
 
     /**
@@ -82,5 +83,35 @@ public class DiscussPostSerivce {
      */
     public int updateCommentCount(int id, int commentCount) {
         return discussPostMapper.updateCommentCount(id, commentCount);
+    }
+
+    /**
+     * 修改帖子类型：0-普通; 1-置顶;
+     * @param id
+     * @param type
+     * @return
+     */
+    public int updateType(int id, int type) {
+        return discussPostMapper.updateType(id, type);
+    }
+
+    /**
+     * 修改帖子状态：0-正常; 1-精华; 2-拉黑;
+     * @param id
+     * @param status
+     * @return
+     */
+    public int updateStatus(int id, int status) {
+        return discussPostMapper.updateStatus(id, status);
+    }
+
+    /**
+     * 修改帖子分数
+     * @param id
+     * @param score
+     * @return
+     */
+    public int updateScore(int id, double score) {
+        return discussPostMapper.updateScore(id, score);
     }
 }

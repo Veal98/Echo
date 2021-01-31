@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,16 +37,17 @@ public class HomeController implements CommunityConstant {
      * 进入首页
      * @param model
      * @param page
+     * @param orderMode 默认是 0（最新）
      * @return
      */
     @GetMapping("/index")
-    public String getIndexPage(Model model, Page page) {
+    public String getIndexPage(Model model, Page page, @RequestParam(name = "orderMode", defaultValue = "0") int orderMode) {
         // 获取总页数
         page.setRows(discussPostSerivce.findDiscussPostRows(0));
-        page.setPath("/index");
+        page.setPath("/index?orderMode=" + orderMode);
 
         // 分页查询
-        List<DiscussPost> list = discussPostSerivce.findDiscussPosts(0, page.getOffset(), page.getLimit());
+        List<DiscussPost> list = discussPostSerivce.findDiscussPosts(0, page.getOffset(), page.getLimit(), orderMode);
         // 封装帖子和该帖子对应的用户信息
         List<Map<String, Object>> discussPosts = new ArrayList<>();
         if (list != null) {
@@ -61,6 +63,7 @@ public class HomeController implements CommunityConstant {
             }
         }
         model.addAttribute("discussPosts", discussPosts);
+        model.addAttribute("orderMode", orderMode);
         return "index";
     }
 
@@ -71,6 +74,15 @@ public class HomeController implements CommunityConstant {
     @GetMapping("/error")
     public String getErrorPage() {
         return "/error/500";
+    }
+
+    /**
+     * 没有权限访问时的错误界面（也是 404）
+     * @return
+     */
+    @GetMapping("/denied")
+    public String getDeniedPage() {
+        return "/error/404";
     }
 
 }

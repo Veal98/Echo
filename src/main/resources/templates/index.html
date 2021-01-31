@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extra/spring-security">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,6 +48,7 @@
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item text-center" th:href="@{|/user/profile/${loginUser.id}|}"><i class="bi bi-person-fill"></i> 个人主页</a>
 									<a class="dropdown-item text-center" th:href="@{/user/setting}"><i class="bi bi-gear"></i> 账号设置</a>
+									<a class="dropdown-item text-center" th:href="@{/data}" sec:authorize="hasAnyAuthority('admin')"><i class="bi bi-clipboard-data"></i> 数据统计</a>
 									<a class="dropdown-item text-center" th:href="@{/logout}"><i class="bi bi-box-arrow-right"></i> 退出登录</a>
 									<div class="dropdown-divider"></div>
 									<span class="dropdown-item text-center text-secondary" th:utext="${loginUser.username}"></span>
@@ -71,10 +72,10 @@
 					<!-- 筛选条件 -->
 					<ul class="nav nav-tabs mb-3">
 						<li class="nav-item">
-							<a class="nav-link active" href="#"><i class="bi bi-lightning"></i> 最新</a>
+							<a th:class="|nav-link ${orderMode==0 ? 'active' : ''}|" th:href="@{/index(orderMode=0)}"><i class="bi bi-lightning"></i> 最新</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#"><i class="bi bi-hand-thumbs-up"></i> 最热</a>
+							<a th:class="|nav-link ${orderMode==1 ? 'active' : ''}|" th:href="@{/index(orderMode=1)}"><i class="bi bi-hand-thumbs-up"></i> 最热</a>
 						</li>
 					</ul>
 					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0"
@@ -131,8 +132,10 @@
 						<div class="media-body">
 							<h6 class="mt-0 mb-3">
 								<a th:href="@{|/discuss/detail/${map.post.id}|}" th:utext="${map.post.title}"></a>
-								<span class="badge badge-secondary bg-primary" th:if="${map.post.type==1}">置顶</span>
-								<span class="badge badge-secondary bg-danger" th:if="${map.post.status==1}">精华</span>
+								<span class="badge badge-secondary bg-danger" th:if="${map.post.type==1}"
+								   style="font-weight: 500; color: #f85959; background-color: rgba(248,89,89,0.1) !important;">顶</span>
+								<span class="badge badge-secondary bg-primary" th:if="${map.post.status==1}"
+								   style="font-weight: 500; color: #3c8cff; background-color: rgba(60,140,255,0.1) !important;">精</span>
 							</h6>
 							<div class="text-muted font-size-12">
 								<u class="mr-3" th:utext="${map.user.username}"></u> 发布于 <b th:text="${#dates.format(map.post.createTime,'yyyy-MM-dd HH:mm:ss')}"></b>

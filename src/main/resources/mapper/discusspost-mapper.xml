@@ -21,7 +21,12 @@
         <if test = "userId!=0">
             and user_id = #{userId}
         </if>
-        order by type desc, create_time desc
+        <if test = "orderMode == 0">
+            order by type desc, create_time desc
+        </if>
+        <if test = "orderMode == 1">
+            order by type desc, score desc, create_time desc
+        </if>
         limit #{offset}, #{limit}
     </select>
 
@@ -48,10 +53,30 @@
         where id = #{id}
     </select>
 
-    <!--修改帖子的评论数量-->
     <update id="updateCommentCount">
         update discuss_post
         set comment_count = #{commentCount}
+        where id = #{id}
+    </update>
+
+    <!--修改帖子类型：0-普通; 1-置顶;-->
+    <update id="updateType">
+        update discuss_post
+        set type = #{type}
+        where id = #{id}
+    </update>
+
+    <!--修改帖子状态：0-正常; 1-精华; 2-拉黑;-->
+    <update id="updateStatus">
+        update discuss_post
+        set status = #{status}
+        where id = #{id}
+    </update>
+
+    <!--修改帖子分数-->
+    <update id="updateScore">
+        update discuss_post
+        set score = #{score}
         where id = #{id}
     </update>
 
