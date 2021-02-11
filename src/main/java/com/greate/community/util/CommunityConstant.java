@@ -44,6 +44,9 @@ public interface CommunityConstant {
     // Kafka 主题：删帖
     String TOPIC_DELETE = "delete";
 
+    // Kafka 主题：分享
+    String TOPIC_SHARE = "share";
+
     // 系统用户的 id
     int SYSTEM_USER_ID = 1;
 

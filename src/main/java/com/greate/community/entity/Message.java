@@ -1,6 +1,5 @@
 package com.greate.community.entity;
 
-
 import java.util.Date;
 
 public class Message {

@@ -29,6 +29,7 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
 
     /**
      * 在 Controller 执行之前被调用
+     * 检查凭证状态，若凭证有效则在本次请求中持有该用户信息
      * @param request
      * @param response
      * @param handler
@@ -62,6 +63,7 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
 
     /**
      * 在模板引擎之前被调用
+     * 将用户信息存入 modelAndView, 便于模板引擎调用
      * @param request
      * @param response
      * @param handler
@@ -78,6 +80,7 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
 
     /**
      * 在 Controller 执行之后（即服务端对本次请求做出响应后）被调用
+     * 清理本次请求持有的用户信息
      * @param request
      * @param response
      * @param handler

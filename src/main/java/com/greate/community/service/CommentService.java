@@ -26,7 +26,7 @@ public class CommentService implements CommunityConstant {
     private SensitiveFilter sensitiveFilter;
 
     @Autowired
-    private DiscussPostSerivce discussPostSerivce;
+    private DiscussPostService discussPostService;
 
     /**
      * 根据 id 查询评论
@@ -61,6 +61,26 @@ public class CommentService implements CommunityConstant {
     }
 
     /**
+     * 分页查询某个用户的评论/回复列表
+     * @param userId
+     * @param offset
+     * @param limit
+     * @return
+     */
+    public List<Comment> findCommentByUserId(int userId, int offset, int limit) {
+        return commentMapper.selectCommentByUserId(userId, offset, limit);
+    }
+
+    /**
+     * 查询某个用户的评论/回复数量
+     * @param userId
+     * @return
+     */
+    public int findCommentCountByUserId(int userId) {
+        return commentMapper.selectCommentCountByUserId(userId);
+    }
+
+    /**
      * 添加评论（需要事务管理）
      * @param comment
      * @return
@@ -82,9 +102,11 @@ public class CommentService implements CommunityConstant {
         // 更新帖子的评论数量
         if (comment.getEntityType() == ENTITY_TYPE_POST) {
             int count = commentMapper.selectCountByEntity(comment.getEntityType(), comment.getEntityId());
-            discussPostSerivce.updateCommentCount(comment.getEntityId(), count);
+            discussPostService.updateCommentCount(comment.getEntityId(), count);
         }
 
         return rows;
     }
+
+
 }

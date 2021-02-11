@@ -2,7 +2,7 @@ package com.greate.community.controller;
 
 import com.greate.community.entity.DiscussPost;
 import com.greate.community.entity.Page;
-import com.greate.community.service.DiscussPostSerivce;
+import com.greate.community.service.DiscussPostService;
 import com.greate.community.service.ElasticsearchService;
 import com.greate.community.service.LikeService;
 import com.greate.community.service.UserService;
@@ -27,12 +27,19 @@ public class SearchController implements CommunityConstant {
     private UserService userService;
 
     @Autowired
-    private DiscussPostSerivce discussPostSerivce;
+    private DiscussPostService discussPostService;
 
     @Autowired
     private LikeService likeService;
 
-    // search?keword=xxx
+    /**
+     * 搜索
+     * search?keword=xxx
+     * @param keyword 关键词
+     * @param page
+     * @param model
+     * @return
+     */
     @GetMapping("/search")
     public String search(String keyword, Page page, Model model) {
         // 搜索帖子 (Spring 提供的 Page 当前页码从 0 开始计数)

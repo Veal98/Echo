@@ -3,7 +3,7 @@ package com.greate.community.controller;
 import com.greate.community.entity.*;
 import com.greate.community.event.EventProducer;
 import com.greate.community.service.CommentService;
-import com.greate.community.service.DiscussPostSerivce;
+import com.greate.community.service.DiscussPostService;
 import com.greate.community.service.LikeService;
 import com.greate.community.service.UserService;
 import com.greate.community.util.CommunityConstant;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.*;
 
 /**
@@ -27,7 +26,7 @@ import java.util.*;
 public class DiscussPostController implements CommunityConstant {
 
     @Autowired
-    private DiscussPostSerivce discussPostSerivce;
+    private DiscussPostService discussPostService;
 
     @Autowired
     private HostHolder hostHolder;
@@ -55,7 +54,7 @@ public class DiscussPostController implements CommunityConstant {
      */
     @PostMapping("/add")
     @ResponseBody
-    public String addDiscussPost(String title, String content) {
+        public String addDiscussPost(String title, String content) {
         User user = hostHolder.getUser();
         if (user == null) {
             return CommunityUtil.getJSONString(403, "您还未登录");
@@ -67,7 +66,7 @@ public class DiscussPostController implements CommunityConstant {
         discussPost.setContent(content);
         discussPost.setCreateTime(new Date());
 
-        discussPostSerivce.addDiscussPost(discussPost);
+        discussPostService.addDiscussPost(discussPost);
 
         // 触发发帖事件，通过消息队列将其存入 Elasticsearch 服务器
         Event event = new Event()
@@ -93,7 +92,7 @@ public class DiscussPostController implements CommunityConstant {
     @GetMapping("/detail/{discussPostId}")
     public String getDiscussPost(@PathVariable("discussPostId") int discussPostId, Model model, Page page) {
         // 帖子
-        DiscussPost discussPost = discussPostSerivce.findDiscussPostById(discussPostId);
+        DiscussPost discussPost = discussPostService.findDiscussPostById(discussPostId);
         model.addAttribute("post", discussPost);
         // 作者
         User user = userService.findUserById(discussPost.getUserId());
@@ -111,48 +110,48 @@ public class DiscussPostController implements CommunityConstant {
         page.setPath("/discuss/detail/" + discussPostId);
         page.setRows(discussPost.getCommentCount());
 
-        // 存储帖子的评论
+        // 帖子的评论列表
         List<Comment> commentList = commentService.findCommentByEntity(
                 ENTITY_TYPE_POST, discussPost.getId(), page.getOffset(), page.getLimit());
 
-        List<Map<String, Object>> commentVoList = new ArrayList<>(); // 封装对帖子的评论和评论的作者信息
+        // 封装评论及其相关信息
+        List<Map<String, Object>> commentVoList = new ArrayList<>();
         if (commentList != null) {
            for (Comment comment : commentList) {
-                // 对帖子的评论
+                // 存储对帖子的评论
                 Map<String, Object> commentVo = new HashMap<>();
                 commentVo.put("comment", comment); // 评论
-                commentVo.put("user", userService.findUserById(comment.getUserId())); // 作者
-                likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, comment.getId()); // 点赞数量
+                commentVo.put("user", userService.findUserById(comment.getUserId())); // 发布评论的作者
+                likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, comment.getId()); // 该评论点赞数量
                 commentVo.put("likeCount", likeCount);
                 likeStatus = hostHolder.getUser() == null ? 0 : likeService.findEntityLikeStatus(
-                        hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, comment.getId()); // 当前登录用户的点赞状态
+                        hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, comment.getId()); // 当前登录用户对该评论的点赞状态
                 commentVo.put("likeStatus", likeStatus);
 
 
-                // 存储评论的评论（不做分页）
+                // 存储每个评论对应的回复（不做分页）
                 List<Comment> replyList = commentService.findCommentByEntity(
                        ENTITY_TYPE_COMMENT, comment.getId(), 0, Integer.MAX_VALUE);
                 List<Map<String, Object>> replyVoList = new ArrayList<>(); // 封装对评论的评论和评论的作者信息
                 if (replyList != null) {
-                    // 对评论的评论（回复）
                     for (Comment reply : replyList) {
                         Map<String, Object> replyVo = new HashMap<>();
                         replyVo.put("reply", reply); // 回复
-                        replyVo.put("user", userService.findUserById(reply.getUserId())); // 作者
-                        User target = reply.getTargetId() == 0 ? null : userService.findUserById(reply.getUserId()); // 回复目标
-                        replyVo.put("target", target);
-                        likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, reply.getId()); // 点赞数量
-                        replyVo.put("likeCount", likeCount);
+                        replyVo.put("user", userService.findUserById(reply.getUserId())); // 发布该回复的作者
+                        User target = reply.getTargetId() == 0 ? null : userService.findUserById(reply.getUserId());
+                        replyVo.put("target", target); // 该回复的目标用户
+                        likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, reply.getId());
+                        replyVo.put("likeCount", likeCount); // 该回复的点赞数量
                         likeStatus = hostHolder.getUser() == null ? 0 : likeService.findEntityLikeStatus(
-                                hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, reply.getId()); // 当前登录用户的点赞状态
-                        replyVo.put("likeStatus", likeStatus);
+                                hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, reply.getId());
+                        replyVo.put("likeStatus", likeStatus); // 当前登录用户的点赞状态
 
                         replyVoList.add(replyVo);
                     }
                 }
                 commentVo.put("replys", replyVoList);
                 
-                // 对某个评论的回复数量
+                // 每个评论对应的回复数量
                 int replyCount = commentService.findCommentCount(ENTITY_TYPE_COMMENT, comment.getId());
                 commentVo.put("replyCount", replyCount);
 
@@ -174,7 +173,7 @@ public class DiscussPostController implements CommunityConstant {
     @PostMapping("/top")
     @ResponseBody
     public String setTop(int id) {
-        discussPostSerivce.updateType(id, 1);
+        discussPostService.updateType(id, 1);
 
         // 触发发帖事件，通过消息队列将其存入 Elasticsearch 服务器
         Event event = new Event()
@@ -196,7 +195,7 @@ public class DiscussPostController implements CommunityConstant {
     @PostMapping("/wonderful")
     @ResponseBody
     public String setWonderful(int id) {
-        discussPostSerivce.updateStatus(id, 1);
+        discussPostService.updateStatus(id, 1);
 
         // 触发发帖事件，通过消息队列将其存入 Elasticsearch 服务器
         Event event = new Event()
@@ -222,7 +221,7 @@ public class DiscussPostController implements CommunityConstant {
     @PostMapping("/delete")
     @ResponseBody
     public String setDelete(int id) {
-        discussPostSerivce.updateStatus(id, 2);
+        discussPostService.updateStatus(id, 2);
 
         // 触发删帖事件，通过消息队列更新 Elasticsearch 服务器
         Event event = new Event()
@@ -234,8 +233,6 @@ public class DiscussPostController implements CommunityConstant {
 
         return CommunityUtil.getJSONString(0);
     }
-
-
 
 
 }

@@ -16,7 +16,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
@@ -114,7 +113,7 @@ public class LoginController implements CommunityConstant {
 
 
     /**
-     * 生成验证码
+     * 生成验证码, 并存入 Redis
      * @param response
      * @param session
      */

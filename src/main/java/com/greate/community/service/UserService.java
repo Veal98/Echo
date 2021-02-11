@@ -1,6 +1,5 @@
 package com.greate.community.service;
 
-import com.greate.community.dao.LoginTicketMapper;
 import com.greate.community.dao.UserMapper;
 import com.greate.community.entity.LoginTicket;
 import com.greate.community.entity.User;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -39,9 +37,6 @@ public class UserService implements CommunityConstant {
 
     @Autowired
     private RedisTemplate redisTemplate;
-
-    // @Autowired
-    // private LoginTicketMapper loginTicketMapper;
 
     // 网站域名
     @Value("${community.path.domain}")
@@ -132,7 +127,7 @@ public class UserService implements CommunityConstant {
         String url = domain + contextPath + "/activation/" + user.getId() + "/" + user.getActivationCode();
         context.setVariable("url", url);
         String content = templateEngine.process("/mail/activation", context);
-        mailClient.sendMail(user.getEmail(),"激活 Greate 账号", content);
+        mailClient.sendMail(user.getEmail(),"激活 Echo 账号", content);
 
         return map;
     }
@@ -213,7 +208,6 @@ public class UserService implements CommunityConstant {
         String redisKey = RedisKeyUtil.getTicketKey(loginTicket.getTicket());
         redisTemplate.opsForValue().set(redisKey, loginTicket);
 
-
         map.put("ticket", loginTicket.getTicket());
 
         return map;
@@ -225,12 +219,11 @@ public class UserService implements CommunityConstant {
      */
     public void logout(String ticket) {
         // loginTicketMapper.updateStatus(ticket, 1);
-        // 修改（先删除再插入）对应用户在 redis 中的凭证
+        // 修改（先删除再插入）对应用户在 redis 中的凭证状态
         String redisKey = RedisKeyUtil.getTicketKey(ticket);
         LoginTicket loginTicket = (LoginTicket) redisTemplate.opsForValue().get(redisKey);
         loginTicket.setStatus(1);
         redisTemplate.opsForValue().set(redisKey, loginTicket);
-
     }
 
     /**
@@ -265,7 +258,8 @@ public class UserService implements CommunityConstant {
      */
     public int updatePassword(int userId, String newPassword) {
         User user = userMapper.selectById(userId);
-        newPassword = CommunityUtil.md5(newPassword + user.getSalt()); // 重新加盐加密
+        // 重新加盐加密
+        newPassword = CommunityUtil.md5(newPassword + user.getSalt());
         return userMapper.updatePassword(userId, newPassword);
     }
 
@@ -323,6 +317,5 @@ public class UserService implements CommunityConstant {
         });
         return list;
     }
-
 
 }

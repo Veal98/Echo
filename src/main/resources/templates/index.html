@@ -12,7 +12,7 @@
 <body>	
 	<div class="nk-container">
 		<!-- 头部 -->
-		<header class="bg-light sticky-top" th:fragment="header">
+		<header class="bg-light sticky-top" th:fragment="header" style="box-shadow: 5px 5px 5px #cfcccc;">
 			<div class="container">
 				<!-- 导航 -->
 				<nav class="navbar navbar-expand-lg navbar-dark">
@@ -53,6 +53,9 @@
 									<div class="dropdown-divider"></div>
 									<span class="dropdown-item text-center text-secondary" th:utext="${loginUser.username}"></span>
 								</div>
+							</li>
+							<li class="nav-item ml-3 btn-group-vertical">
+								<a class="nav-link" href="https://gitee.com/veal98/CS-Wiki">🔥 CS-Wiki</a>
 							</li>
 						</ul>
 						<!-- 搜索 -->
@@ -172,63 +175,39 @@
 			</div>
 		</div>
 
+
 		<!-- 尾部 -->
-		<footer class="bg-dark">
+		<footer class="bg-dark" th:fragment="footer" style="background-color: rgb(149,117,244) !important;">
 			<div class="container">
 				<div class="row">
-					<!-- 二维码 -->
+					<!-- 个人二维码 -->
 					<div class="col-4 qrcode">
-						<img src="https://uploadfiles.nowcoder.com/app/app_download.png" class="img-thumbnail" style="width:136px;" />
+						<img src="https://gitee.com/veal98/images/raw/master/img/20210209221134.png" class="img-thumbnail" style="width:136px;" />
 					</div>
 					<!-- 公司信息 -->
-					<div class="col-8 detail-info">
-						<div class="row">
-							<div class="col">
-								<ul class="nav">
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">关于我们</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">加入我们</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">意见反馈</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">企业服务</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">联系我们</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">免责声明</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">友情链接</a>
-									</li>
-								</ul>
-							</div>
-						</div>
+					<div class="col-4 detail">
 						<div class="row">
 							<div class="col">
 								<ul class="nav btn-group-vertical company-info">
-									<li class="nav-item text-white-50">
-										公司地址：北京市朝阳区大屯路东金泉时代3-2708北京牛客科技有限公司
+									<li class="nav-item text-white-50" style="font-weight: 800">
+										<i class="bi bi-heart"></i> 联系作者：
 									</li>
 									<li class="nav-item text-white-50">
-										联系方式：010-60728802(电话)&nbsp;&nbsp;&nbsp;&nbsp;admin@nowcoder.com
+										微信扫描左侧二维码，联系作者 — 飞天小牛肉
+									</li>
+									<li class="nav-item text-white-50" style="font-weight: 800">
+										<i class="bi bi-book"></i> 关注公众号：
 									</li>
 									<li class="nav-item text-white-50">
-										牛客科技©2018 All rights reserved
-									</li>
-									<li class="nav-item text-white-50">
-										京ICP备14055008号-4 &nbsp;&nbsp;&nbsp;&nbsp;
-										<img src="http://static.nowcoder.com/company/images/res/ghs.png" style="width:18px;" />
-										京公网安备 11010502036488号
+										微信扫描右侧二维码，关注公众号回复 Echo 获取本项目相关的常见面试题
 									</li>
 								</ul>
 							</div>
 						</div>
+					</div>
+					<!-- 公众号二维码 -->
+					<div class="col-4 qrcode">
+						<img src="https://gitee.com/veal98/images/raw/master/img/20210209220036.png" class="img-thumbnail" style="width:136px;" />
 					</div>
 				</div>
 			</div>

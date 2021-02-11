@@ -1,0 +1,1 @@
+2021-02-04 21:39:56,353 ERROR [restartedMain] o.s.d.e.r.s.AbstractElasticsearchRepository [AbstractElasticsearchRepository.java:91] failed to load elasticsearch nodes : org.elasticsearch.client.transport.NoNodeAvailableException: None of the configured nodes are available: [{#transport#-1}{4947y-PeQqGETsGbd70F9g}{127.0.0.1}{127.0.0.1:9300}]

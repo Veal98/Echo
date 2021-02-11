@@ -9,13 +9,11 @@ import com.greate.community.service.UserService;
 import com.greate.community.util.CommunityConstant;
 import com.greate.community.util.CommunityUtil;
 import com.greate.community.util.HostHolder;
-import io.netty.util.concurrent.UnorderedThreadPoolEventExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
-
 import java.util.*;
 
 /**
@@ -47,7 +45,7 @@ public class MessageController implements CommunityConstant {
         page.setLimit(5);
         page.setPath("/letter/list");
         page.setRows(messageService.findConversationCout(user.getId()));
-        // 会话列表
+        // 私信列表
         List<Message> conversationList = messageService.findConversations(
                 user.getId(), page.getOffset(), page.getLimit());
 

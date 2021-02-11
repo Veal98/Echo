@@ -25,6 +25,7 @@ public interface CommentMapper {
      */
     List<Comment> selectCommentByEntity(int entityType, int entityId, int offset, int limit);
 
+
     /**
      * 查询评论的数量
      * @param entityType
@@ -40,6 +41,18 @@ public interface CommentMapper {
      */
     int insertComment(Comment comment);
 
+    /**
+     * 分页查询某个用户的评论/回复列表
+     * @param userId
+     * @return
+     */
+    List<Comment> selectCommentByUserId(int userId, int offset, int limit);
 
+    /**
+     * 查询某个用户的评论/回复数量
+     * @param userId
+     * @return
+     */
+    int selectCommentCountByUserId(int userId);
 
 }

@@ -44,4 +44,22 @@
         insert into comment(<include refid="insertFields"></include>)
         values(#{userId}, #{entityType}, #{entityId}, #{targetId}, #{content}, #{status}, #{createTime})
     </insert>
+
+    <!--分页查询某个用户的评论/回复列表-->
+    <select id = "selectCommentByUserId" resultType="Comment">
+        select <include refid="selectFields"></include>
+        from comment
+        where status = 0
+        and user_id = #{userId}
+        order by create_time desc
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--查询某个用户的评论/回复数量-->
+    <select id = "selectCommentCountByUserId" resultType="int">
+        select count(id)
+        from comment
+        where status = 0
+        and user_id = #{userId}
+    </select>
 </mapper>

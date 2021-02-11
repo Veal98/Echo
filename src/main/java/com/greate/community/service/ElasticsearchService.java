@@ -55,7 +55,7 @@ public class ElasticsearchService {
     }
 
     /**
-     * 搜索
+     * 分页搜索
      * @param keyword 搜索的关键词
      * @param current 当前页码（这里的 Page 是 Spring 提供的，而非我们自己实现的那个）
      * @param limit 每页显示多少条数据

@@ -1,7 +1,5 @@
 package com.greate.community.controller;
 
-import com.greate.community.entity.Comment;
-import com.greate.community.entity.DiscussPost;
 import com.greate.community.entity.Event;
 import com.greate.community.entity.User;
 import com.greate.community.event.EventProducer;
@@ -15,7 +13,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -18,17 +18,19 @@
 		<!-- 内容 -->
 		<div class="main">
 			<div class="container p-5 mt-3 mb-3">
-				<!-- 上传头像 -->
+				<!-- 上传头像图片到七牛云 -->
 				<h6 class="text-left text-info border-bottom pb-2">上传头像</h6>
-				<form class="mt-5" method="post" enctype="multipart/form-data" th:action="@{/user/upload}">
+				<form class="mt-5" id="uploadForm">
 					<div class="form-group row mt-4">
 						<label for="head-image" class="col-sm-2 col-form-label text-right">选择头像:</label>
 						<div class="col-sm-10">
 							<div class="custom-file">
-								<input type="file" th:class="|custom-file-input ${error != null ? 'is-invalid' : ''}|"
-									   id="head-image" name="headerImage" lang="es" required="">
+								<input type="hidden" name="token" th:value="${uploadToken}" >
+								<input type="hidden" name="key" th:value="${fileName}" >
+								<input type="file" class="custom-file-input"
+									   id="head-image" name="file" lang="es" required="">
 								<label class="custom-file-label" for="head-image" data-browse="文件">选择一张图片</label>
-								<div class="invalid-feedback" th:text="${error}"></div>
+								<div class="invalid-feedback"></div>
 							</div>
 						</div>
 					</div>
@@ -39,6 +41,7 @@
 						</div>
 					</div>
 				</form>
+
 				<!-- 修改密码 -->
 				<h6 class="text-left text-info border-bottom pb-2 mt-5">修改密码</h6>
 				<form class="mt-5" method="post" th:action="@{/user/password}">
@@ -77,66 +80,7 @@
 		</div>
 
 		<!-- 尾部 -->
-		<footer class="bg-dark">
-			<div class="container">
-				<div class="row">
-					<!-- 二维码 -->
-					<div class="col-4 qrcode">
-						<img src="https://uploadfiles.nowcoder.com/app/app_download.png" class="img-thumbnail" style="width:136px;" />
-					</div>
-					<!-- 公司信息 -->
-					<div class="col-8 detail-info">
-						<div class="row">
-							<div class="col">
-								<ul class="nav">
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">关于我们</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">加入我们</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">意见反馈</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">企业服务</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">联系我们</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">免责声明</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link text-light" href="#">友情链接</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<ul class="nav btn-group-vertical company-info">
-									<li class="nav-item text-white-50">
-										公司地址：北京市朝阳区大屯路东金泉时代3-2708北京牛客科技有限公司
-									</li>
-									<li class="nav-item text-white-50">
-										联系方式：010-60728802(电话)&nbsp;&nbsp;&nbsp;&nbsp;admin@nowcoder.com
-									</li>
-									<li class="nav-item text-white-50">
-										牛客科技©2018 All rights reserved
-									</li>
-									<li class="nav-item text-white-50">
-										京ICP备14055008号-4 &nbsp;&nbsp;&nbsp;&nbsp;
-										<img src="http://static.nowcoder.com/company/images/res/ghs.png" style="width:18px;" />
-										京公网安备 11010502036488号
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
+		<footer class="bg-dark" th:replace="index::footer"></footer>
 	</div>
 
 	<script th:src="@{/js/jquery-3.1.0.min.js}"></script>
@@ -144,6 +88,7 @@
 	<script th:src="@{/js/bootstrap.min.js}"></script>
 	<script th:src="@{/js/global.js}"></script>
 	<script th:src="@{/js/bs-custom-file-input.js}"></script>
+	<script th:src="@{/js/setting.js}"></script>
 	<script>
 		$(function(){
 			bsCustomFileInput.init();

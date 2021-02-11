@@ -1,0 +1,65 @@
+2021-02-04 21:39:48,571 INFO [restartedMain] c.g.c.CommunityApplication [StartupInfoLogger.java:50] Starting CommunityApplication on LAPTOP-5SJBI05C with PID 10528 (E:\GreateCommunity\target\classes started by 19124 in E:\GreateCommunity)
+2021-02-04 21:39:48,577 INFO [restartedMain] c.g.c.CommunityApplication [SpringApplication.java:675] No active profile set, falling back to default profiles: default
+2021-02-04 21:39:48,634 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:227] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-02-04 21:39:48,634 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:227] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-02-04 21:39:49,322 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 21:39:49,324 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-02-04 21:39:49,385 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:182] Finished Spring Data repository scanning in 58ms. Found 1 repository interfaces.
+2021-02-04 21:39:49,395 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-04 21:39:49,396 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-02-04 21:39:49,410 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:363] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.greate.community.dao.elasticsearch.DiscussPostRepository.
+2021-02-04 21:39:49,410 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:182] Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
+2021-02-04 21:39:49,711 INFO [restartedMain] c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor [EnableEncryptablePropertiesBeanFactoryPostProcessor.java:48] Post-processing PropertySource instances
+2021-02-04 21:39:49,763 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2021-02-04 21:39:49,763 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2021-02-04 21:39:49,763 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2021-02-04 21:39:49,764 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource systemProperties [org.springframework.core.env.MapPropertySource] to EncryptableMapPropertySourceWrapper
+2021-02-04 21:39:49,764 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2021-02-04 21:39:49,764 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2021-02-04 21:39:49,765 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource applicationConfig: [classpath:/application.properties] [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2021-02-04 21:39:49,765 INFO [restartedMain] c.u.j.EncryptablePropertySourceConverter [EncryptablePropertySourceConverter.java:41] Converting PropertySource devtools [org.springframework.core.env.MapPropertySource] to EncryptableMapPropertySourceWrapper
+2021-02-04 21:39:49,788 INFO [restartedMain] c.u.j.f.DefaultLazyPropertyFilter [DefaultLazyPropertyFilter.java:34] Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2021-02-04 21:39:49,816 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java:330] Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$2fbe8c5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-04 21:39:49,860 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java:330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2f49d742] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-04 21:39:49,992 INFO [restartedMain] c.u.j.r.DefaultLazyPropertyResolver [DefaultLazyPropertyResolver.java:35] Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2021-02-04 21:39:49,994 INFO [restartedMain] c.u.j.d.DefaultLazyPropertyDetector [DefaultLazyPropertyDetector.java:33] Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2021-02-04 21:39:50,328 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:90] Tomcat initialized with port(s): 8080 (http)
+2021-02-04 21:39:50,339 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["http-nio-8080"]
+2021-02-04 21:39:50,346 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2021-02-04 21:39:50,346 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-02-04 21:39:50,449 INFO [restartedMain] o.a.c.c.C.[.[.[/echo] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2021-02-04 21:39:50,449 INFO [restartedMain] o.s.w.c.ContextLoader [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1814 ms
+2021-02-04 21:39:51,657 INFO [restartedMain] o.e.p.PluginsService [PluginsService.java:190] no modules loaded
+2021-02-04 21:39:51,658 INFO [restartedMain] o.e.p.PluginsService [PluginsService.java:193] loaded plugin [org.elasticsearch.index.reindex.ReindexPlugin]
+2021-02-04 21:39:51,658 INFO [restartedMain] o.e.p.PluginsService [PluginsService.java:193] loaded plugin [org.elasticsearch.join.ParentJoinPlugin]
+2021-02-04 21:39:51,658 INFO [restartedMain] o.e.p.PluginsService [PluginsService.java:193] loaded plugin [org.elasticsearch.percolator.PercolatorPlugin]
+2021-02-04 21:39:51,659 INFO [restartedMain] o.e.p.PluginsService [PluginsService.java:193] loaded plugin [org.elasticsearch.script.mustache.MustachePlugin]
+2021-02-04 21:39:51,659 INFO [restartedMain] o.e.p.PluginsService [PluginsService.java:193] loaded plugin [org.elasticsearch.transport.Netty4Plugin]
+2021-02-04 21:39:52,795 INFO [restartedMain] o.s.d.e.c.TransportClientFactoryBean [TransportClientFactoryBean.java:88] Adding transport node : 127.0.0.1:9300
+2021-02-04 21:39:56,301 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:57] LiveReload server is running on port 35729
+2021-02-04 21:39:57,217 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java:171] Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-04 21:39:57,486 INFO [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping [WelcomePageHandlerMapping.java:61] Adding welcome page template: index
+2021-02-04 21:39:58,651 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:110] HikariPool-1 - Starting...
+2021-02-04 21:39:58,835 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2021-02-04 21:39:58,937 INFO [restartedMain] o.q.i.StdSchedulerFactory [StdSchedulerFactory.java:1208] Using default implementation for ThreadExecutor
+2021-02-04 21:39:58,950 INFO [restartedMain] o.q.c.SchedulerSignalerImpl [SchedulerSignalerImpl.java:61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2021-02-04 21:39:58,951 INFO [restartedMain] o.q.c.QuartzScheduler [QuartzScheduler.java:229] Quartz Scheduler v.2.3.1 created.
+2021-02-04 21:39:58,956 INFO [restartedMain] o.s.s.q.LocalDataSourceJobStore [JobStoreSupport.java:672] Using db table-based data access locking (synchronization).
+2021-02-04 21:39:58,959 INFO [restartedMain] o.s.s.q.LocalDataSourceJobStore [JobStoreCMT.java:145] JobStoreCMT initialized.
+2021-02-04 21:39:58,960 INFO [restartedMain] o.q.c.QuartzScheduler [QuartzScheduler.java:294] Scheduler meta-data: Quartz Scheduler (v2.3.1) 'communityScheduler' with instanceId 'LAPTOP-5SJBI05C1612445998939'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 5 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2021-02-04 21:39:58,960 INFO [restartedMain] o.q.i.StdSchedulerFactory [StdSchedulerFactory.java:1362] Quartz scheduler 'communityScheduler' initialized from an externally provided properties instance.
+2021-02-04 21:39:58,960 INFO [restartedMain] o.q.i.StdSchedulerFactory [StdSchedulerFactory.java:1366] Quartz scheduler version: 2.3.1
+2021-02-04 21:39:58,960 INFO [restartedMain] o.q.c.QuartzScheduler [QuartzScheduler.java:2293] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@3abb7185
+2021-02-04 21:39:59,089 INFO [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration [UserDetailsServiceAutoConfiguration.java:87] 
+
+Using generated security password: b0b97a37-0b8f-4fad-83af-e19207ac88d6
+
+2021-02-04 21:39:59,149 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain [DefaultSecurityFilterChain.java:43] Creating filter chain: Ant [pattern='/resources/**'], []
+2021-02-04 21:39:59,191 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain [DefaultSecurityFilterChain.java:43] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4a95c7cd, org.springframework.security.web.context.SecurityContextPersistenceFilter@13c09085, org.springframework.security.web.header.HeaderWriterFilter@647284ce, org.springframework.security.web.authentication.logout.LogoutFilter@76f61163, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7c0c6d12, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d45e645, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5ef2db3d, org.springframework.security.web.session.SessionManagementFilter@4b066f5d, org.springframework.security.web.access.ExceptionTranslationFilter@707efefa, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@bfbd66a]

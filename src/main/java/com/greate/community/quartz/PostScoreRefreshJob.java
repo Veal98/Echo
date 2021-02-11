@@ -1,13 +1,11 @@
 package com.greate.community.quartz;
 
 import com.greate.community.entity.DiscussPost;
-import com.greate.community.service.DiscussPostSerivce;
+import com.greate.community.service.DiscussPostService;
 import com.greate.community.service.ElasticsearchService;
 import com.greate.community.service.LikeService;
 import com.greate.community.util.CommunityConstant;
 import com.greate.community.util.RedisKeyUtil;
-import io.lettuce.core.RedisURI;
-import javafx.geometry.Pos;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -32,7 +30,7 @@ public class PostScoreRefreshJob implements Job, CommunityConstant {
     private RedisTemplate redisTemplate;
 
     @Autowired
-    private DiscussPostSerivce discussPostSerivce;
+    private DiscussPostService discussPostService;
 
     @Autowired
     private LikeService likeService;
@@ -73,7 +71,7 @@ public class PostScoreRefreshJob implements Job, CommunityConstant {
      * @param postId
      */
     private void refresh(int postId) {
-        DiscussPost post = discussPostSerivce.findDiscussPostById(postId);
+        DiscussPost post = discussPostService.findDiscussPostById(postId);
 
         if (post == null) {
             logger.error("该帖子不存在: id = " + postId);
@@ -93,7 +91,7 @@ public class PostScoreRefreshJob implements Job, CommunityConstant {
         double score = Math.log10(Math.max(w, 1))
                 + (post.getCreateTime().getTime() - epoch.getTime()) / (1000 * 3600 * 24);
         // 更新帖子分数
-        discussPostSerivce.updateScore(postId, score);
+        discussPostService.updateScore(postId, score);
         // 同步搜索数据
         post.setScore(score);
         elasticsearchService.saveDiscusspost(post);

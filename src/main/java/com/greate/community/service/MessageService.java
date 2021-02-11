@@ -21,37 +21,70 @@ public class MessageService {
     @Autowired
     private SensitiveFilter sensitiveFilter;
 
-    // 查询当前用户的会话列表，针对每个会话只返回一条最新的私信
+    /**
+     * 查询当前用户的会话列表，针对每个会话只返回一条最新的私信
+     * @param userId
+     * @param offset
+     * @param limit
+     * @return
+     */
     public List<Message> findConversations(int userId, int offset, int limit) {
         return messageMapper.selectConversations(userId, offset, limit);
     }
 
-    // 查询当前用户的会话数量
+    /**
+     * 查询当前用户的会话数量
+     * @param userId
+     * @return
+     */
     public int findConversationCout(int userId) {
         return messageMapper.selectConversationCount(userId);
     }
 
-    // 查询某个会话所包含的私信列表
+    /**
+     * 查询某个会话所包含的私信列表
+     * @param conversationId
+     * @param offset
+     * @param limit
+     * @return
+     */
     public List<Message> findLetters(String conversationId, int offset, int limit) {
         return messageMapper.selectLetters(conversationId, offset, limit);
     }
 
-    // 查询某个会话所包含的私信数量
+    /**
+     * 查询某个会话所包含的私信数量
+     * @param conversationId
+     * @return
+     */
     public int findLetterCount(String conversationId) {
         return messageMapper.selectLetterCount(conversationId);
     }
 
-    // 查询未读私信的数量
+    /**
+     * 查询未读私信的数量
+     * @param userId
+     * @param conversationId
+     * @return
+     */
     public int findLetterUnreadCount(int userId, String conversationId) {
         return messageMapper.selectLetterUnreadCount(userId, conversationId);
     }
 
-    // 读取私信(将私信状态设置为已读)
+    /**
+     * 读取私信(将私信状态设置为已读)
+     * @param ids
+     * @return
+     */
     public int readMessage(List<Integer> ids) {
         return messageMapper.updateStatus(ids, 1);
     }
 
-    // 添加一条私信
+    /**
+     * 添加一条私信
+     * @param message
+     * @return
+     */
     public int addMessage(Message message) {
         // 转义 HTML 标签
         message.setContent(HtmlUtils.htmlEscape(message.getContent()));

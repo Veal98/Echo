@@ -1,6 +1,5 @@
 package com.greate.community.entity;
 
-import java.util.List;
 
 /**
  * 封装分页相关的信息

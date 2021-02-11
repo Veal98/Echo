@@ -43,7 +43,7 @@ public class RedisKeyUtil {
     /**
      * 某个用户关注的实体
      * followee:userId:entityType -> zset(entityId, now) 以当前关注的时间进行排序
-     * @param userId 粉丝的 id
+     * @param userId
      * @param entityType 关注的实体类型
      * @return
      */

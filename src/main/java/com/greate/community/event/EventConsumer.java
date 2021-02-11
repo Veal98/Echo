@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.greate.community.entity.DiscussPost;
 import com.greate.community.entity.Event;
 import com.greate.community.entity.Message;
-import com.greate.community.service.DiscussPostSerivce;
+import com.greate.community.service.DiscussPostService;
 import com.greate.community.service.ElasticsearchService;
 import com.greate.community.service.MessageService;
 import com.greate.community.util.CommunityConstant;
@@ -12,10 +12,9 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,10 +31,28 @@ public class EventConsumer implements CommunityConstant {
     private MessageService messageService;
 
     @Autowired
-    private DiscussPostSerivce discussPostSerivce;
+    private DiscussPostService discussPostService;
 
     @Autowired
     private ElasticsearchService elasticsearchService;
+
+    @Value("${wk.image.command}")
+    private String wkImageCommand;
+
+    @Value("${wk.image.storage}")
+    private String wkImageStorage;
+
+    @Value("${qiniu.key.access}")
+    private String accessKey;
+
+    @Value("${qiniu.key.secret}")
+    private String secretKey;
+
+    @Value("${qiniu.bucket.share.name}")
+    private String shareBucketName;
+
+    @Value("${qiniu.bucket.share.url}")
+    private String shareBucketUrl;
 
     /**
      * 消费评论、点赞、关注事件
@@ -64,7 +81,7 @@ public class EventConsumer implements CommunityConstant {
         content.put("userId", event.getUserId());
         content.put("entityType", event.getEntityType());
         content.put("entityId", event.getEntityId());
-        if (!event.getData().isEmpty()) {
+        if (!event.getData().isEmpty()) { // 存储 Event 中的 Data
             for (Map.Entry<String, Object> entry : event.getData().entrySet()) {
                 content.put(entry.getKey(), entry.getValue());
             }
@@ -90,7 +107,7 @@ public class EventConsumer implements CommunityConstant {
             return ;
         }
 
-        DiscussPost post = discussPostSerivce.findDiscussPostById(event.getEntityId());
+        DiscussPost post = discussPostService.findDiscussPostById(event.getEntityId());
         elasticsearchService.saveDiscusspost(post);
 
     }
