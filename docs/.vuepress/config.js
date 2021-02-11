@@ -1,6 +1,7 @@
 module.exports = {
     title: '开源社区系统 — Echo',  // 设置网站标题
     description : '一款基于 SpringBoot + MyBatis + MySQL + Redis + Kafka + Elasticsearch + ... 实现的开源社区系统，并提供详细的开发文档和配套教程',
+    base : '/Echo/',
     themeConfig : {
       nav : [
         {

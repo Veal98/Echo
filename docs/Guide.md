@@ -4,7 +4,7 @@
 
 ## 📚 从本项目你能学到什么
 
-- 学会主流的 Java Web 开发技术和框架（Spring、SpringBoot、Spring MVC、MyBatis、MySQL、Redis、Kafka、Elasticsearch 等）
+- 学会主流的 Java Web 开发技术和框架（Spring、SpringBoot、Spring MVC、MyBatis、MySQL、Redis、Kafka、Elasticsearch、Spring Security 等）
 - 了解一个真实的 Web 项目从开发到部署的整个流程（本项目配套有大量图例和详细教程，以帮助小伙伴快速上手）
 - 掌握本项目中涉及的核心技术点以及常见面试题和解析
 
