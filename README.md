@@ -11,7 +11,7 @@
 ## 🏄‍ 在线体验与文档地址
 
 - 在线体验：项目已经部署到腾讯云服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)
-- 文档地址：文档通过 Vuepress + Gitee Pages 生成，在线访问地址：
+- 文档地址：文档通过 Docsify + Gitee Pages 生成，在线访问地址：
 
 ## 💻 核心技术栈
 
@@ -27,7 +27,7 @@
 - 消息队列：Kafka 2.13-2.7.0
 - 搜索引擎：Elasticsearch 6.4.3
 - 安全：Spring Security
-- 邮件：Spring Mail
+- 邮件任务：Spring Mail
 - 分布式定时任务：Spring Quartz
 - 日志：SLF4J（日志接口） + Logback（日志实现）
 
