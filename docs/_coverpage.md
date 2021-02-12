@@ -9,4 +9,5 @@
 - 配套友好教程, 带领读者从零开始实现本项目
 
 [GitHub](https://github.com/Veal98/Echo)
+[Gitee](https://gitee.com/veal98/Echo)
 [Get Started](#echo-开源社区系统)
