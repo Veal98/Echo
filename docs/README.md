@@ -507,6 +507,8 @@ double score = Math.log10(Math.max(w, 1))
 
 <img src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png" style="width:260px" />
 
+并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已 0.9k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向
+
 ## 📞 联系我
 
 有什么问题也可以添加我的微信，记得备注来意：格式 <u>（学校或公司 - 姓名或昵称 - 来意）</u>
