@@ -7,15 +7,47 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+  <style>
+    .app-nav {
+      position: fixed !important;
+    }
+    section.cover.show {
+      background: linear-gradient(to left bottom, hsl(238, 100%, 85%) 0%,hsl(38, 100%, 85%) 100%) !important;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '',
-      repo: ''
+      name: '💬 Echo',
+      repo: 'https://github.com/Veal98/Echo',
+      coverpage: true,
+      themeColor: 'rgb(119, 84, 223)',
+      loadNavbar: true,
+      plugins: [
+        function(hook) {
+          var footer = [
+            '<footer>',
+            '<span>小牛肉 &copy;2020.</span>',
+            '<span>Proudly published with <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
+            '</footer>'
+          ].join('');
+
+          hook.afterEach(function(html) {
+            return html + footer;
+          });
+        }
+      ]
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 </html>

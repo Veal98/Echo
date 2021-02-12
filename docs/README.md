@@ -10,8 +10,8 @@
 
 ## 🏄‍ 在线体验与文档地址
 
-- 在线体验：项目已经部署到腾讯云服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)
-- 文档地址：文档通过 Docsify + Gitee Pages 生成，在线访问地址：
+- **在线体验**：项目已经部署到<u>腾讯云</u>服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)
+- **文档地址**：文档通过 <u>Docsify + Gitee Pages</u> 生成，在线访问地址：[https://veal98.gitee.io/echo](https://veal98.gitee.io/echo)
 
 ## 💻 核心技术栈
 
@@ -100,32 +100,23 @@
 ![](https://gitee.com/veal98/images/raw/master/img/20210208222403.png)
 
 - [x] **注册**
-
   - 用户注册成功，将用户信息存入 MySQL，但此时该用户状态为未激活
   - 向用户发送激活邮件，用户点击链接则激活账号（Spring Mail）
 
 - [x] **登录 | 登出**
-
   - 进入登录界面，动态生成验证码，并将验证码短暂存入 Redis（60 秒）
-
   - 用户登录成功（验证用户名、密码、验证码），生成登录凭证且设置状态为有效，并将登录凭证存入 Redis
-
     注意：登录凭证存在有效期，在所有的请求执行之前，都会检查凭证是否有效和是否过期，只要该用户的凭证有效并在有效期时间内，本次请求就会一直持有该用户信息（使用 ThreadLocal 持有用户信息）
-
   - 勾选记住我，则延长登录凭证有效时间
-
   - 用户登录成功，将用户信息短暂存入 Redis（1 小时）
-
   - 用户登出，将凭证状态设为无效，并更新 Redis 中该用户的登录凭证信息
 
 - [x] **账号设置**
-
   - 修改头像
     - 将用户选择的头像图片文件上传至七牛云服务器
   - 修改密码
 
 - [x] **帖子模块**
-
   - 发布帖子（过滤敏感词），将其存入 MySQL
   - 分页显示所有的帖子
     - 支持按照 “发帖时间” 显示
@@ -138,7 +129,6 @@
     - “普通用户” 无法看到帖子的置顶、加精、删除按钮，也无法执行相应操作
 
 - [x] **评论模块**
-
   - 发布对帖子的评论（过滤敏感词），将其存入 MySQL
   - 分页显示评论
   - 发布对评论的回复（过滤敏感词）
@@ -146,7 +136,6 @@
     - 未登录用户无法使用评论功能
 
 - [x] **私信模块**
-
   - 发送私信（过滤敏感词）
   - 私信列表
     - 查询当前用户的会话列表
@@ -160,26 +149,22 @@
     - 未登录用户无法使用私信功能
 
 - [x] **统一处理 404 / 500 异常**
-
   - 普通请求异常
   - 异步请求异常
 
 - [x] **统一记录日志**
 
 - [x] **点赞模块**
-
   - 支持对帖子、评论/回复点赞
   - 第 1 次点赞，第 2 次取消点赞
   - 首页统计帖子的点赞数量
   - 详情页统计帖子和评论/回复的点赞数量
   - 详情页显示当前登录用户的点赞状态（赞过了则显示已赞）
-
   - 统计我的获赞数量
   - 权限管理（Spring Security）
     - 未登录用户无法使用点赞相关功能
 
 - [x] **关注模块**
-
   - 关注功能
   - 取消关注功能
   - 统计用户的关注数和粉丝数
@@ -189,7 +174,6 @@
     - 未登录用户无法使用关注相关功能
 
 - [x] **系统通知模块**
-
   - 通知列表
     - 显示评论、点赞、关注三种类型的通知
   - 通知详情
@@ -203,7 +187,6 @@
     - 未登录用户无法使用系统通知功能
 
 - [x] **搜索模块**
-
   - 发布事件
     - 发布帖子时，通过消息队列将帖子异步地提交到 Elasticsearch 服务器
     - 为帖子增加评论时，通过消息队列将帖子异步地提交到 Elasticsearch 服务器
@@ -213,7 +196,6 @@
   - 显示搜索结果
 
 - [x] **网站数据统计**（管理员专属）
-
   - 独立访客 UV
     - 存入 Redis 的 HyperLogLog
     - 支持单日查询和区间日期查询
@@ -223,8 +205,7 @@
   - 权限管理（Spring Security）
     - 只有管理员可以查看网站数据统计
 
-- [x] 优化网站性能
-
+- [x] **优化网站性能**
   - 使用本地缓存 Caffeine 缓存热帖列表以及所有用户帖子的总数
 
 ## 🔐 待实现及优化
@@ -363,7 +344,7 @@ CREATE TABLE `message` (
 
 我每个都只部署了一台，以下是理想的部署架构：
 
-![](https://gitee.com/veal98/images/raw/master/img/20210211204207.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210211204207.png"  />
 
 ## 🎯 功能逻辑图
 
@@ -385,7 +366,7 @@ CREATE TABLE `message` (
 - 用户注册成功，将用户信息存入 MySQL，但此时该用户状态为未激活
 - 向用户发送激活邮件，用户点击链接则激活账号（Spring Mail）
 
-![](https://gitee.com/veal98/images/raw/master/img/20210204222249.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210204222249.png" style="width:660px" />
 
 ### 登录 | 登出
 
@@ -411,7 +392,7 @@ CREATE TABLE `message` (
 - 支持按照 “热度排行” 显示（Spring Quartz）
 - 将热帖列表和所有帖子的总数存入本地缓存 Caffeine（利用分布式定时任务 Spring Quartz 每隔一段时间就刷新计算帖子的热度/分数 — 见下文，而 Caffeine 里的数据更新不用我们操心，它天生就会自动的更新它拥有的数据，给它一个初始化方法就完事儿）
 
-![](https://gitee.com/veal98/images/raw/master/img/20210204222822.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210204222822.png" style="width:660px" />
 
 
 
@@ -423,11 +404,11 @@ CREATE TABLE `message` (
 
 此处只画出修改头像：
 
-![](https://gitee.com/veal98/images/raw/master/img/20210206121201.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210206121201.png" style="width:700px" />
 
 ### 发布帖子（异步请求）
 
-![](https://gitee.com/veal98/images/raw/master/img/20210206122521.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210206122521.png" style="width:660px" />
 
 ### 显示评论及相关信息
 
@@ -437,23 +418,23 @@ CREATE TABLE `message` (
 
 评论 Comment 的目标类型（帖子，评论） entityType 和 entityId 以及对哪个用户进行评论/回复 targetId 是由前端传递给 DiscussPostController 的
 
-![](https://gitee.com/veal98/images/raw/master/img/20210207150925.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210207150925.png" style="width:660px" />
 
 一个帖子的详情页需要封装的信息大概如下：
 
-![](https://gitee.com/veal98/images/raw/master/img/20210207151328.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210207151328.png" style="width:660px" />
 
 ### 添加评论（事务管理）
 
-![](https://gitee.com/veal98/images/raw/master/img/20210207122908.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210207122908.png" style="width:660px" />
 
 ### 私信列表和详情页
 
-![](https://gitee.com/veal98/images/raw/master/img/20210207161130.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210207161130.png" style="width:700px" />
 
 ### 发送私信（异步请求）
 
-![](https://gitee.com/veal98/images/raw/master/img/20210207161500.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210207161500.png" style="width:660px" />
 
 ### 点赞（异步请求）
 
@@ -461,11 +442,11 @@ CREATE TABLE `message` (
 
 某个用户的获赞数量对应的存储在 Redis 中的 key 是 `like:user:userId`，value 就是这个用户的获赞数量
 
-![](https://gitee.com/veal98/images/raw/master/img/20210207165837.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210207165837.png" style="width:700px" />
 
 ### 我的获赞数量
 
-![](https://gitee.com/veal98/images/raw/master/img/20210207170003.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210207170003.png" style="width:660px" />
 
 ### 关注（异步请求）
 
@@ -476,11 +457,11 @@ CREATE TABLE `message` (
 
 同样的，将某个实体拥有的粉丝相关信息也存储在 Redis 的数据结构 zset 中：key 是 `follower:entityType:entityId`，对应的 value 是 `zset(userId, now)`，以关注的时间进行排序
 
-![](https://gitee.com/veal98/images/raw/master/img/20210207174046.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210207174046.png" style="width:660px" />
 
 ### 关注列表
 
-![](https://gitee.com/veal98/images/raw/master/img/20210207175621.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210207175621.png" style="width:660px" />
 
 ### 发送系统通知
 
@@ -498,7 +479,7 @@ CREATE TABLE `message` (
 
 ### 置顶加精删除（异步请求）
 
-![](https://gitee.com/veal98/images/raw/master/img/20210208171729.png)
+<img src="https://gitee.com/veal98/images/raw/master/img/20210208171729.png" style="width:660px" />
 
 ### 网站数据统计
 
@@ -524,7 +505,7 @@ double score = Math.log10(Math.max(w, 1))
 
 想要自己从零开始实现这个项目或者深入理解的小伙伴，可以扫描下方二维码关注公众号『**飞天小牛肉**』，第一时间获取配套教程, 不仅会详细解释本项目涉及的各大技术点，还会汇总相关的常见面试题，目前尚在更新中。
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png" style="zoom:67%;" />
+<img src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png" style="width:260px" />
 
 ## 📞 联系我
 
