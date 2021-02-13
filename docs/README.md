@@ -532,4 +532,4 @@ double score = Math.log10(Math.max(w, 1))
 
 ## 👏 鸣谢
 
-本项目参考[牛客网](https://www.nowcoder.com/) — Java 高级工程师课程，感谢老师和平台
+博主水平有限，本项目参考[牛客网](https://www.nowcoder.com/) — Java 高级工程师课程，感谢老师和平台。

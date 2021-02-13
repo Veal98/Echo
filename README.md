@@ -2,6 +2,26 @@
 
 ---
 
+<br>
+
+<p align="center">
+    <img width="" src="https://gitee.com/veal98/images/raw/master/img/20210211175136.png" >
+</p>
+
+<div align="center">
+
+[![GitHub stars](https://img.shields.io/github/stars/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/network)
+[![GitHub forks](https://img.shields.io/badge/version-1.0-brightgreen)]()
+
+</div>
+
+已托管在 Github 和 Gitee：
+
+- Github：[https://github.com/Veal98/Echo](https://github.com/Veal98/Echo)
+- Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)
+
+
 ## 📚 从本项目你能学到什么
 
 - 学会主流的 Java Web 开发技术和框架（Spring、SpringBoot、Spring MVC、MyBatis、MySQL、Redis、Kafka、Elasticsearch、Spring Security 等）
@@ -527,4 +547,4 @@ double score = Math.log10(Math.max(w, 1))
 
 ## 👏 鸣谢
 
-本项目参考[牛客网](https://www.nowcoder.com/) — Java 高级工程师课程，感谢老师和平台
+博主水平有限，本项目参考[牛客网](https://www.nowcoder.com/) — Java 高级工程师课程，感谢老师和平台。
