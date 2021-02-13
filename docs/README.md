@@ -2,6 +2,21 @@
 
 ---
 
+**源码链接**：已托管在 Github 和 Gitee：
+
+- Github：[https://github.com/Veal98/Echo](https://github.com/Veal98/Echo)
+- Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)
+
+**在线体验**：项目已经部署到<u>腾讯云</u>服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)。已内置三种不同身份的用户：
+
+|          | username | password |      特殊权限      |
+| :------: | :------: | :------: | :----------------: |
+|  管理员  |  admin   |  admin   | 数据统计、删除帖子 |
+|   版主   |  master  |  master  | 置顶帖子、加精帖子 |
+| 普通用户 |   user   |   user   |                    |
+
+**文档地址**：文档通过 <u>Docsify + Gitee Pages</u> 生成，国内访问速度较快，在线访问地址：[https://veal98.gitee.io/echo](https://veal98.gitee.io/echo)
+
 ## 📚 从本项目你能学到什么
 
 - 学会主流的 Java Web 开发技术和框架（Spring、SpringBoot、Spring MVC、MyBatis、MySQL、Redis、Kafka、Elasticsearch、Spring Security 等）
@@ -12,21 +27,6 @@
 
 - Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)
 - Github：[https://github.com/Veal98/Echo](https://github.com/Veal98/Echo)
-
-## 🏄‍ 在线体验与文档地址
-
-- **在线体验**：项目已经部署到<u>腾讯云</u>服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)
-
-  已内置三种不同身份的用户：
-
-  |          | username | password |      特殊权限      |
-  | :------: | :------: | :------: | :----------------: |
-  |  管理员  |  admin   |  admin   | 数据统计、删除帖子 |
-  |   版主   |  master  |  master  | 置顶帖子、加精帖子 |
-  | 普通用户 |   user   |   user   |                    |
-
-
-- **文档地址**：文档通过 <u>Docsify + Gitee Pages</u> 生成，在线访问地址：[https://veal98.gitee.io/echo](https://veal98.gitee.io/echo)
 
 ## 💻 核心技术栈
 
