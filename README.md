@@ -16,6 +16,10 @@
 
 </div>
 
+## 📚 项目简介
+
+Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java Web 技术栈（SpringBoot + MyBatis + MySQL + Redis + Kafka + Elasticsearch + Spring Security + ...），并提供详细的开发文档和配套教程。包含帖子、评论、私信、系统通知、点赞、关注、搜索、用户设置、数据统计等模块。
+
 **源码链接**：已托管在 Github 和 Gitee：
 
 - Github：[https://github.com/Veal98/Echo](https://github.com/Veal98/Echo)
@@ -30,13 +34,6 @@
 | 普通用户 |   user   |   user   |                    |
 
 **文档地址**：文档通过 <u>Docsify + Gitee Pages</u> 生成，国内访问速度较快，在线访问地址：[https://veal98.gitee.io/echo](https://veal98.gitee.io/echo)
-
-
-## 📚 从本项目你能学到什么
-
-- 学会主流的 Java Web 开发技术和框架（Spring、SpringBoot、Spring MVC、MyBatis、MySQL、Redis、Kafka、Elasticsearch、Spring Security 等）
-- 了解一个真实的 Web 项目从开发到部署的整个流程（本项目配套有大量图例和详细教程，以帮助小伙伴快速上手）
-- 掌握本项目中涉及的核心技术点以及常见面试题和解析
 
 ## 💻 核心技术栈
 
@@ -281,7 +278,9 @@
 - Elasticsearch
 - Kafka
 
-另外，还需要事件建好数据库表，详细见下文。
+另外，还需要事件建好数据库 greatecommunity，然后依次运行项目 sql 文件夹下的这几个 sql 文件建立数据库表：
+
+<img src="https://gitee.com/veal98/images/raw/master/img/20210217134928.png" style="width:386px" />
 
 ## 📜 数据库设计
 
