@@ -390,7 +390,7 @@ CREATE TABLE `message` (
 - 用户注册成功，将用户信息存入 MySQL，但此时该用户状态为未激活
 - 向用户发送激活邮件，用户点击链接则激活账号（Spring Mail）
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210204222249.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210204222249.png" />
 
 ### 登录 | 登出
 
@@ -416,7 +416,7 @@ CREATE TABLE `message` (
 - 支持按照 “热度排行” 显示（Spring Quartz）
 - 将热帖列表和所有帖子的总数存入本地缓存 Caffeine（利用分布式定时任务 Spring Quartz 每隔一段时间就刷新计算帖子的热度/分数 — 见下文，而 Caffeine 里的数据更新不用我们操心，它天生就会自动的更新它拥有的数据，给它一个初始化方法就完事儿）
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210204222822.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210204222822.png" />
 
 
 
@@ -428,11 +428,11 @@ CREATE TABLE `message` (
 
 此处只画出修改头像：
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210206121201.png" style="width:700px" />
+<img width="700px" src="https://gitee.com/veal98/images/raw/master/img/20210206121201.png" />
 
 ### 发布帖子（异步请求）
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210206122521.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210206122521.png" />
 
 ### 显示评论及相关信息
 
@@ -442,23 +442,23 @@ CREATE TABLE `message` (
 
 评论 Comment 的目标类型（帖子，评论） entityType 和 entityId 以及对哪个用户进行评论/回复 targetId 是由前端传递给 DiscussPostController 的
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210207150925.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210207150925.png" />
 
 一个帖子的详情页需要封装的信息大概如下：
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210207151328.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210207151328.png" />
 
 ### 添加评论（事务管理）
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210207122908.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210207122908.png" />
 
 ### 私信列表和详情页
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210207161130.png" style="width:700px" />
+<img width="700px" src="https://gitee.com/veal98/images/raw/master/img/20210207161130.png" />
 
 ### 发送私信（异步请求）
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210207161500.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210207161500.png" />
 
 ### 点赞（异步请求）
 
@@ -466,11 +466,11 @@ CREATE TABLE `message` (
 
 某个用户的获赞数量对应的存储在 Redis 中的 key 是 `like:user:userId`，value 就是这个用户的获赞数量
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210207165837.png" style="width:700px" />
+<img width="700px" src="https://gitee.com/veal98/images/raw/master/img/20210207165837.png"  />
 
 ### 我的获赞数量
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210207170003.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210207170003.png" />
 
 ### 关注（异步请求）
 
@@ -481,11 +481,11 @@ CREATE TABLE `message` (
 
 同样的，将某个实体拥有的粉丝相关信息也存储在 Redis 的数据结构 zset 中：key 是 `follower:entityType:entityId`，对应的 value 是 `zset(userId, now)`，以关注的时间进行排序
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210207174046.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210207174046.png" />
 
 ### 关注列表
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210207175621.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210207175621.png" />
 
 ### 发送系统通知
 
@@ -503,7 +503,7 @@ CREATE TABLE `message` (
 
 ### 置顶加精删除（异步请求）
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210208171729.png" style="width:660px" />
+<img width="660px" src="https://gitee.com/veal98/images/raw/master/img/20210208171729.png" />
 
 ### 网站数据统计
 
@@ -529,7 +529,7 @@ double score = Math.log10(Math.max(w, 1))
 
 想要自己从零开始实现这个项目或者深入理解的小伙伴，可以扫描下方二维码关注公众号『**飞天小牛肉**』回复 `Echo` 获取配套教程，订阅话题 [Echo 学习教程](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI0NDc3ODE5OQ==&action=getalbum&album_id=1744497649518493697&scene=173&from_msgid=2247485209&from_itemidx=3&count=3&uin=&key=&devicetype=Windows+10+x64&version=63010043&lang=zh_CN&ascene=1&session_us=gh_089c9f6e334b&fontgear=2) 第一时间获取更新。本套教程不仅会详细解释本项目涉及的各大技术点，还会汇总相关的常见面试题，目前尚在更新中。
 
-<img src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png" style="width:220px" />
+<img width="220px" src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png"  />
 
 并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已 0.9k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向。
 
