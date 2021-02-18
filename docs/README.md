@@ -514,11 +514,22 @@ double score = Math.log10(Math.max(w, 1))
 
 ## 📖 配套教程
 
-想要自己从零开始实现这个项目或者深入理解的小伙伴，可以扫描下方二维码关注公众号『**飞天小牛肉**』，第一时间获取配套教程, 不仅会详细解释本项目涉及的各大技术点，还会汇总相关的常见面试题，目前尚在更新中。
+想要自己从零开始实现这个项目或者深入理解的小伙伴，可以扫描下方二维码关注公众号『**飞天小牛肉**』回复 `Echo` 获取配套教程，订阅话题 [Echo 学习教程](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI0NDc3ODE5OQ==&action=getalbum&album_id=1744497649518493697&scene=173&from_msgid=2247485209&from_itemidx=3&count=3&uin=&key=&devicetype=Windows+10+x64&version=63010043&lang=zh_CN&ascene=1&session_us=gh_089c9f6e334b&fontgear=2) 第一时间获取更新。本套教程不仅会详细解释本项目涉及的各大技术点，还会汇总相关的常见面试题，目前尚在更新中。
 
 <img src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png" style="width:260px" />
 
 并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已 0.9k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向
+
+### 序章
+
+- [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
+- Echo 项目结构分析
+- Echo 数据库表分析
+
+### 部署篇
+
+- [Echo 在 Windows 环境下的部署](https://mp.weixin.qq.com/s/ZgYGqLB5_rfCXNrW9jqgtQ)
+- [Echo 在 Linux 服务器上的部署](https://mp.weixin.qq.com/s/q9X5sJv7mtPaSApZB0PxPA)
 
 ## 📞 联系我
 
