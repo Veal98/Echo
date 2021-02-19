@@ -17,7 +17,6 @@ public class RedisKeyUtil {
     private static final String PREFIX_DAU = "dau"; // 日活跃用户
     private static final String PREFIX_POST = "post"; // 用于统计帖子分数
 
-
     /**
      * 某个实体（帖子、评论/回复）的获赞
      * like:entity:entityType:entityId -> set(userId)

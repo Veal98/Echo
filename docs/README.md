@@ -523,7 +523,7 @@ double score = Math.log10(Math.max(w, 1))
 ### 序章
 
 - [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
-- Echo 项目结构分析
+- [Echo 项目结构分析](https://mp.weixin.qq.com/s/dZqSB0EN5-rmGQeG3Lx2jA)
 - Echo 数据库表分析
 
 ### 部署篇
