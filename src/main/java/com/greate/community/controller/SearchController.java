@@ -27,9 +27,6 @@ public class SearchController implements CommunityConstant {
     private UserService userService;
 
     @Autowired
-    private DiscussPostService discussPostService;
-
-    @Autowired
     private LikeService likeService;
 
     /**

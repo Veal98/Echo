@@ -36,12 +36,6 @@ public class EventConsumer implements CommunityConstant {
     @Autowired
     private ElasticsearchService elasticsearchService;
 
-    @Value("${wk.image.command}")
-    private String wkImageCommand;
-
-    @Value("${wk.image.storage}")
-    private String wkImageStorage;
-
     @Value("${qiniu.key.access}")
     private String accessKey;
 
