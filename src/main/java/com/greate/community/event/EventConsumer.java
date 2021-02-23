@@ -42,12 +42,6 @@ public class EventConsumer implements CommunityConstant {
     @Value("${qiniu.key.secret}")
     private String secretKey;
 
-    @Value("${qiniu.bucket.share.name}")
-    private String shareBucketName;
-
-    @Value("${qiniu.bucket.share.url}")
-    private String shareBucketUrl;
-
     /**
      * 消费评论、点赞、关注事件
      * @param record

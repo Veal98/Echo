@@ -524,12 +524,19 @@ double score = Math.log10(Math.max(w, 1))
 
 - [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
 - [Echo 项目结构分析](https://mp.weixin.qq.com/s/dZqSB0EN5-rmGQeG3Lx2jA)
-- Echo 数据库表分析
+- Echo 的数据库表是如何设计的
+- Echo 技术选型分析
 
 ### 部署篇
 
 - [Echo 在 Windows 环境下的部署](https://mp.weixin.qq.com/s/ZgYGqLB5_rfCXNrW9jqgtQ)
 - [Echo 在 Linux 服务器上的部署](https://mp.weixin.qq.com/s/q9X5sJv7mtPaSApZB0PxPA)
+
+### 架构篇
+
+### 技术要点篇
+
+### 常见面试题
 
 ## 📞 联系我
 

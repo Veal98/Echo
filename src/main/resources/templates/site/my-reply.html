@@ -28,7 +28,7 @@
 					<ul class="list-unstyled mt-4 pl-3 pr-3">
 						<li class="border-bottom pb-3 mt-4" th:each="map:${comments}">
 							<div class="font-size-16 text-info">
-								<a href="#" class="text-info" >文章标题</a>
+								<a th:utext="${map.post.title}" th:href="@{|/discuss/detail/${map.post.id}|}" class="text-info" >文章标题</a>
 							</div>
 							<div class="mt-1 font-size-14" th:utext="${map.comment.content}">回复内容</div>
 							<div class="text-right font-size-12 text-muted">

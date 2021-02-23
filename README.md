@@ -9,10 +9,11 @@
 </p>
 
 <div align="center">
-
 [![GitHub stars](https://img.shields.io/github/stars/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/network)
-[![GitHub forks](https://img.shields.io/badge/version-1.0-brightgreen)]()
+[![star](https://gitee.com/veal98/Echo/badge/star.svg?theme=dark)](https://gitee.com/veal98/Echo/stargazers)
+[![fork](https://gitee.com/veal98/Echo/badge/fork.svg?theme=dark)](https://gitee.com/veal98/Echo/members)
+[![version](https://img.shields.io/badge/version-1.0-brightgreen)]()
 
 </div>
 
@@ -235,8 +236,8 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 以下是我个人发现的本项目存在的问题，但是暂时没有头绪无法解决，集思广益，欢迎各位小伙伴提 PR 解决：
 
 - [ ] 注册模块无法正常跳转到操作提示界面（本地运行没有问题）
-- [ ] 评论功能的前端显示部分存在 Bug
-- [ ] 查询我的评论（未完善）
+- [x] 评论功能的前端显示部分存在 Bug
+- [x] 查询我的评论（未完善）
 
 以下是我觉得本项目还可以添加的功能，同样欢迎各位小伙伴提 issue 指出还可以增加哪些功能，或者直接提 PR 实现该功能：
 
@@ -537,12 +538,19 @@ double score = Math.log10(Math.max(w, 1))
 
 - [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
 - [Echo 项目结构分析](https://mp.weixin.qq.com/s/dZqSB0EN5-rmGQeG3Lx2jA)
-- Echo 数据库表分析
+- Echo 的数据库表是如何设计的
+- Echo 技术选型分析
 
 ### 部署篇
 
 - [Echo 在 Windows 环境下的部署](https://mp.weixin.qq.com/s/ZgYGqLB5_rfCXNrW9jqgtQ)
 - [Echo 在 Linux 服务器上的部署](https://mp.weixin.qq.com/s/q9X5sJv7mtPaSApZB0PxPA)
+
+### 架构篇
+
+### 技术要点篇
+
+### 常见面试题
 
 ## 📞 联系我
 

@@ -138,7 +138,7 @@ public class DiscussPostController implements CommunityConstant {
                         Map<String, Object> replyVo = new HashMap<>();
                         replyVo.put("reply", reply); // 回复
                         replyVo.put("user", userService.findUserById(reply.getUserId())); // 发布该回复的作者
-                        User target = reply.getTargetId() == 0 ? null : userService.findUserById(reply.getUserId());
+                        User target = reply.getTargetId() == 0 ? null : userService.findUserById(reply.getTargetId());
                         replyVo.put("target", target); // 该回复的目标用户
                         likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, reply.getId());
                         replyVo.put("likeCount", likeCount); // 该回复的点赞数量

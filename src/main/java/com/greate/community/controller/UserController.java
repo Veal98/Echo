@@ -248,9 +248,18 @@ public class UserController implements CommunityConstant {
             for (Comment comment : list) {
                 Map<String, Object> map = new HashMap<>();
                 map.put("comment", comment);
-
-                // 待做
-
+                // 显示评论/回复对应的文章信息
+                if (comment.getEntityType() == ENTITY_TYPE_POST) {
+                    // 如果是对帖子的评论，则直接查询 target_id 即可
+                    DiscussPost post = discussPostService.findDiscussPostById(comment.getEntityId());
+                    map.put("post", post);
+                }
+                else if (comment.getEntityType() == ENTITY_TYPE_COMMENT) {
+                    // 如过是对评论的回复，则先根据该回复的 target_id 查询评论的 id, 再根据该评论的 target_id 查询帖子的 id
+                    Comment targetComment = commentService.findCommentById(comment.getEntityId());
+                    DiscussPost post = discussPostService.findDiscussPostById(targetComment.getEntityId());
+                    map.put("post", post);
+                }
 
                 comments.add(map);
             }
