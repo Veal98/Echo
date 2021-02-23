@@ -18,6 +18,8 @@
 
 </div>
 
+> 由于项目上线到服务器之后可能会出现各种各样的 BUG，但是在本地运行是完全没问题的，所以各位小伙伴可以放心下载部署。
+
 ## 📚 项目简介
 
 Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java Web 技术栈（SpringBoot + MyBatis + MySQL + Redis + Kafka + Elasticsearch + Spring Security + ...），并提供详细的开发文档和配套教程。包含帖子、评论、私信、系统通知、点赞、关注、搜索、用户设置、数据统计等模块。
