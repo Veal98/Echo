@@ -13,13 +13,18 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 **在线体验**：项目已经部署到<u>腾讯云</u>服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)。已内置三种不同身份的用户：
 
+> **各位请不要修改这三种内置角色的密码**，默认注册的用户是普通用户，您修改了密码后其他小伙伴就没法体验管理员和版主角色了。若想要测试修改密码功能，可以自己重新注册个用户，注意填写真实邮箱，否则无法接收激活邮件并激活角色。感谢各位的配合 ~
+
 |          | username | password |      特殊权限      |
 | :------: | :------: | :------: | :----------------: |
 |  管理员  |  admin   |  admin   | 数据统计、删除帖子 |
 |   版主   |  master  |  master  | 置顶帖子、加精帖子 |
 | 普通用户 |   user   |   user   |                    |
 
-**文档地址**：文档通过 <u>Docsify + Gitee Pages</u> 生成，国内访问速度较快，在线访问地址：[https://veal98.gitee.io/echo](https://veal98.gitee.io/echo)
+**文档地址**：文档通过 <u>Docsify + Github/Gitee Pages</u> 生成
+
+- Github Pages：[https://veal98.github.io/Echo](https://veal98.github.io/Echo)
+- Gitee Pages：[https://veal98.gitee.io/echo](https://veal98.gitee.io/echo)
 
 ## 💻 核心技术栈
 
@@ -218,12 +223,6 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 ## 🔐 待实现及优化
 
-以下是我个人发现的本项目存在的问题，但是暂时没有头绪无法解决，集思广益，欢迎各位小伙伴提 PR 解决：
-
-- [ ] 注册模块无法正常跳转到操作提示界面（本地运行没有问题）
-- [ ] 评论功能的前端显示部分存在 Bug
-- [ ] 查询我的评论（未完善）
-
 以下是我觉得本项目还可以添加的功能，同样欢迎各位小伙伴提 issue 指出还可以增加哪些功能，或者直接提 PR 实现该功能：
 
 - [ ] 发帖支持 Markdown 格式
@@ -268,88 +267,6 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 另外，还需要事件建好数据库 greatecommunity，然后依次运行项目 sql 文件夹下的这几个 sql 文件建立数据库表：
 
 <img src="https://gitee.com/veal98/images/raw/master/img/20210217134928.png" style="width:386px" />
-
-## 📜 数据库设计
-
-用户 `user`：
-
-```sql
-DROP TABLE IF EXISTS `user`;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  `salt` varchar(50) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `type` int(11) DEFAULT NULL COMMENT '0-普通用户; 1-超级管理员; 2-版主;',
-  `status` int(11) DEFAULT NULL COMMENT '0-未激活; 1-已激活;',
-  `activation_code` varchar(100) DEFAULT NULL,
-  `header_url` varchar(200) DEFAULT NULL,
-  `create_time` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_username` (`username`(20)),
-  KEY `index_email` (`email`(20))
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
-```
-
-讨论帖 `discuss_post`：
-
-```sql
-DROP TABLE IF EXISTS `discuss_post`;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `discuss_post` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `title` varchar(100) DEFAULT NULL,
-  `content` text,
-  `type` int(11) DEFAULT NULL COMMENT '0-普通; 1-置顶;',
-  `status` int(11) DEFAULT NULL COMMENT '0-正常; 1-精华; 2-拉黑;',
-  `create_time` timestamp NULL DEFAULT NULL,
-  `comment_count` int(11) DEFAULT NULL,
-  `score` double DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
-
-评论（回复）`comment`：
-
-```sql
-CREATE TABLE `comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `entity_type` int(11) DEFAULT NULL COMMENT '评论目标的类别：1 帖子；2 评论 ',
-  `entity_id` int(11) DEFAULT NULL COMMENT '评论目标的 id',
-  `target_id` int(11) DEFAULT NULL COMMENT '指明对谁进行评论',
-  `content` text,
-  `status` int(11) DEFAULT NULL COMMENT '状态：0 正常；1 禁用',
-  `create_time` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_user_id` (`user_id`),
-  KEY `index_entity_id` (`entity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=utf8;
-```
-
-私信 `message`：
-
-```sql
-DROP TABLE IF EXISTS `message`;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `message` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `from_id` int(11) DEFAULT NULL,
-  `to_id` int(11) DEFAULT NULL,
-  `conversation_id` varchar(45) NOT NULL,
-  `content` text,
-  `status` int(11) DEFAULT NULL COMMENT '0-未读;1-已读;2-删除;',
-  `create_time` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_from_id` (`from_id`),
-  KEY `index_to_id` (`to_id`),
-  KEY `index_conversation_id` (`conversation_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
 
 ## 🌌 部署架构
 
