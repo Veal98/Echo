@@ -27,7 +27,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 **源码链接**：已托管在 Github 和 Gitee：
 
 - Github：[https://github.com/Veal98/Echo](https://github.com/Veal98/Echo)
-- Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)
+- Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)（已上 Gitee 官方推荐）
 
 **在线体验**：项目已经部署到<u>腾讯云</u>服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)。已内置三种不同身份的用户：
 
@@ -535,7 +535,7 @@ double score = Math.log10(Math.max(w, 1))
 
 - [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
 - [Echo 项目结构分析](https://mp.weixin.qq.com/s/dZqSB0EN5-rmGQeG3Lx2jA)
-- Echo 的数据库表是如何设计的
+- [Echo 数据库表是如何设计的](https://mp.weixin.qq.com/s/DG549DzLy3NhXwpsOWaXYA)
 - Echo 技术选型分析
 
 ### 部署篇
