@@ -8,8 +8,8 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 **源码链接**：已托管在 Github 和 Gitee：
 
+- Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)（Gitee 官方推荐项目）
 - Github：[https://github.com/Veal98/Echo](https://github.com/Veal98/Echo)
-- Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)（已上 Gitee 官方推荐）
 
 **在线体验**：项目已经部署到<u>腾讯云</u>服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)。已内置三种不同身份的用户：
 

@@ -9,7 +9,6 @@
 </p>
 
 <div align="center">
-
 [![GitHub stars](https://img.shields.io/github/stars/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/network)
 [![star](https://gitee.com/veal98/Echo/badge/star.svg?theme=dark)](https://gitee.com/veal98/Echo/stargazers)
@@ -18,7 +17,7 @@
 
 </div>
 
-> 项目上线到服务器之后可能会出现各种各样的 BUG，但是在本地运行是完全没问题的，所以各位小伙伴可以放心下载部署。
+> 项目上线到服务器之后可能会出现各种各样的 BUG，比如 Elasticsearch 服务启动失败导致搜索模块不可用，但是在本地运行是完全没问题的，所以各位小伙伴可以放心下载部署。
 
 ## 📚 项目简介
 
@@ -26,8 +25,8 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 **源码链接**：已托管在 Github 和 Gitee：
 
+- Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)（Gitee 官方推荐项目）
 - Github：[https://github.com/Veal98/Echo](https://github.com/Veal98/Echo)
-- Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)（已上 Gitee 官方推荐）
 
 **在线体验**：项目已经部署到<u>腾讯云</u>服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)。已内置三种不同身份的用户：
 
