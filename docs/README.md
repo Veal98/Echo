@@ -463,13 +463,22 @@ double score = Math.log10(Math.max(w, 1))
 
 <img width="260px" src="https://gitee.com/veal98/images/raw/master/img/微信图片_20210105121328.jpg" >
 
+## 🙋 微信交流群
+
+下方扫码加入 Echo 微信交流群，实时跟进项目进度、分享您的想法、讨论您遇到的问题：
+
+<img width="235px" src="https://gitee.com/veal98/images/raw/master/img/20210226231541.jpg" >
+
 ## 👏 鸣谢
 
 博主水平有限，本项目参考[牛客网](https://www.nowcoder.com/) — Java 高级工程师课程，感谢老师和平台。
 
-## 🔗 友情链接
+另外，若发现 Bug 或好的想法可以积极与我联系或提 PR / issue，采纳后您将出现在下方列表中。感谢以下小伙伴对本项目做出的贡献，排名按照时间先后：
 
-> 若您想要出现在这里，可以上方扫描微信二维码联系我
+- [freedom_dh](https://gitee.com/dh_free)
 
-- [CS-Wiki](https://gitee.com/veal98/CS-Wiki)：致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试，更指引学习的方向
-- [Furion](https://gitee.com/dotnetchina/Furion)：让 .NET 开发更简单，更通用，更流行
+> 🔗 友情链接（若您想要出现在这里，可以上方扫描微信二维码联系我）：
+>
+> - [CS-Wiki](https://gitee.com/veal98/CS-Wiki)：致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试，更指引学习的方向
+> - [Furion](https://gitee.com/dotnetchina/Furion)：让 .NET 开发更简单，更通用，更流行
+

@@ -35,7 +35,7 @@
             from message
             where status != 2
             and from_id != 1
-            and (from_id = #{userId} or to_id = #{toId})
+            and (from_id = #{userId} or to_id = #{userId})
             group by conversation_id
         ) as m
     </select>
