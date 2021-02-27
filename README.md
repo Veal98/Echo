@@ -16,10 +16,8 @@
 [![GitHub forks](https://img.shields.io/github/forks/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/network)
 [![version](https://img.shields.io/badge/version-1.0-brightgreen)]()
 
-<br>
-
-<a href="-配套教程"><img src="https://img.shields.io/badge/交流-微信群-orange" alt="交流群"></a>
-<a href="-配套教程"><img src="https://img.shields.io/badge/配套教程-公众号飞天小牛肉-blueviolet" alt="配套教程"></a>
+<a href="#-微信交流群"><img src="https://img.shields.io/badge/交流-微信群-orange" alt="交流群"></a>
+<a href="#-配套教程"><img src="https://img.shields.io/badge/配套教程-公众号飞天小牛肉-blueviolet" alt="配套教程"></a>
 
 
 </div>
