@@ -458,7 +458,7 @@ double score = Math.log10(Math.max(w, 1))
 - [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
 - [Echo 项目结构分析](https://mp.weixin.qq.com/s/dZqSB0EN5-rmGQeG3Lx2jA)
 - [Echo 数据库表是如何设计的](https://mp.weixin.qq.com/s/DG549DzLy3NhXwpsOWaXYA)
-- Echo 技术选型分析
+- [Echo 技术选型分析](https://mp.weixin.qq.com/s/tTBzyMklFtBfkyvuh8W0Nw)
 
 ### 部署篇
 
@@ -481,7 +481,7 @@ double score = Math.log10(Math.max(w, 1))
 
 下方扫码加入 Echo 微信交流群，实时跟进项目进度、分享您的想法、讨论您遇到的问题：
 
-<img width="235px" src="https://gitee.com/veal98/images/raw/master/img/20210226231541.jpg" >
+<img width="235px" src="https://gitee.com/veal98/images/raw/master/img/20210305100109.jpg" >
 
 ## 👏 鸣谢
 
