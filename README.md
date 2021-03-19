@@ -337,7 +337,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 ### 显示评论及相关信息
 
-> 评论部分前端的名称显示有些缺陷，有兴趣的小伙伴欢迎提 PR 解决~
+> 评论部分前端的名称显示有些缺陷，有兴趣的小伙伴欢迎提 PR 解决 ~
 
 关于评论模块需要注意的就是评论表的设计，把握其中字段的含义，才能透彻了解这个功能的逻辑。
 
@@ -451,7 +451,7 @@ double score = Math.log10(Math.max(w, 1))
 
 <img width="220px" src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png"  />
 
-并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已 0.9k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向。
+并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已累积 1.5k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向。
 
 ### 序章
 
@@ -465,11 +465,17 @@ double score = Math.log10(Math.max(w, 1))
 - [Echo 在 Windows 环境下的部署](https://mp.weixin.qq.com/s/ZgYGqLB5_rfCXNrW9jqgtQ)
 - [Echo 在 Linux 服务器上的部署](https://mp.weixin.qq.com/s/q9X5sJv7mtPaSApZB0PxPA)
 
-### 架构篇
+### 业务逻辑篇
+
+- [Echo 的注册功能是怎么做的](https://mp.weixin.qq.com/s/SC2FRPrVUbNw5ySHopOpHQ)
 
 ### 技术要点篇
 
+- 代更
+
 ### 常见面试题
+
+- 待更
 
 ## 📞 联系我
 
@@ -479,7 +485,7 @@ double score = Math.log10(Math.max(w, 1))
 
 ## 🙋 微信交流群
 
-下方扫码加入 Echo 微信交流群，实时跟进项目进度、分享您的想法、讨论您遇到的问题：
+下方扫码加入 Echo 微信交流群，实时跟进项目进度，第一时间获取教程更新，分享您的想法，还能帮您解决遇到的问题。如果二维码过期可以上方扫码加我微信回复 “Echo 交流群”，我拉你进群：
 
 <img width="235px" src="https://gitee.com/veal98/images/raw/master/img/20210305100109.jpg" >
 
@@ -490,8 +496,10 @@ double score = Math.log10(Math.max(w, 1))
 另外，若发现 Bug 或好的想法可以积极与我联系或提 PR / issue，采纳后您将出现在下方列表中。感谢以下小伙伴对本项目做出的贡献，排名按照时间先后：
 
 - [freedom_dh](https://gitee.com/dh_free)
+- [paulisusu](https://gitee.com/paulisusu)
 
 > 🔗 友情链接（若您想要出现在这里，可以上方扫描微信二维码联系我）：
 >
 > - [CS-Wiki](https://gitee.com/veal98/CS-Wiki)：致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试，更指引学习的方向
 > - [Furion](https://gitee.com/dotnetchina/Furion)：让 .NET 开发更简单，更通用，更流行
+> - [Free-Fs](https://gitee.com/dh_free/free-fs)：Spring Boot 开源云文件管理系统，方便快捷的管理云存储的文件

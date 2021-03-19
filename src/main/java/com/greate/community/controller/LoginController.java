@@ -94,7 +94,8 @@ public class LoginController implements CommunityConstant {
      * http://localhost:8080/echo/activation/用户id/激活码
      */
     @GetMapping("/activation/{userId}/{code}")
-    public String activation(Model model, @PathVariable("userId") int userId, @PathVariable("code") String code) {
+    public String activation(Model model, @PathVariable("userId") int userId,
+                             @PathVariable("code") String code) {
         int result = userService.activation(userId, code);
         if (result == ACTIVATION_SUCCESS) {
             model.addAttribute("msg", "激活成功, 您的账号已经可以正常使用!");
@@ -115,18 +116,14 @@ public class LoginController implements CommunityConstant {
     /**
      * 生成验证码, 并存入 Redis
      * @param response
-     * @param session
      */
     @GetMapping("/kaptcha")
-    public void getKaptcha(HttpServletResponse response, HttpSession session) {
+    public void getKaptcha(HttpServletResponse response) {
         // 生成验证码
         String text = kaptchaProducer.createText(); // 生成随机字符
         System.out.println("验证码：" + text);
         BufferedImage image = kaptchaProducer.createImage(text); // 生成图片
         
-        // 将验证码存入 session
-        // session.setAttribute("kaptcha", text);
-
         // 验证码的归属者
         String kaptchaOwner = CommunityUtil.generateUUID();
         Cookie cookie = new Cookie("kaptchaOwner", kaptchaOwner);
@@ -154,7 +151,6 @@ public class LoginController implements CommunityConstant {
      * @param code 验证码
      * @param rememberMe 是否记住我（点击记住我后，凭证的有效期延长）
      * @param model
-     // * @param session 从 session 中取出验证码
      * @param kaptchaOwner 从 cookie 中取出的 kaptchaOwner
      * @param response
      * @return
@@ -164,7 +160,7 @@ public class LoginController implements CommunityConstant {
                         @RequestParam("password") String password,
                         @RequestParam("code") String code,
                         @RequestParam(value = "rememberMe", required = false) boolean rememberMe,
-                        Model model, /*HttpSession session, */HttpServletResponse response,
+                        Model model, HttpServletResponse response,
                         @CookieValue("kaptchaOwner") String kaptchaOwner) {
         // 检查验证码
         // String kaptcha = (String) session.getAttribute("kaptcha");
