@@ -163,7 +163,6 @@ public class LoginController implements CommunityConstant {
                         Model model, HttpServletResponse response,
                         @CookieValue("kaptchaOwner") String kaptchaOwner) {
         // 检查验证码
-        // String kaptcha = (String) session.getAttribute("kaptcha");
         String kaptcha = null;
         if (StringUtils.isNotBlank(kaptchaOwner)) {
             String redisKey = RedisKeyUtil.getKaptchaKey(kaptchaOwner);

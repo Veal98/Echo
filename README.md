@@ -9,7 +9,6 @@
 </p>
 
 <div align="center">
-
 [![star](https://gitee.com/veal98/Echo/badge/star.svg?theme=dark)](https://gitee.com/veal98/Echo/stargazers)
 [![fork](https://gitee.com/veal98/Echo/badge/fork.svg?theme=dark)](https://gitee.com/veal98/Echo/members)
 [![GitHub stars](https://img.shields.io/github/stars/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/stargazers)
@@ -49,6 +48,39 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 - Github Pages：[https://veal98.github.io/Echo](https://veal98.github.io/Echo)
 - Gitee Pages：[https://veal98.gitee.io/echo](https://veal98.gitee.io/echo)
+
+## 📖 配套教程
+
+想要自己从零开始实现这个项目或者深入理解的小伙伴，可以扫描下方二维码关注公众号『**飞天小牛肉**』回复 `Echo` 获取配套教程，订阅话题 [Echo 学习教程](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI0NDc3ODE5OQ==&action=getalbum&album_id=1744497649518493697&scene=173&from_msgid=2247485209&from_itemidx=3&count=3&uin=&key=&devicetype=Windows+10+x64&version=63010043&lang=zh_CN&ascene=1&session_us=gh_089c9f6e334b&fontgear=2) 第一时间获取更新。本套教程不仅会详细解释本项目涉及的各大技术点，还会汇总相关的常见面试题，目前尚在更新中。
+
+<img width="220px" src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png"  />
+
+并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已累积 1.5k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向。
+
+### 序章
+
+- [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
+- [Echo 项目结构分析](https://mp.weixin.qq.com/s/dZqSB0EN5-rmGQeG3Lx2jA)
+- [Echo 数据库表是如何设计的](https://mp.weixin.qq.com/s/DG549DzLy3NhXwpsOWaXYA)
+- [Echo 技术选型分析](https://mp.weixin.qq.com/s/tTBzyMklFtBfkyvuh8W0Nw)
+
+### 部署篇
+
+- [Echo 在 Windows 环境下的部署](https://mp.weixin.qq.com/s/ZgYGqLB5_rfCXNrW9jqgtQ)
+- [Echo 在 Linux 服务器上的部署](https://mp.weixin.qq.com/s/q9X5sJv7mtPaSApZB0PxPA)
+
+### 业务逻辑篇
+
+- [Echo 的注册功能是怎么做的](https://mp.weixin.qq.com/s/SC2FRPrVUbNw5ySHopOpHQ)
+- [Echo 的登录认证和授权是怎么做的](https://mp.weixin.qq.com/s/DjGvuNYu5Fjvw3Gjha4ulw)
+
+### 技术要点篇
+
+- 代更
+
+### 常见面试题
+
+- 待更
 
 ## 💻 核心技术栈
 
@@ -444,38 +476,6 @@ double score = Math.log10(Math.max(w, 1))
 ```
 
 ![](https://gitee.com/veal98/images/raw/master/img/20210208173636.png)
-
-## 📖 配套教程
-
-想要自己从零开始实现这个项目或者深入理解的小伙伴，可以扫描下方二维码关注公众号『**飞天小牛肉**』回复 `Echo` 获取配套教程，订阅话题 [Echo 学习教程](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI0NDc3ODE5OQ==&action=getalbum&album_id=1744497649518493697&scene=173&from_msgid=2247485209&from_itemidx=3&count=3&uin=&key=&devicetype=Windows+10+x64&version=63010043&lang=zh_CN&ascene=1&session_us=gh_089c9f6e334b&fontgear=2) 第一时间获取更新。本套教程不仅会详细解释本项目涉及的各大技术点，还会汇总相关的常见面试题，目前尚在更新中。
-
-<img width="220px" src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png"  />
-
-并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已累积 1.5k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向。
-
-### 序章
-
-- [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
-- [Echo 项目结构分析](https://mp.weixin.qq.com/s/dZqSB0EN5-rmGQeG3Lx2jA)
-- [Echo 数据库表是如何设计的](https://mp.weixin.qq.com/s/DG549DzLy3NhXwpsOWaXYA)
-- [Echo 技术选型分析](https://mp.weixin.qq.com/s/tTBzyMklFtBfkyvuh8W0Nw)
-
-### 部署篇
-
-- [Echo 在 Windows 环境下的部署](https://mp.weixin.qq.com/s/ZgYGqLB5_rfCXNrW9jqgtQ)
-- [Echo 在 Linux 服务器上的部署](https://mp.weixin.qq.com/s/q9X5sJv7mtPaSApZB0PxPA)
-
-### 业务逻辑篇
-
-- [Echo 的注册功能是怎么做的](https://mp.weixin.qq.com/s/SC2FRPrVUbNw5ySHopOpHQ)
-
-### 技术要点篇
-
-- 代更
-
-### 常见面试题
-
-- 待更
 
 ## 📞 联系我
 

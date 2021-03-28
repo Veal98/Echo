@@ -203,7 +203,6 @@ public class UserService implements CommunityConstant {
         loginTicket.setStatus(0); // 设置凭证状态为有效（当用户登出的时候，设置凭证状态为无效）
         loginTicket.setExpired(new Date(System.currentTimeMillis() + expiredSeconds * 1000)); // 设置凭证到期时间
 
-        // loginTicketMapper.insertLoginTicket(loginTicket);
         // 将登录凭证存入 redis
         String redisKey = RedisKeyUtil.getTicketKey(loginTicket.getTicket());
         redisTemplate.opsForValue().set(redisKey, loginTicket);
@@ -260,6 +259,7 @@ public class UserService implements CommunityConstant {
         User user = userMapper.selectById(userId);
         // 重新加盐加密
         newPassword = CommunityUtil.md5(newPassword + user.getSalt());
+        clearCache(userId);
         return userMapper.updatePassword(userId, newPassword);
     }
 

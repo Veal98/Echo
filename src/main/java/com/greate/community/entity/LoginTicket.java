@@ -6,9 +6,9 @@ public class LoginTicket {
 
     private int id;
     private int userId;
-    private String ticket;
-    private int status;
-    private Date expired;
+    private String ticket; // 凭证
+    private int status; // 状态（是否有效）
+    private Date expired; // 过期时间
 
     public int getId() {
         return id;
