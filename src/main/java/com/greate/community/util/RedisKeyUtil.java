@@ -30,7 +30,7 @@ public class RedisKeyUtil {
     }
 
     /**
-     * 某个用户的获赞
+     * 某个用户的获赞数量
      * like:user:userId -> int
      * @param userId 获赞用户的 id
      * @return
