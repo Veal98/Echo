@@ -67,7 +67,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 ### 部署篇
 
-- [Echo 在 Windows 环境下的部署](https://mp.weixin.qq.com/s/ZgYGqLB5_rfCXNrW9jqgtQ)
+- [修订版 | Echo 在 Windows 环境下的部署](https://mp.weixin.qq.com/s/VAtpaXvYJ7mDPmez0QV3ww)
 - [Echo 在 Linux 服务器上的部署](https://mp.weixin.qq.com/s/q9X5sJv7mtPaSApZB0PxPA)
 
 ### 业务逻辑篇
