@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="shortcut icon" th:href="@{/img/favicon.ico}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/editor-md/examples/css/style.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/editor-md/css/editormd.css}" />
+
+    <title>Echo - 发布文章</title>
+</head>
+
+<body>
+    <div class="nk-container">
+
+        <div id="layout">
+            <header>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="recipient-name" placeholder="输入文章标题..."
+                    style = "font-size: 24px; font-weight: 500;">
+                </div>
+            </header>
+
+            <div id="test-editormd">
+                <textarea class="form-control" id="message-text" style="display:none;">[TOC]
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+
+#### Editor.md directory
+
+    editor.md/
+            lib/
+            css/
+            scss/
+            tests/
+            fonts/
+            images/
+            plugins/
+            examples/
+            languages/
+            editormd.js
+            ...
+
+```html
+&lt;!-- English --&gt;
+&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
+
+&lt;!-- 繁體中文 --&gt;
+&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
+```
+                </textarea>
+            </div>
+
+            <div style="text-align: center">
+                <button type="button" class="btn btn-outline-secondary" id="backIndexBtn" >返回首页</button>
+                <button type="button" class="btn btn-outline-primary" id="publishBtn"
+                        style="color: rgb(119, 84, 223)">发布文章</button>
+
+            </div>
+
+            <!-- 提示框 -->
+            <div class="modal fade" id="hintModal" tabindex="-1" role="dialog" aria-labelledby="hintModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="hintModalLabel">提示</h5>
+                        </div>
+                        <div class="modal-body" id="hintBody"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script th:src="@{/js/jquery-3.1.0.min.js}"></script>
+    <script th:src="@{/editor-md/editormd.min.js}"></script>
+
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/global.js}"></script>
+    <script th:src="@{/js/discuss-publish.js}"></script>
+
+    <script type="text/javascript">
+        var testEditor;
+
+        $(function() {
+            testEditor = editormd("test-editormd", {
+                width   : "90%",
+                height  : 640,
+                syncScrolling : "single",
+                path    : "../editor-md/lib/",
+                saveHTMLToTextarea : true, // 这个配置，方便post提交表单
+
+                /**上传图片相关配置如下*/
+                imageUpload : true,
+                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL : "/discuss/uploadMdPic",//注意你后端的上传图片服务地址
+            });
+
+            /*
+            // or
+            testEditor = editormd({
+                id      : "test-editormd",
+                width   : "90%",
+                height  : 640,
+                path    : "../lib/"
+            });
+            */
+        });
+    </script>
+
+</body>
+</html>

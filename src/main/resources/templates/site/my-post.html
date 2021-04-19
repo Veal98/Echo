@@ -28,11 +28,12 @@
 						<li class="border-bottom pb-3 mt-4" th:each="map:${discussPosts}">
 							<div class="font-size-16 text-info">
 								<a th:href="@{|/discuss/detail/${map.post.id}|}" class="text-info" th:utext="${map.post.title}">文章标题</a>
-								<span class="text-right font-size-12 text-muted">
+								<br>
+								<div class="text-right font-size-12 text-muted">
 									赞 <i class="mr-3" th:text="${map.likeCount}"></i>
 									评论 <i class="mr-3" th:text="${map.post.commentCount}"></i>
 									发布于 <b th:text="${#dates.format(map.post.createTime,'yyyy-MM-dd HH:mm:ss')}"></b>
-								</span>
+								</div>
 							</div>
 						</li>
 					</ul>

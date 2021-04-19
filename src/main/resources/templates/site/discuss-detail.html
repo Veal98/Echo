@@ -56,7 +56,11 @@
 					</div>
 				</div>	
 				<!-- 正文 -->
-				<div class="mt-4 mb-3 content" th:utext="${post.content}"></div>
+				<div class="mt-4 mb-3 content" id="md-content">
+            		<textarea style="display:none;" th:utext="${post.content}"> </textarea>
+				</div>
+
+				<!--<div class="mt-4 mb-3 content" id = "md-content" ></div>-->
 			</div>
 			<!-- 回帖 -->
 			<div class="container mt-3">
@@ -187,5 +191,29 @@
 	<script th:src="@{/js/bootstrap.min.js}"></script>
 	<script th:src="@{/js/global.js}"></script>
 	<script th:src="@{/js/discuss.js}"></script>
+
+	<script th:src="@{/editor-md/lib/marked.min.js}"></script>
+	<script th:src="@{/editor-md/lib/prettify.min.js}"></script>
+	<script th:src="@{/editor-md/lib/raphael.min.js}"></script>
+	<script th:src="@{/editor-md/lib/underscore.min.js}"></script>
+	<script th:src="@{/editor-md/lib/sequence-diagram.min.js}"></script>
+	<script th:src="@{/editor-md/lib/flowchart.min.js}"></script>
+	<script th:src="@{/editor-md/lib/jquery.flowchart.min.js}"></script>
+	<script th:src="@{/editor-md/editormd.min.js}"></script>
+	<script type="text/javascript">
+		var testEditor;
+		$(function () {
+			testEditor = editormd.markdownToHTML("md-content", {
+				htmlDecode: "style,script,iframe",
+				emoji: true,
+				taskList: true,
+				tex: true, // 默认不解析
+				flowChart: true, // 默认不解析
+				sequenceDiagram: true, // 默认不解析
+				codeFold: true,
+			})
+		})
+	</script>
+
 </body>
 </html>

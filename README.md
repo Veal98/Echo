@@ -75,11 +75,12 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [Echo 的注册功能是怎么做的](https://mp.weixin.qq.com/s/SC2FRPrVUbNw5ySHopOpHQ)
 - [Echo 的登录认证和授权是怎么做的](https://mp.weixin.qq.com/s/DjGvuNYu5Fjvw3Gjha4ulw)
 - [Echo 的发帖操作是怎么做的](https://mp.weixin.qq.com/s/OsCd3Pcl6iq-0znh7PL3lg)
+- [Echo 的帖子列表与分页是怎么做的](https://mp.weixin.qq.com/s/R5CtsXaS9hIOOePxQZcZhg)
 - 未完待续
 
 ### 技术要点篇
 
-- 代更
+- 待更
 
 ### 常见面试题
 

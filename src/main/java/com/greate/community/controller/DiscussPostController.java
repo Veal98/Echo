@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 
 import java.util.*;
 
@@ -47,6 +48,26 @@ public class DiscussPostController implements CommunityConstant {
     private RedisTemplate redisTemplate;
 
     /**
+     * 进入帖子发布页
+     * @return
+     */
+    @GetMapping("/publish")
+    public String getPublishPage () {
+        return "/site/discuss-publish";
+    }
+
+    /**
+     * markdown 图片上传
+     * 功能尚未完成
+     * @return
+     */
+    @PostMapping("/uploadMdPic")
+    @ResponseBody
+    public String uploadMdPic() {
+        return null;
+    }
+
+    /**
      * 添加帖子（发帖）
      * @param title
      * @param content
@@ -54,7 +75,7 @@ public class DiscussPostController implements CommunityConstant {
      */
     @PostMapping("/add")
     @ResponseBody
-        public String addDiscussPost(String title, String content) {
+    public String addDiscussPost(String title, String content) {
         User user = hostHolder.getUser();
         if (user == null) {
             return CommunityUtil.getJSONString(403, "您还未登录");
@@ -93,6 +114,8 @@ public class DiscussPostController implements CommunityConstant {
     public String getDiscussPost(@PathVariable("discussPostId") int discussPostId, Model model, Page page) {
         // 帖子
         DiscussPost discussPost = discussPostService.findDiscussPostById(discussPostId);
+        String content = HtmlUtils.htmlUnescape(discussPost.getContent()); // 内容反转义，不然 markDown 格式无法显示
+        discussPost.setContent(content);
         model.addAttribute("post", discussPost);
         // 作者
         User user = userService.findUserById(discussPost.getUserId());

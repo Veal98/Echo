@@ -15,7 +15,26 @@
 	font-size: 14px;
 }
 
+.bg-gray {
+	background: rgb(238, 238, 238) !important;
+	border-radius: 20px;
+}
+
 .input-size {
 	width: 100%;
 	height: 35px;
+}
+
+/*防止帖子内容超出页面*/
+.mt-4, .my-4 {
+	margin-top: 1.5rem!important;
+	word-wrap: break-word;
+	word-break: normal;
+}
+
+/*防止评论内容超出页面*/
+.media-body {
+	-ms-flex: 1;
+	flex: 1;
+	width: 80%;
 }

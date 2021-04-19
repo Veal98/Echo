@@ -1,0 +1,5 @@
+.mt-1, .my-1 {
+    margin-top: .25rem!important;
+    word-wrap: break-word;
+    word-break: normal;
+}

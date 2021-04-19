@@ -27,13 +27,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // 对除静态资源外所有路径进行拦截
         registry.addInterceptor(loginTicketInterceptor)
-                .excludePathPatterns("/css/**", "/js/**", "/img/**");
+                .excludePathPatterns("/css/**", "/js/**", "/img/**", "/editor-md/**");
 
         registry.addInterceptor(messageInterceptor)
-                .excludePathPatterns("/css/**", "/js/**", "/img/**");
+                .excludePathPatterns("/css/**", "/js/**", "/img/**", "/editor-md/**");
 
         registry.addInterceptor(dataInterceptor)
-                .excludePathPatterns("/css/**", "/js/**", "/img/**");
+                .excludePathPatterns("/css/**", "/js/**", "/img/**", "/editor-md/**");
     }
 
 }

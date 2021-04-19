@@ -117,6 +117,7 @@ footer .company-info li {
 .main .container {
 	background: #fff;
 	padding: 20px;
+	box-shadow: 5px 16px 23px 5px #cfcccc;
 }
 
 i {
