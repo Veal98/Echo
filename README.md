@@ -56,7 +56,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 <img width="220px" src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png"  />
 
-并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已累积 1.5k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向。
+并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已累积 1.6k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向。
 
 ### 序章
 
@@ -76,14 +76,28 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [Echo 的登录认证和授权是怎么做的](https://mp.weixin.qq.com/s/DjGvuNYu5Fjvw3Gjha4ulw)
 - [Echo 的发帖操作是怎么做的](https://mp.weixin.qq.com/s/OsCd3Pcl6iq-0znh7PL3lg)
 - [Echo 的帖子列表与分页是怎么做的](https://mp.weixin.qq.com/s/R5CtsXaS9hIOOePxQZcZhg)
+- [Echo 的评论是如何显示的](https://mp.weixin.qq.com/s/0avudnypPu3EewzoU3sEwA)
+- Echo 的评论发表与回复是怎么做的
+- Echo 的私信列表与详情页是怎么做的
+- Echo 的发送私信是怎么做的
+- Echo 的点赞模块是怎么做的
+- Echo 的关注模块是怎么做的
+- Echo 的发送系统通知是怎么做的
+- Echo 的系统通知是如何显示的
+- Echo 的置顶、加精、删除帖子是怎么做的
+- Echo 是如何统计网站数据的
+- Echo 的搜索模块是怎么做的
 - 未完待续
 
 ### 技术要点篇
 
+- Echo 的敏感词过滤是如何实现的（前缀树）
+- Echo 中为什么要用 ThreadLocal 代替 Session
 - 待更
 
 ### 常见面试题
 
+- Echo 真实大厂面试经历，我的暑期实习总结
 - 待更
 
 ## 💻 核心技术栈
@@ -416,7 +430,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - 若 A 关注了 B，则 A 是 B 的粉丝 Follower，B 是 A 的目标 Followee
 - 关注的目标可以是用户、帖子、题目等，在实现时将这些目标抽象为实体（目前只做了关注用户）
 
-将某个用户关注的实体相关信息存储在 Redis 的数据结构 zset 中：key 是 `followee:userId:entityType` ，对应的 value 是 `zset(entityId, now)` ，以关注的时间进行排序。比如说 `followee:111:3` 对应的value `(20, 2020-02-03-xxxx)`，表明用户 111 关注了实体类型为 3 即人(用户)，该帖子的 id 是 20，关注该帖子的时间是 2020-02-03-xxxx
+将某个用户关注的实体相关信息存储在 Redis 的数据结构 zset 中：key 是 `followee:userId:entityType` ，对应的 value 是 `zset(entityId, now)` ，以关注的时间进行排序。比如说 `followee:111:3` 对应的value `(20, 2020-02-03-xxxx)`，表明用户 111 关注了一个类型为 3 的实体即人(用户)，关注的这个实体 id 是 20，关注该实体的时间是 2020-02-03-xxxx
 
 同样的，将某个实体拥有的粉丝相关信息也存储在 Redis 的数据结构 zset 中：key 是 `follower:entityType:entityId`，对应的 value 是 `zset(userId, now)`，以关注的时间进行排序
 
@@ -495,7 +509,7 @@ double score = Math.log10(Math.max(w, 1))
 
 ## 👏 鸣谢
 
-博主水平有限，本项目参考[牛客网](https://www.nowcoder.com/) — Java 高级工程师课程，感谢老师和平台。
+博主水平有限，尚未拥有良好的架构能力，本项目大部参考[牛客网](https://www.nowcoder.com/)的付费 Java 高级工程师课程，在此感谢老师和平台。
 
 另外，若发现 Bug 或好的想法可以积极与我联系或提 PR / issue，采纳后您将出现在下方列表中。感谢以下小伙伴对本项目做出的贡献，排名按照时间先后：
 
