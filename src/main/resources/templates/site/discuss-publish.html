@@ -20,15 +20,17 @@
         <div id="layout">
             <header>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="recipient-name" placeholder="输入文章标题..."
-                    style = "font-size: 24px; font-weight: 500;">
+                    <input type="text" class="form-control" style = "font-size: 24px; font-weight: 500;"
+                           id="recipient-name" placeholder="输入文章标题..." required>
                 </div>
             </header>
 
             <div id="test-editormd">
-                <textarea class="form-control" id="message-text" style="display:none;">[TOC]
+                <textarea class="form-control" id="message-text" style="display:none;">
 
-#### Disabled options
+#### Welcome to Echo
+
+> Examples
 
 - TeX (Based on KaTeX);
 - Emoji;
@@ -38,18 +40,11 @@
 
 #### Editor.md directory
 
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/
-            editormd.js
-            ...
+```java
+public static void main(String[] args) {
+    System.out.println("Hello World!");
+}
+```
 
 ```html
 &lt;!-- English --&gt;
@@ -101,23 +96,25 @@
                 height  : 640,
                 syncScrolling : "single",
                 path    : "../editor-md/lib/",
-                saveHTMLToTextarea : true, // 这个配置，方便post提交表单
+                saveHTMLToTextarea : true, // 这个配置，方便 post 提交表单
 
                 /**上传图片相关配置如下*/
                 imageUpload : true,
                 imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                imageUploadURL : "/discuss/uploadMdPic",//注意你后端的上传图片服务地址
+                imageUploadURL : CONTEXT_PATH + "/discuss/uploadMdPic",// 后端上传图片的服务地址
+                onload : function() {
+                    //console.log('onload', this);
+                    //this.fullscreen();
+                    //this.unwatch();
+                    //this.watch().fullscreen();
+
+                    //this.setMarkdown("#PHP");
+                    //this.width("100%");
+                    //this.height(480);
+                    //this.resize("100%", 640);
+                }
             });
 
-            /*
-            // or
-            testEditor = editormd({
-                id      : "test-editormd",
-                width   : "90%",
-                height  : 640,
-                path    : "../lib/"
-            });
-            */
         });
     </script>
 

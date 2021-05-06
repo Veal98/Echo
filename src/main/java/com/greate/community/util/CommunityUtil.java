@@ -60,6 +60,15 @@ public class CommunityUtil {
         return getJSONString(code, null, null);
     }
 
+    // editor.md 要求返回的 JSON 字符串格式
+    public static String getEditorMdJSONString(int success, String message, String url) {
+        JSONObject json = new JSONObject();
+        json.put("success", success);
+        json.put("message", message);
+        json.put("url", url);
+        return json.toJSONString();
+    }
+
     /**
      * 测试
      * @param args

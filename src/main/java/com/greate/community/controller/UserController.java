@@ -76,15 +76,15 @@ public class UserController implements CommunityConstant {
     public String getSettingPage(Model model) {
         // 生成上传文件的名称
         String fileName = CommunityUtil.generateUUID();
+        model.addAttribute("fileName", fileName);
+
         // 设置响应信息(qiniu 的规定写法)
         StringMap policy = new StringMap();
         policy.put("returnBody", CommunityUtil.getJSONString(0));
         // 生成上传到 qiniu 的凭证(qiniu 的规定写法)
         Auth auth = Auth.create(accessKey, secretKey);
         String uploadToken = auth.uploadToken(headerBucketName, fileName, 3600, policy);
-
         model.addAttribute("uploadToken", uploadToken);
-        model.addAttribute("fileName", fileName);
 
         return "/site/setting";
     }

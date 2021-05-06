@@ -10,13 +10,21 @@ import com.greate.community.util.CommunityConstant;
 import com.greate.community.util.CommunityUtil;
 import com.greate.community.util.HostHolder;
 import com.greate.community.util.RedisKeyUtil;
+import com.qiniu.util.Auth;
+import com.qiniu.util.StringMap;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.HtmlUtils;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.*;
 
 /**
@@ -47,6 +55,30 @@ public class DiscussPostController implements CommunityConstant {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    // 网站域名
+    @Value("${community.path.domain}")
+    private String domain;
+
+    // 项目名(访问路径)
+    @Value("${server.servlet.context-path}")
+    private String contextPath;
+
+    @Value("${qiniu.key.access}")
+    private String accessKey;
+
+    @Value("${qiniu.key.secret}")
+    private String secretKey;
+
+    @Value("${qiniu.bucket.header.name}")
+    private String headerBucketName;
+
+    @Value("${qiniu.bucket.header.url}")
+    private String headerBucketUrl;
+
+    // editorMd 图片上传地址
+    @Value("${community.path.editormdUploadPath}")
+    private String editormdUploadPath;
+
     /**
      * 进入帖子发布页
      * @return
@@ -58,13 +90,37 @@ public class DiscussPostController implements CommunityConstant {
 
     /**
      * markdown 图片上传
-     * 功能尚未完成
+     * @param file
      * @return
      */
     @PostMapping("/uploadMdPic")
     @ResponseBody
-    public String uploadMdPic() {
-        return null;
+    public String uploadMdPic(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file) {
+
+        String url = null; // 图片访问地址
+        try {
+            // 获取上传文件的名称
+            String trueFileName = file.getOriginalFilename();
+            String suffix = trueFileName.substring(trueFileName.lastIndexOf("."));
+            String fileName = CommunityUtil.generateUUID() + suffix;
+
+            // 图片存储路径
+            File dest = new File(editormdUploadPath + "/" + fileName);
+            if (!dest.getParentFile().exists()) {
+                dest.getParentFile().mkdirs();
+            }
+
+            // 保存图片到存储路径
+            file.transferTo(dest);
+
+            // 图片访问地址
+            url = domain + contextPath + "/editor-md-upload/" + fileName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return CommunityUtil.getEditorMdJSONString(0, "上传失败", url);
+        }
+
+        return CommunityUtil.getEditorMdJSONString(1, "上传成功", url);
     }
 
     /**

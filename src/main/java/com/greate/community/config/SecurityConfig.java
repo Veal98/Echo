@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Comm
                     "/user/setting",
                         "/user/upload",
                         "/discuss/add",
+                        "/discuss/publish",
                         "/comment/add/**",
                         "/letter/**",
                         "/notice/**",
@@ -119,5 +120,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Comm
         // Security 底层会默认拦截 /logout 请求，进行退出处理
         // 此处赋予它一个根本不存在的退出路径，使得程序能够执行到我们自己编写的退出代码
         http.logout().logoutUrl("/securitylogout");
+
+        http.headers().frameOptions().sameOrigin();
     }
 }

@@ -10,11 +10,12 @@
 
 <div align="center">
 
+
 [![star](https://gitee.com/veal98/Echo/badge/star.svg?theme=dark)](https://gitee.com/veal98/Echo/stargazers)
 [![fork](https://gitee.com/veal98/Echo/badge/fork.svg?theme=dark)](https://gitee.com/veal98/Echo/members)
 [![GitHub stars](https://img.shields.io/github/stars/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/network)
-[![version](https://img.shields.io/badge/version-1.0-brightgreen)]()
+[![version](https://img.shields.io/badge/version-2.0-brightgreen)]()
 
 <a href="#-微信交流群"><img src="https://img.shields.io/badge/交流-微信群-orange" alt="交流群"></a>
 <a href="#-配套教程"><img src="https://img.shields.io/badge/配套教程-公众号飞天小牛肉-blueviolet" alt="配套教程"></a>
@@ -22,7 +23,7 @@
 
 </div>
 
-> 项目上线到服务器之后可能会出现各种各样的 BUG，比如 Elasticsearch 服务启动失败导致搜索模块不可用，但是在本地运行是完全没问题的，所以各位小伙伴可以放心下载部署。
+> 云服务器到期了，暂时不准备续费，未上手的小伙伴可以看下面的界面展示了解本项目，所有代码在我本机上都是正常运行的，各位可以参考配套教程自己拉下去部署，并欢迎加群讨论技术问题。
 
 ## 📚 项目简介
 
@@ -33,22 +34,10 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)（Gitee 官方推荐项目）
 - Github：[https://github.com/Veal98/Echo](https://github.com/Veal98/Echo)
 
-**在线体验**：项目已经部署到<u>腾讯云</u>服务器，各位小伙伴们可直接线上体验：[http://1.15.127.74/](http://1.15.127.74/)。已内置三种不同身份的用户：
-
-> **各位请不要修改这三种内置角色的密码**，默认注册的用户是普通用户，您修改了密码后其他小伙伴就没法体验管理员和版主角色了。若想要测试修改密码功能，可以自己重新注册个用户，注意填写真实邮箱，否则无法接收激活邮件并激活角色。感谢各位的配合 ~
->
-> 另外，为防止**恶意修改密码**行为，若遇上管理员和版主角色登录失败的情况，可以下方扫码关注公众号【飞天小牛肉】回复 `备用角色` 获取**备用登录用户名和密码**。
-
-|          | username | password |      特殊权限      |
-| :------: | :------: | :------: | :----------------: |
-|  管理员  |  admin   |  admin   | 数据统计、删除帖子 |
-|   版主   |  master  |  master  | 置顶帖子、加精帖子 |
-| 普通用户 |   user   |   user   |                    |
-
 **文档地址**：文档通过 <u>Docsify + Github/Gitee Pages</u> 生成
 
-- Github Pages：[https://veal98.github.io/Echo](https://veal98.github.io/Echo)
 - Gitee Pages：[https://veal98.gitee.io/echo](https://veal98.gitee.io/echo)
+- Github Pages：[https://veal98.github.io/Echo](https://veal98.github.io/Echo)
 
 ## 📖 配套教程
 
@@ -77,7 +66,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [Echo 的发帖操作是怎么做的](https://mp.weixin.qq.com/s/OsCd3Pcl6iq-0znh7PL3lg)
 - [Echo 的帖子列表与分页是怎么做的](https://mp.weixin.qq.com/s/R5CtsXaS9hIOOePxQZcZhg)
 - [Echo 的评论是如何显示的](https://mp.weixin.qq.com/s/0avudnypPu3EewzoU3sEwA)
-- Echo 的评论发表与回复是怎么做的
+- [Echo 的发布评论是怎么做的](https://mp.weixin.qq.com/s/S5bNpzuZFga2u15ik2t2iQ)
 - Echo 的私信列表与详情页是怎么做的
 - Echo 的发送私信是怎么做的
 - Echo 的点赞模块是怎么做的

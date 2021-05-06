@@ -1,6 +1,6 @@
 ![Logo](https://gitee.com/veal98/images/raw/master/img/20210211175136.png)
 
-# Echo <small>1.0</small>
+# Echo <small>2.0</small>
 
 > 🦄 开源社区系统
 

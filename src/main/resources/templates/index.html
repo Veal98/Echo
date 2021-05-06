@@ -84,11 +84,13 @@
 <!--					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0"-->
 <!--							data-toggle="modal" data-target="#publishModal"-->
 <!--							th:if="${loginUser != null}"><i class="bi bi-plus-square"></i> 我要发布</button>-->
-					<a class="bi bi-plus-square" th:href="@{/discuss/publish}">
-						<button type="button" class="btn btn-primary btn-sm position-absolute rt-0"
-							data-toggle="modal"
-							th:if="${loginUser != null}"><i class="bi bi-plus-square"></i> 我要发布</button>
+
+					<a th:href="@{/discuss/publish}" th:if="${loginUser != null}">
+						<button type="button" class="btn btn-primary btn-sm position-absolute rt-0">
+							<i class="bi bi-plus-square"></i> 我要发布
+						</button>
 					</a>
+
 				</div>
 				<!-- 弹出框 -->
 <!--				<div class="modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="publishModalLabel" aria-hidden="true">-->

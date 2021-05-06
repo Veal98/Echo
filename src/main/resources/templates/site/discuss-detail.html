@@ -9,6 +9,8 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/discuss-detail.css}" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+	<link rel="stylesheet" type="text/css" th:href="@{/editor-md/css/editormd.css}" />
 	<title>Echo - 帖子详情</title>
 </head>
 <body>
@@ -57,7 +59,7 @@
 				</div>	
 				<!-- 正文 -->
 				<div class="mt-4 mb-3 content" id="md-content">
-            		<textarea style="display:none;" th:utext="${post.content}"> </textarea>
+            		<textarea style="display:none;" th:utext="${post.content}"></textarea>
 				</div>
 
 				<!--<div class="mt-4 mb-3 content" id = "md-content" ></div>-->
@@ -210,7 +212,7 @@
 				tex: true, // 默认不解析
 				flowChart: true, // 默认不解析
 				sequenceDiagram: true, // 默认不解析
-				codeFold: true,
+				codeFold: true
 			})
 		})
 	</script>
