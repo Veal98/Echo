@@ -10,4 +10,4 @@
 
 [Gitee](https://gitee.com/veal98/Echo)
 [GitHub](https://github.com/Veal98/Echo)
-[Get Started](#echo-开源社区系统)
+[Get Started](#📚-项目简介)
