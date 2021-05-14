@@ -40,7 +40,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [Echo 的帖子列表与分页是怎么做的](https://mp.weixin.qq.com/s/R5CtsXaS9hIOOePxQZcZhg)
 - [Echo 的评论是如何显示的](https://mp.weixin.qq.com/s/0avudnypPu3EewzoU3sEwA)
 - [Echo 的发布评论是怎么做的](https://mp.weixin.qq.com/s/S5bNpzuZFga2u15ik2t2iQ)
-- Echo 的私信列表与详情页是怎么做的
+- [Echo 的私信列表与详情页是怎么做的](https://mp.weixin.qq.com/s/ymYrAsJoilO531lilwdmfg)
 - Echo 的发送私信是怎么做的
 - Echo 的点赞模块是怎么做的
 - Echo 的关注模块是怎么做的
@@ -107,6 +107,14 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 登录页：
 
 ![](https://gitee.com/veal98/images/raw/master/img/20210211205558.png)
+
+帖子发布页（支持 MarkDown）：
+
+![](https://gitee.com/veal98/images/raw/master/img/20210512101041.png)
+
+帖子详情页（MarkDown 渲染）：
+
+![](https://gitee.com/veal98/images/raw/master/img/20210512101202.png)
 
 帖子详情页：
 
@@ -477,6 +485,7 @@ double score = Math.log10(Math.max(w, 1))
 
 - [freedom_dh](https://gitee.com/dh_free)
 - [paulisusu](https://gitee.com/paulisusu)
+- [Max (Lyingfromyou)](https://gitee.com/Lyingfromyou)
 
 > 🔗 友情链接（若您想要出现在这里，可以上方扫描微信二维码联系我）：
 >

@@ -10,9 +10,6 @@ import com.greate.community.util.CommunityConstant;
 import com.greate.community.util.CommunityUtil;
 import com.greate.community.util.HostHolder;
 import com.greate.community.util.RedisKeyUtil;
-import com.qiniu.util.Auth;
-import com.qiniu.util.StringMap;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -22,8 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.HtmlUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.*;
 
@@ -62,18 +57,6 @@ public class DiscussPostController implements CommunityConstant {
     // 项目名(访问路径)
     @Value("${server.servlet.context-path}")
     private String contextPath;
-
-    @Value("${qiniu.key.access}")
-    private String accessKey;
-
-    @Value("${qiniu.key.secret}")
-    private String secretKey;
-
-    @Value("${qiniu.bucket.header.name}")
-    private String headerBucketName;
-
-    @Value("${qiniu.bucket.header.url}")
-    private String headerBucketUrl;
 
     // editorMd 图片上传地址
     @Value("${community.path.editormdUploadPath}")
@@ -251,8 +234,8 @@ public class DiscussPostController implements CommunityConstant {
      */
     @PostMapping("/top")
     @ResponseBody
-    public String setTop(int id) {
-        discussPostService.updateType(id, 1);
+    public String updateTop(int id, int type) {
+        discussPostService.updateType(id, type);
 
         // 触发发帖事件，通过消息队列将其存入 Elasticsearch 服务器
         Event event = new Event()

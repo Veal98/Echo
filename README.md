@@ -15,7 +15,7 @@
 [![fork](https://gitee.com/veal98/Echo/badge/fork.svg?theme=dark)](https://gitee.com/veal98/Echo/members)
 [![GitHub stars](https://img.shields.io/github/stars/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/network)
-[![version](https://img.shields.io/badge/version-2.0-brightgreen)]()
+[![version](https://img.shields.io/badge/version-2.1-brightgreen)]()
 
 <a href="#-微信交流群"><img src="https://img.shields.io/badge/交流-微信群-orange" alt="交流群"></a>
 <a href="#-配套教程"><img src="https://img.shields.io/badge/配套教程-公众号飞天小牛肉-blueviolet" alt="配套教程"></a>
@@ -67,7 +67,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [Echo 的帖子列表与分页是怎么做的](https://mp.weixin.qq.com/s/R5CtsXaS9hIOOePxQZcZhg)
 - [Echo 的评论是如何显示的](https://mp.weixin.qq.com/s/0avudnypPu3EewzoU3sEwA)
 - [Echo 的发布评论是怎么做的](https://mp.weixin.qq.com/s/S5bNpzuZFga2u15ik2t2iQ)
-- Echo 的私信列表与详情页是怎么做的
+- [Echo 的私信列表与详情页是怎么做的](https://mp.weixin.qq.com/s/ymYrAsJoilO531lilwdmfg)
 - Echo 的发送私信是怎么做的
 - Echo 的点赞模块是怎么做的
 - Echo 的关注模块是怎么做的
@@ -135,9 +135,19 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 ![](https://gitee.com/veal98/images/raw/master/img/20210211205558.png)
 
+帖子发布页（支持 MarkDown）：
+
+![](https://gitee.com/veal98/images/raw/master/img/20210512101041.png)
+
+帖子详情页（MarkDown 渲染）：
+
+![](https://gitee.com/veal98/images/raw/master/img/20210512101202.png)
+
 帖子详情页：
 
 ![](https://gitee.com/veal98/images/raw/master/img/20210211205741.png)
+
+
 
 个人主页：
 
@@ -262,7 +272,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 以下是我觉得本项目还可以添加的功能，同样欢迎各位小伙伴提 issue 指出还可以增加哪些功能，或者直接提 PR 实现该功能：
 
-- [ ] 发帖支持 Markdown 格式
+- [x] 发帖支持 Markdown 格式
 - [ ] 忘记密码（发送邮件找回密码）
 - [ ] 查询我的点赞
 - [ ] 管理员对帖子的二次点击取消置顶功能
@@ -504,6 +514,7 @@ double score = Math.log10(Math.max(w, 1))
 
 - [freedom_dh](https://gitee.com/dh_free)
 - [paulisusu](https://gitee.com/paulisusu)
+- [Max (Lyingfromyou)](https://gitee.com/Lyingfromyou)
 
 > 🔗 友情链接（若您想要出现在这里，可以上方扫描微信二维码联系我）：
 >

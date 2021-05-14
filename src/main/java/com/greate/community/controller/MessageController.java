@@ -40,6 +40,8 @@ public class MessageController implements CommunityConstant {
     @GetMapping("/letter/list")
     public String getLetterList(Model model, Page page) {
         // Integer.valueOf("abc"); // 测试统一异常处理（普通请求）
+
+        // 获取当前登录用户信息
         User user = hostHolder.getUser();
         // 分页信息
         page.setLimit(5);
@@ -114,7 +116,6 @@ public class MessageController implements CommunityConstant {
         }
 
         return "/site/letter-detail";
-
     }
 
     /**

@@ -1,5 +1,5 @@
 $(function(){
-    $("#topBtn").click(setTop);
+    $("#topBtn").click(updateTop);
     $("#wonderfulBtn").click(setWonderful);
     $("#deleteBtn").click(setDelete);
 });
@@ -23,16 +23,20 @@ function like(btn, entityType, entityId, entityUserId, postId) {
     )
 }
 
-// 置顶
-function setTop() {
+// 置顶 or 取消置顶
+function updateTop() {
     $.post(
         CONTEXT_PATH + "/discuss/top",
-        {"id":$("#postId").val()},
+        {
+            "id": $("#postId").val(),
+            // $("#postType").val() 帖子当前的 type
+            "type": ($("#postType").val() == 1) ? 0 : 1
+        },
         function (data) {
             data = $.parseJSON(data);
             if (data.code == 0) {
-                // 置顶成功后，将置顶按钮设置为不可用
-                $("#topBtn").attr("disabled", "disable")
+                // 偷个懒，直接刷新界面
+                window.location.reload();
             }
             else {
                 alert(data.msg);

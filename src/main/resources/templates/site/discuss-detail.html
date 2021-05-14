@@ -28,8 +28,11 @@
 					<span th:utext="${post.title}"></span>
 					<div class="float-right">
 						<input type="hidden" id="postId" th:value="${post.id}">
-						<button type="button" class="btn btn-danger btn-sm" id="topBtn"
-						 		th:disabled="${post.type == 1}" sec:authorize="hasAnyAuthority('moderator')">置顶</button>
+						<input type="hidden" id="postType" th:value="${post.type}">
+						<button type="button" th:class="|btn ${post.type == 0 ? 'btn-danger' : 'btn-info'}  btn-sm|" id="topBtn"
+						 		th:text="${post.type == 0 ? '置顶' : '取消置顶'}"
+								sec:authorize="hasAnyAuthority('moderator')">
+						</button>
 						<button type="button" class="btn btn-danger btn-sm" id="wonderfulBtn"
 								th:disabled="${post.status == 1}" sec:authorize="hasAnyAuthority('moderator')">加精</button>
 						<button type="button" class="btn btn-danger btn-sm" id="deleteBtn"
