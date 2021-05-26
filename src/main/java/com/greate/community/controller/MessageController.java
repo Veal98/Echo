@@ -187,7 +187,6 @@ public class MessageController implements CommunityConstant {
         messageService.addMessage(message);
 
         return CommunityUtil.getJSONString(0);
-
     }
 
     /**

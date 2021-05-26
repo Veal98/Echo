@@ -41,7 +41,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [Echo 的评论是如何显示的](https://mp.weixin.qq.com/s/0avudnypPu3EewzoU3sEwA)
 - [Echo 的发布评论是怎么做的](https://mp.weixin.qq.com/s/S5bNpzuZFga2u15ik2t2iQ)
 - [Echo 的私信列表与详情页是怎么做的](https://mp.weixin.qq.com/s/ymYrAsJoilO531lilwdmfg)
-- Echo 的发送私信是怎么做的
+- [Echo 的发送私信是怎么做的](https://mp.weixin.qq.com/s/gLn5VXegsip5Od5gx52iUA)
 - Echo 的点赞模块是怎么做的
 - Echo 的关注模块是怎么做的
 - Echo 的发送系统通知是怎么做的

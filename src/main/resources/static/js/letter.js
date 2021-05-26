@@ -27,8 +27,6 @@ function send_letter() {
 			}, 2000);
 		}
 	)
-
-
 }
 
 function delete_msg() {
