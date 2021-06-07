@@ -42,7 +42,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [Echo 的发布评论是怎么做的](https://mp.weixin.qq.com/s/S5bNpzuZFga2u15ik2t2iQ)
 - [Echo 的私信列表与详情页是怎么做的](https://mp.weixin.qq.com/s/ymYrAsJoilO531lilwdmfg)
 - [Echo 的发送私信是怎么做的](https://mp.weixin.qq.com/s/gLn5VXegsip5Od5gx52iUA)
-- Echo 的点赞模块是怎么做的
+- [Echo 的点赞模块是怎么做的](https://mp.weixin.qq.com/s/lzPp5XeATTlHOCc8p5MF_w)
 - Echo 的关注模块是怎么做的
 - Echo 的发送系统通知是怎么做的
 - Echo 的系统通知是如何显示的
@@ -243,10 +243,10 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 以下是我觉得本项目还可以添加的功能，同样欢迎各位小伙伴提 issue 指出还可以增加哪些功能，或者直接提 PR 实现该功能：
 
-- [ ] 发帖支持 Markdown 格式
+- [x] 发帖支持 Markdown 格式
 - [ ] 忘记密码（发送邮件找回密码）
 - [ ] 查询我的点赞
-- [ ] 管理员对帖子的二次点击取消置顶功能
+- [x] 管理员对帖子的二次点击取消置顶功能
 - [ ] 管理员对已删除帖子的恢复功能（本项目中的删除帖子并未将其从数据库中删除，只是将其状态设置为了拉黑）
 
 ## 🌱 本地运行
