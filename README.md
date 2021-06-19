@@ -70,7 +70,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [Echo 的私信列表与详情页是怎么做的](https://mp.weixin.qq.com/s/ymYrAsJoilO531lilwdmfg)
 - [Echo 的发送私信是怎么做的](https://mp.weixin.qq.com/s/gLn5VXegsip5Od5gx52iUA)
 - [Echo 的点赞模块是怎么做的](https://mp.weixin.qq.com/s/lzPp5XeATTlHOCc8p5MF_w)
-- Echo 的关注模块是怎么做的
+- [Echo 的关注模块是怎么做的](https://mp.weixin.qq.com/s/dx2jBqlUnhep7O6oknR5cg)
 - Echo 的发送系统通知是怎么做的
 - Echo 的系统通知是如何显示的
 - Echo 的置顶、加精、删除帖子是怎么做的
