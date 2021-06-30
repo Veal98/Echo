@@ -20,6 +20,11 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已累积 1.6k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向。
 
+### 面试小抄
+
+- [关于 Echo 项目该如何写在简历上](https://mp.weixin.qq.com/s/AEfoOGJyHk6o3-vw9CgScA)
+- 待更
+
 ### 序章
 
 - [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
@@ -55,11 +60,6 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 - Echo 的敏感词过滤是如何实现的（前缀树）
 - Echo 中为什么要用 ThreadLocal 代替 Session
-- 待更
-
-### 常见面试题
-
-- Echo 真实大厂面试经历，我的暑期实习总结
 - 待更
 
 ## 💻 核心技术栈
