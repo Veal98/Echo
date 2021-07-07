@@ -318,4 +318,69 @@ public class UserService implements CommunityConstant {
         return list;
     }
 
+
+    /**
+     * 发送邮箱验证码
+     * @param account 账户名, 目前是用户名
+     *
+     * @return Map<String, Object> 返回错误提示消息，如果返回的 map 为空，则说明发送验证码成功
+     */
+    public Map<String, Object> doSendEmailCode4ResetPwd(String account) {
+        Map<String, Object> map = new HashMap<>(2);
+        User user = userMapper.selectByName(account);
+        if (user == null) {
+            map.put("errMsg", "未发现账号");
+            return map;
+        }
+        final String email = user.getEmail();
+        if (StringUtils.isBlank(email)) {
+            map.put("errMsg", "该账号未绑定邮箱");
+            return map;
+        }
+
+        // 生成6位验证码
+        String randomCode = CommunityUtil.getRandomCode(6);
+        // 给注册用户发送激活邮件
+        Context context = new Context();
+        context.setVariable("email", "您的验证码是 " + randomCode);
+        // http://localhost:8080/echo/activation/用户id/激活码
+        String url = domain + contextPath + "/activation/" + user.getId() + "/" + user.getActivationCode();
+        context.setVariable("url", url);
+        String content = templateEngine.process("/mail/activation", context);
+        mailClient.sendMail(email,"重置 Echo 账号密码", content);
+
+        final String redisKey = "EmailCode4ResetPwd:" + account;
+
+        redisTemplate.opsForValue().set(redisKey, randomCode, 600, TimeUnit.SECONDS);
+        return map;
+    }
+
+    /**
+     * 发送邮箱验证码
+     * @param account 账户名, 目前是用户名
+     *
+     * @return Map<String, Object> 返回错误提示消息，如果返回的 map 为空，则说明发送验证码成功
+     */
+    public Map<String, Object> doResetPwd(String account, String password) {
+        Map<String, Object> map = new HashMap<>(2);
+        if (StringUtils.isBlank(password)) {
+            map.put("errMsg", "密码不能为空");
+            return map;
+        }
+        User user = userMapper.selectByName(account);
+        if (user == null) {
+            map.put("errMsg", "未发现账号");
+            return map;
+        }
+        final String passwordEncode = CommunityUtil.md5(password + user.getSalt());
+        int i = userMapper.updatePassword(user.getId(), passwordEncode);
+        if (i <= 0) {
+            map.put("errMsg", "修改数据库密码错误");
+        } else {
+            clearCache(user.getId());
+        }
+        return map;
+    }
+
+
 }

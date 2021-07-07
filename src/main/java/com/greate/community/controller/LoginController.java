@@ -23,6 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -62,6 +64,14 @@ public class LoginController implements CommunityConstant {
     @GetMapping("/login")
     public String getLoginPage() {
         return "site/login";
+    }
+
+    /**
+     * 进入重置密码界面
+     */
+    @GetMapping("/resetPwd")
+    public String getResetPwdPage() {
+        return "site/reset-pwd";
     }
 
     /**
@@ -145,6 +155,27 @@ public class LoginController implements CommunityConstant {
     }
 
     /**
+     * 验证用户输入的图片验证码是否和redis中存入的是否相等
+     *
+     * @param kaptchaOwner 从 cookie 中取出的 kaptchaOwner
+     * @param checkCode 用户输入的图片验证码
+     * @return 失败则返回原因, 验证成功返回 "",
+     */
+    private String checkKaptchaCode(String kaptchaOwner, String checkCode) {
+        if (StringUtils.isBlank(checkCode)) {
+            return "未发现输入的图片验证码";
+        }
+        String redisKey = RedisKeyUtil.getKaptchaKey(kaptchaOwner);
+        String kaptchaValue = (String) redisTemplate.opsForValue().get(redisKey);
+        if (StringUtils.isBlank(kaptchaValue)) {
+            return "图片验证码过期";
+        } else if (!kaptchaValue.equalsIgnoreCase(checkCode)) {
+            return "图片验证码错误";
+        }
+        return "";
+    }
+
+    /**
      * 用户登录
      * @param username 用户名
      * @param password 密码
@@ -205,5 +236,90 @@ public class LoginController implements CommunityConstant {
         SecurityContextHolder.clearContext();
         return "redirect:/login";
     }
+
+    /**
+     * 重置密码
+     */
+    @PostMapping("/resetPwd")
+    @ResponseBody
+    public Map<String, Object> resetPwd(@RequestParam("username") String username,
+                        @RequestParam("password") String password,
+                        @RequestParam("emailVerifyCode") String emailVerifyCode,
+                        @RequestParam("kaptchaCode") String kaptcha,
+                        Model model,
+                        @CookieValue("kaptchaOwner") String kaptchaOwner) {
+        Map<String, Object> map = new HashMap<>(4);
+        // 检查图片验证码
+        String kaptchaCheckRst = checkKaptchaCode(kaptchaOwner, kaptcha);
+        if (StringUtils.isNotBlank(kaptchaCheckRst)) {
+            map.put("status", "1");
+            map.put("errMsg", kaptchaCheckRst);
+        }
+        // 检查邮件验证码
+        String emailVerifyCodeCheckRst = checkRedisResetPwdEmailCode(username, emailVerifyCode);
+        if (StringUtils.isNotBlank(emailVerifyCodeCheckRst)) {
+            map.put("status", "1");
+            map.put("errMsg", emailVerifyCodeCheckRst);
+        }
+        // 执行重置密码操作
+        Map<String, Object> stringObjectMap = userService.doResetPwd(username, password);
+        String usernameMsg = (String) stringObjectMap.get("errMsg");
+        if (StringUtils.isBlank(usernameMsg)) {
+            map.put("status", "0");
+            map.put("msg", "重置密码成功!");
+            map.put("target", "/login");
+        }
+        return map;
+    }
+
+    /**
+     * 发送邮件验证码(用于重置密码)
+     *
+     * @param kaptchaOwner 从 cookie 中取出的 kaptchaOwner
+     * @param kaptcha 用户输入的图片验证码
+     * @param username 用户输入的需要找回的账号
+     */
+    @PostMapping("/sendEmailCodeForResetPwd")
+    @ResponseBody
+    public Map<String, Object> sendEmailCodeForResetPwd(Model model, @CookieValue("kaptchaOwner") String kaptchaOwner,
+                                                           @RequestParam("kaptcha") String kaptcha,
+                                                           @RequestParam("username") String username) {
+        Map<String, Object> map = new HashMap<>(3);
+        // 检查图片验证码
+        String kaptchaCheckRst = checkKaptchaCode(kaptchaOwner, kaptcha);
+        if (StringUtils.isNotBlank(kaptchaCheckRst)) {
+            map.put("status", "1");
+            map.put("errMsg", kaptchaCheckRst);
+        }
+        Map<String, Object> stringObjectMap = userService.doSendEmailCode4ResetPwd(username);
+        String usernameMsg = (String) stringObjectMap.get("errMsg");
+        if (StringUtils.isBlank(usernameMsg)) {
+            map.put("status", "0");
+            map.put("msg", "已经往您的邮箱发送了一封验证码邮件, 请查收!");
+        }
+        return map;
+    }
+
+    /**
+     * 检查 邮件 验证码
+     *
+     * @param username 用户名
+     * @param checkCode 用户输入的图片验证码
+     * @return 验证成功 返回"", 失败则返回原因
+     */
+    private String checkRedisResetPwdEmailCode(String username, String checkCode) {
+        if (StringUtils.isBlank(checkCode)) {
+            return "未发现输入的邮件验证码";
+        }
+        final String redisKey = "EmailCode4ResetPwd:" + username;
+        String emailVerifyCodeInRedis = (String) redisTemplate.opsForValue().get(redisKey);
+        if (StringUtils.isBlank(emailVerifyCodeInRedis)) {
+            return "邮件验证码已过期";
+        } else if (!emailVerifyCodeInRedis.equalsIgnoreCase(checkCode)) {
+            return "邮件验证码错误";
+        }
+        return "";
+    }
+
 
 }

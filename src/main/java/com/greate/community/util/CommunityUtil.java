@@ -1,7 +1,9 @@
 package com.greate.community.util;
 
 import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Validate;
 import org.springframework.util.DigestUtils;
 
 import java.util.HashMap;
@@ -68,6 +70,20 @@ public class CommunityUtil {
         json.put("url", url);
         return json.toJSONString();
     }
+
+    /**
+     * 生成指定位数的数字随机数, 最高不超过 9 位
+     *
+     * @param length
+     * @return
+     */
+    public static String getRandomCode(int length) {
+        Validate.isTrue(length <= 9 && length > 0, "生成数字随机数长度范围应该在 1~9 内, 参数 length : %s", length);
+        int floor = (int) Math.pow(10, length - 1);
+        int codeNum = RandomUtils.nextInt(floor, floor * 10);
+        return Integer.toString(codeNum);
+    }
+
 
     /**
      * 测试
