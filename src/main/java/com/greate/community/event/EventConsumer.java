@@ -36,12 +36,6 @@ public class EventConsumer implements CommunityConstant {
     @Autowired
     private ElasticsearchService elasticsearchService;
 
-    @Value("${qiniu.key.access}")
-    private String accessKey;
-
-    @Value("${qiniu.key.secret}")
-    private String secretKey;
-
     /**
      * 消费评论、点赞、关注事件
      * @param record
