@@ -50,6 +50,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [Echo 的点赞模块是怎么做的](https://mp.weixin.qq.com/s/lzPp5XeATTlHOCc8p5MF_w)
 - [Echo 的关注模块是怎么做的](https://mp.weixin.qq.com/s/dx2jBqlUnhep7O6oknR5cg)
 - [Echo 的系统通知模块是怎么做的](https://mp.weixin.qq.com/s/SqATRA8Wt2a4GYWv0HqQAA)
+- [Echo 是如何支持 MarkDown 的](https://mp.weixin.qq.com/s/mkMA-FuvqSThfSIgYZrrWg)
 - Echo 的置顶、加精、删除帖子是怎么做的
 - Echo 是如何统计网站数据的
 - Echo 的搜索模块是怎么做的
@@ -253,6 +254,8 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [ ] 查询我的点赞
 - [x] 管理员对帖子的二次点击取消置顶功能（Partially Implement by [Max (Lyingfromyou)](https://gitee.com/Lyingfromyou)）
 - [ ] 管理员对已删除帖子的恢复功能（本项目中的删除帖子并未将其从数据库中删除，只是将其状态设置为了拉黑）
+- [ ] 定期自动发帖功能
+- [ ] 添加 Gitee/Github 账号登陆功能
 
 ## 🌱 本地运行
 
