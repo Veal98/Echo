@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.HtmlUtils;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.File;
 import java.util.*;
 
@@ -114,7 +115,7 @@ public class DiscussPostController implements CommunityConstant {
      */
     @PostMapping("/add")
     @ResponseBody
-    public String addDiscussPost(String title, String content) {
+    public String addDiscussPost(@NotEmpty(message = "文章标题不能为空") String title, String content) {
         User user = hostHolder.getUser();
         if (user == null) {
             return CommunityUtil.getJSONString(403, "您还未登录");
