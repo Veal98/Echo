@@ -2,6 +2,7 @@ package com.greate.community;
 
 import com.greate.community.entity.DiscussPost;
 import com.greate.community.service.DiscussPostService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class CaffeineTest {
     /**
      * 注入大量数据，才能体现缓存的好处
      */
+    @Ignore
     @Test
     public void initDataForTest() {
         for (int i = 0; i < 300000; i++) {
@@ -35,6 +37,7 @@ public class CaffeineTest {
         }
     }
 
+    @Ignore
     @Test
     public void testCache() {
         System.out.println(postService.findDiscussPosts(0, 0, 10, 1));
