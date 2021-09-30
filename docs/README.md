@@ -14,53 +14,15 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 ## 📖 配套教程
 
-想要自己从零开始实现这个项目或者深入理解的小伙伴，可以扫描下方二维码关注公众号『**飞天小牛肉**』回复 `Echo` 获取配套教程，订阅话题 [Echo 学习教程](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI0NDc3ODE5OQ==&action=getalbum&album_id=1744497649518493697&scene=173&from_msgid=2247485209&from_itemidx=3&count=3&uin=&key=&devicetype=Windows+10+x64&version=63010043&lang=zh_CN&ascene=1&session_us=gh_089c9f6e334b&fontgear=2) 第一时间获取更新。本套教程不仅会详细解释本项目涉及的各大技术点，还会汇总相关的常见面试题，目前尚在更新中。
+想要自己从零开始实现这个项目或者深入理解的小伙伴，可以扫描下方二维码关注公众号『**飞天小牛肉**』回复 `Echo` 免费获取配套教程。本套教程不仅会详细解释本项目涉及的各大技术点，还会汇总相关的常见面试题，目前尚在更新中。
 
 <img width="220px" src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png"  />
 
-并推荐我的开源教程类项目 [『 CS-Wiki 』](https://gitee.com/veal98/CS-Wiki)，Gitee 推荐项目，目前已累积 1.6k star： 致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试(秋招/社招)，更指引学习的方向。
+配套教程部分截图：
 
-### 面试小抄
+![](https://gitee.com/veal98/images/raw/master/img/20210930110659.png)
 
-- [关于 Echo 项目该如何写在简历上](https://mp.weixin.qq.com/s/AEfoOGJyHk6o3-vw9CgScA)
-- 待更
 
-### 序章
-
-- [必读：Echo 项目的 README](https://mp.weixin.qq.com/s/iiukwRNW1-my1q6UjYl4iw)
-- [Echo 项目结构分析](https://mp.weixin.qq.com/s/dZqSB0EN5-rmGQeG3Lx2jA)
-- [Echo 数据库表是如何设计的](https://mp.weixin.qq.com/s/DG549DzLy3NhXwpsOWaXYA)
-- [Echo 技术选型分析](https://mp.weixin.qq.com/s/tTBzyMklFtBfkyvuh8W0Nw)
-
-### 部署篇
-
-- [修订版 | Echo 在 Windows 环境下的部署](https://mp.weixin.qq.com/s/VAtpaXvYJ7mDPmez0QV3ww)
-- [Echo 在 Linux 服务器上的部署](https://mp.weixin.qq.com/s/q9X5sJv7mtPaSApZB0PxPA)
-
-### 业务逻辑篇
-
-- [Echo 的注册功能是怎么做的](https://mp.weixin.qq.com/s/SC2FRPrVUbNw5ySHopOpHQ)
-- [Echo 的登录认证和授权是怎么做的](https://mp.weixin.qq.com/s/DjGvuNYu5Fjvw3Gjha4ulw)
-- [Echo 的发帖操作是怎么做的](https://mp.weixin.qq.com/s/OsCd3Pcl6iq-0znh7PL3lg)
-- [Echo 的帖子列表与分页是怎么做的](https://mp.weixin.qq.com/s/R5CtsXaS9hIOOePxQZcZhg)
-- [Echo 的评论是如何显示的](https://mp.weixin.qq.com/s/0avudnypPu3EewzoU3sEwA)
-- [Echo 的发布评论是怎么做的](https://mp.weixin.qq.com/s/S5bNpzuZFga2u15ik2t2iQ)
-- [Echo 的私信列表与详情页是怎么做的](https://mp.weixin.qq.com/s/ymYrAsJoilO531lilwdmfg)
-- [Echo 的发送私信是怎么做的](https://mp.weixin.qq.com/s/gLn5VXegsip5Od5gx52iUA)
-- [Echo 的点赞模块是怎么做的](https://mp.weixin.qq.com/s/lzPp5XeATTlHOCc8p5MF_w)
-- [Echo 的关注模块是怎么做的](https://mp.weixin.qq.com/s/dx2jBqlUnhep7O6oknR5cg)
-- [Echo 的系统通知模块是怎么做的](https://mp.weixin.qq.com/s/SqATRA8Wt2a4GYWv0HqQAA)
-- [Echo 是如何支持 MarkDown 的](https://mp.weixin.qq.com/s/mkMA-FuvqSThfSIgYZrrWg)
-- Echo 的置顶、加精、删除帖子是怎么做的
-- Echo 是如何统计网站数据的
-- Echo 的搜索模块是怎么做的
-- 未完待续
-
-### 技术要点篇
-
-- Echo 的敏感词过滤是如何实现的（前缀树）
-- Echo 中为什么要用 ThreadLocal 代替 Session
-- 待更
 
 ## 💻 核心技术栈
 
@@ -112,8 +74,6 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 ![](https://gitee.com/veal98/images/raw/master/img/20210709003428.png)
 
-
-
 帖子发布页（支持 MarkDown）：
 
 ![](https://gitee.com/veal98/images/raw/master/img/20210512101041.png)
@@ -125,6 +85,8 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 帖子详情页：
 
 ![](https://gitee.com/veal98/images/raw/master/img/20210211205741.png)
+
+
 
 个人主页：
 
@@ -365,7 +327,7 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 
 ### 显示评论及相关信息
 
-> 评论部分前端的名称显示有些缺陷，有兴趣的小伙伴欢迎提 PR 解决~
+> 评论部分前端的名称显示有些缺陷，有兴趣的小伙伴欢迎提 PR 解决 ~
 
 关于评论模块需要注意的就是评论表的设计，把握其中字段的含义，才能透彻了解这个功能的逻辑。
 
@@ -473,17 +435,12 @@ double score = Math.log10(Math.max(w, 1))
 
 ![](https://gitee.com/veal98/images/raw/master/img/20210208173636.png)
 
-## 📞 联系我
-
-有什么问题也可以添加我的微信，记得备注来意：格式 <u>（学校或公司 - 姓名或昵称 - 来意）</u>
-
-<img width="220px" src="https://gitee.com/veal98/images/raw/master/img/微信图片_20210105121328.jpg" >
 
 ## 🙋 微信交流群
 
-下方扫码加入 Echo 微信交流群，实时跟进项目进度，第一时间获取教程更新，分享您的想法，还能帮您解决遇到的问题。如果二维码过期可以上方扫码加我微信回复 “Echo 交流群”，我拉你进群：
+下方扫码关注公众号回复 `Echo`，里面有我的联系方式，备注 "Echo" 加我微信，我拉你进 Echo 微信交流群，实时跟进项目进度，第一时间获取教程更新，分享您的想法，还能帮您解决遇到的问题：
 
-<img width="235px" src="https://gitee.com/veal98/images/raw/master/img/20210305100109.jpg" >
+<img width="220px" src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png"  />
 
 ## 👏 鸣谢
 
@@ -499,5 +456,5 @@ double score = Math.log10(Math.max(w, 1))
 > 🔗 友情链接（若您想要出现在这里，可以上方扫描微信二维码联系我）：
 >
 > - [CS-Wiki](https://gitee.com/veal98/CS-Wiki)：致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试，更指引学习的方向
-> - [Furion](https://gitee.com/dotnetchina/Furion)：让 .NET 开发更简单，更通用，更流行
+> - [Furion](https://gitee.com/dotnetchina/Furion)：让 .NET 开发更简单，更通用，更流行 
 > - [Free-Fs](https://gitee.com/dh_free/free-fs)：Spring Boot 开源云文件管理系统，方便快捷的管理云存储的文件
