@@ -467,9 +467,7 @@ double score = Math.log10(Math.max(w, 1))
 
 ## 👏 鸣谢
 
-博主水平有限，尚未拥有良好的架构能力，本项目参考[牛客网](https://www.nowcoder.com/)课程，在此感谢老师和平台。
-
-另外，若发现 Bug 或好的想法可以积极与我联系或提 PR / issue，采纳后您将出现在下方列表中。感谢以下小伙伴对本项目做出的贡献，排名按照时间先后：
+若发现 Bug 或好的想法可以积极与我联系或提 PR / issue，采纳后您将出现在下方列表中。感谢以下小伙伴对本项目做出的贡献，排名按照时间先后：
 
 - [freedom_dh](https://gitee.com/dh_free)
 - [paulisusu](https://gitee.com/paulisusu)
