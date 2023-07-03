@@ -17,13 +17,10 @@
 [![GitHub forks](https://img.shields.io/github/forks/Veal98/Echo?logo=github)](https://github.com/Veal98/Echo/network)
 [![version](https://img.shields.io/badge/version-2.1-brightgreen)]()
 
-<a href="#-微信交流群"><img src="https://img.shields.io/badge/交流-微信群-orange" alt="交流群"></a>
-<a href="#-配套教程"><img src="https://img.shields.io/badge/配套教程-公众号飞天小牛肉-blueviolet" alt="配套教程"></a>
-
 
 </div>
 
-> 云服务器到期了，暂时不准备续费，未上手的小伙伴可以看下面的界面展示了解本项目，所有代码在我本机上都是正常运行的，各位可以参考配套教程自己拉下去部署，并欢迎加群讨论技术问题。
+> 各位可以参考配套教程自己拉下去部署
 
 ## 📚 项目简介
 
@@ -34,17 +31,9 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - Gitee：[https://gitee.com/veal98/Echo](https://gitee.com/veal98/Echo)（Gitee 官方推荐项目）
 - Github：[https://github.com/Veal98/Echo](https://github.com/Veal98/Echo)
 
-**文档地址**：文档通过 <u>Docsify + Github/Gitee Pages</u> 生成
+**教程地址**：文档通过 <u>Docsify + Github/Gitee Pages</u> 生成
 
-- Gitee Pages：[https://veal98.gitee.io/echo](https://veal98.gitee.io/echo)
-- Github Pages：[https://veal98.github.io/Echo](https://veal98.github.io/Echo)
-
-## 📖 配套教程
-
-想要自己从零开始实现这个项目或者深入理解的小伙伴，可以扫描下方二维码关注公众号『**飞天小牛肉**』回复 `Echo` 免费获取配套教程。本套教程不仅会详细解释本项目涉及的各大技术点，还会汇总相关的常见面试题，目前尚在更新中。
-
-<img width="220px" src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png"  />
-
+- [https://itmtx.cn/column/12](https://itmtx.cn/column/12)
 
 
 ## 💻 核心技术栈
@@ -229,18 +218,6 @@ Echo 是一套前后端不分离的开源社区系统，基于目前主流 Java 
 - [x] **优化网站性能**
   - 处理每次请求时，都要通过拦截器根据登录凭证查询用户信息，访问的频率非常高。因此将已成功登录的用户信息在缓存 Redis 中保存一段时间，查询用户信息的时候优先从缓存中取值；若缓存中没有该用户信息，则将其存入缓存；用户信息变更时清除对应的缓存数据
   - 引入本地缓存 Caffeine，缓存热帖列表和帖子的总数，提升响应速度（可以进一步采用二级缓存架构）
-
-## 🔐 待实现及优化
-
-以下是我觉得本项目还可以添加的功能，同样欢迎各位小伙伴提 issue 指出还可以增加哪些功能，或者直接提 PR 实现该功能：
-
-- [x] 发帖支持 Markdown 格式
-- [x] 忘记密码（发送邮件找回密码）（Implemented by [逆光影者 (cpfree) ](https://gitee.com/cpfree)）
-- [ ] 查询我的点赞
-- [x] 管理员对帖子的二次点击取消置顶功能（Partially Implement by [Max (Lyingfromyou)](https://gitee.com/Lyingfromyou)）
-- [ ] 管理员对已删除帖子的恢复功能（本项目中的删除帖子并未将其从数据库中删除，只是将其状态设置为了拉黑）
-- [ ] 定期自动发帖功能
-- [ ] 添加 Gitee/Github 账号登陆功能
 
 ## 🌱 本地运行
 
@@ -457,25 +434,3 @@ double score = Math.log10(Math.max(w, 1))
 ```
 
 ![](https://gitee.com/veal98/images/raw/master/img/20210208173636.png)
-
-
-## 🙋 微信交流群
-
-下方扫码关注公众号回复 `Echo`，里面有我的联系方式，备注 "Echo" 加我微信，我拉你进 Echo 微信交流群，实时跟进项目进度，第一时间获取教程更新，分享您的想法，还能帮您解决遇到的问题：
-
-<img width="220px" src="https://gitee.com/veal98/images/raw/master/img/20210204145531.png"  />
-
-## 👏 鸣谢
-
-若发现 Bug 或好的想法可以积极与我联系或提 PR / issue，采纳后您将出现在下方列表中。感谢以下小伙伴对本项目做出的贡献，排名按照时间先后：
-
-- [freedom_dh](https://gitee.com/dh_free)
-- [paulisusu](https://gitee.com/paulisusu)
-- [Max (Lyingfromyou)](https://gitee.com/Lyingfromyou)
-- [逆光影者 (cpfree) ](https://gitee.com/cpfree)
-
-> 🔗 友情链接（若您想要出现在这里，可以上方扫描微信二维码联系我）：
->
-> - [CS-Wiki](https://gitee.com/veal98/CS-Wiki)：致力打造完善的 Java 后端知识体系，不仅仅帮助各位小伙伴快速且系统的准备面试，更指引学习的方向
-> - [Furion](https://gitee.com/dotnetchina/Furion)：让 .NET 开发更简单，更通用，更流行 
-> - [Free-Fs](https://gitee.com/dh_free/free-fs)：Spring Boot 开源云文件管理系统，方便快捷的管理云存储的文件
