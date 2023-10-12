@@ -130,12 +130,13 @@ public class DiscussPostController implements CommunityConstant {
         discussPostService.addDiscussPost(discussPost);
 
         // 触发发帖事件，通过消息队列将其存入 Elasticsearch 服务器
-        Event event = new Event()
-                .setTopic(TOPIC_PUBLISH)
-                .setUserId(user.getId())
-                .setEntityType(ENTITY_TYPE_POST)
-                .setEntityId(discussPost.getId());
-        eventProducer.fireEvent(event);
+        // 使用Canal进行数据源同步
+//        Event event = new Event()
+//                .setTopic(TOPIC_PUBLISH)
+//                .setUserId(user.getId())
+//                .setEntityType(ENTITY_TYPE_POST)
+//                .setEntityId(discussPost.getId());
+//        eventProducer.fireEvent(event);
 
         // 计算帖子分数
         String redisKey = RedisKeyUtil.getPostScoreKey();
@@ -239,12 +240,13 @@ public class DiscussPostController implements CommunityConstant {
         discussPostService.updateType(id, type);
 
         // 触发发帖事件，通过消息队列将其存入 Elasticsearch 服务器
-        Event event = new Event()
-                .setTopic(TOPIC_PUBLISH)
-                .setUserId(hostHolder.getUser().getId())
-                .setEntityType(ENTITY_TYPE_POST)
-                .setEntityId(id);
-        eventProducer.fireEvent(event);
+        // 使用Canal进行数据源同步
+//        Event event = new Event()
+//                .setTopic(TOPIC_PUBLISH)
+//                .setUserId(hostHolder.getUser().getId())
+//                .setEntityType(ENTITY_TYPE_POST)
+//                .setEntityId(id);
+//        eventProducer.fireEvent(event);
 
         return CommunityUtil.getJSONString(0);
     }
@@ -261,12 +263,13 @@ public class DiscussPostController implements CommunityConstant {
         discussPostService.updateStatus(id, 1);
 
         // 触发发帖事件，通过消息队列将其存入 Elasticsearch 服务器
-        Event event = new Event()
-                .setTopic(TOPIC_PUBLISH)
-                .setUserId(hostHolder.getUser().getId())
-                .setEntityType(ENTITY_TYPE_POST)
-                .setEntityId(id);
-        eventProducer.fireEvent(event);
+        // 使用Canal进行数据源同步
+//        Event event = new Event()
+//                .setTopic(TOPIC_PUBLISH)
+//                .setUserId(hostHolder.getUser().getId())
+//                .setEntityType(ENTITY_TYPE_POST)
+//                .setEntityId(id);
+//        eventProducer.fireEvent(event);
 
         // 计算帖子分数
         String redisKey = RedisKeyUtil.getPostScoreKey();
@@ -287,12 +290,13 @@ public class DiscussPostController implements CommunityConstant {
         discussPostService.updateStatus(id, 2);
 
         // 触发删帖事件，通过消息队列更新 Elasticsearch 服务器
-        Event event = new Event()
-                .setTopic(TOPIC_DELETE)
-                .setUserId(hostHolder.getUser().getId())
-                .setEntityType(ENTITY_TYPE_POST)
-                .setEntityId(id);
-        eventProducer.fireEvent(event);
+        // 使用Canal进行数据源同步
+//        Event event = new Event()
+//                .setTopic(TOPIC_DELETE)
+//                .setUserId(hostHolder.getUser().getId())
+//                .setEntityType(ENTITY_TYPE_POST)
+//                .setEntityId(id);
+//        eventProducer.fireEvent(event);
 
         return CommunityUtil.getJSONString(0);
     }
