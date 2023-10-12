@@ -68,4 +68,16 @@ public class Event {
         this.data.put(key, value);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "topic='" + topic + '\'' +
+                ", userId=" + userId +
+                ", entityType=" + entityType +
+                ", entityId=" + entityId +
+                ", entityUserId=" + entityUserId +
+                ", data=" + data +
+                '}';
+    }
 }
